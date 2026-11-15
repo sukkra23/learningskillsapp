@@ -44,7 +44,9 @@ export function grade(q: Question, r: Response): GradeResult {
       return result(withinTolerance(x, q.answer, q.tolerance));
     }
     case 'expression': {
-      const e = equivalent((r as { text: string }).text, q.answer, q.variables, q.domain);
+      const text = (r as { text: string }).text;
+      if (q.form === 'expanded' && /[()]/.test(text)) return { correct: false, score: 0, invalid: 'Multiply out fully: the answer should contain no brackets.' };
+      const e = equivalent(text, q.answer, q.variables, q.domain);
       return e.error ? { correct: false, score: 0, invalid: e.error } : result(e.equivalent);
     }
     case 'order': {

@@ -14,6 +14,7 @@ const V = (value: number): Edge => ({ kind: 'V', value, flip: false });
 const base = (o: Partial<Edges>): Edges => ({ ...Object.fromEntries(EDGE_IDS.map((id) => [id, none])), ...o }) as Edges;
 
 export const PRESETS: Record<string, { label: string; edges: Edges }> = {
+  single: { label: 'One resistor', edges: base({ V0: V(12), T0: W, V1: R(4), B0: W }) },
   series: { label: 'Series', edges: base({ V0: V(9), T0: R(100), T1: R(200), V2: W, B0: W, B1: W }) },
   parallel: { label: 'Parallel', edges: base({ V0: V(6), T0: W, T1: W, V1: R(20), V2: R(30), B0: W, B1: W }) },
   divider: { label: 'Voltage divider', edges: base({ V0: V(12), T0: R(100), V1: R(200), B0: W }) },

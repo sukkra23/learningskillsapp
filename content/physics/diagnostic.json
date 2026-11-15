@@ -1,0 +1,376 @@
+{
+  "track": "physics",
+  "items": [
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "basic",
+      "question": {
+        "id": "dk1",
+        "difficulty": 1,
+        "prompt": "A runner covers 100 m in 20 s at a steady pace. What is her speed?",
+        "hints": [],
+        "solution": "$v = 100/20 = 5$ m/s.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "m/s"
+      }
+    },
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "basic",
+      "question": {
+        "id": "dk2",
+        "difficulty": 2,
+        "prompt": "An object has a positive velocity and a negative acceleration. What is it doing?",
+        "hints": [],
+        "solution": "The acceleration points opposite to the velocity, so the speed decreases.",
+        "type": "mcq",
+        "choices": [
+          "Slowing down",
+          "Speeding up",
+          "Moving backwards",
+          "Standing still"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "basic",
+      "question": {
+        "id": "dk3",
+        "difficulty": 2,
+        "prompt": "Starting from rest, an object accelerates at $2\\ \\text{m/s}^2$ for $5$ s. What is its final speed?",
+        "hints": [],
+        "solution": "$v = at = 10$ m/s.",
+        "type": "numeric",
+        "answer": 10,
+        "tolerance": {
+          "abs": 0.05
+        },
+        "unit": "m/s"
+      }
+    },
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "advanced",
+      "question": {
+        "id": "dk4",
+        "difficulty": 3,
+        "prompt": "Starting from rest, an object accelerates at $2\\ \\text{m/s}^2$ for $5$ s. How far does it travel?",
+        "hints": [],
+        "solution": "$x = \\tfrac12 a t^2 = 25$ m.",
+        "type": "numeric",
+        "answer": 25,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "m"
+      }
+    },
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "advanced",
+      "question": {
+        "id": "dk5",
+        "difficulty": 3,
+        "prompt": "A bullet is fired horizontally from a rifle at the same instant an identical bullet is dropped from the same height. Ignoring air resistance, which hits level ground first?",
+        "hints": [],
+        "solution": "Vertical motion is independent of horizontal motion; both fall the same height from zero vertical velocity.",
+        "type": "mcq",
+        "choices": [
+          "They hit at the same time",
+          "The dropped bullet",
+          "The fired bullet",
+          "It depends on the speed of the fired bullet"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "advanced",
+      "question": {
+        "id": "dk6",
+        "difficulty": 4,
+        "prompt": "A ball is thrown straight up at $19.6$ m/s. Taking $g = 9.8\\ \\text{m/s}^2$, what maximum height does it reach?",
+        "hints": [],
+        "solution": "$h = v^2 / 2g = 19.6^2 / 19.6 = 19.6$ m.",
+        "type": "numeric",
+        "answer": 19.6,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "m"
+      }
+    },
+    {
+      "nodeId": "physics.kinematics",
+      "tier": "advanced",
+      "question": {
+        "id": "dk7",
+        "difficulty": 5,
+        "prompt": "A projectile is launched from level ground at $30$ m/s, $30^\\circ$ above the horizontal. Taking $g = 9.8\\ \\text{m/s}^2$, what is its range?",
+        "hints": [],
+        "solution": "$R = v^2 \\sin 2\\theta / g = 900 \\times \\sin 60^\\circ / 9.8 \\approx 79.5$ m.",
+        "type": "numeric",
+        "answer": 79.5,
+        "tolerance": {
+          "abs": 0.5
+        },
+        "unit": "m"
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "basic",
+      "question": {
+        "id": "dn1",
+        "difficulty": 1,
+        "prompt": "What is the SI unit of force?",
+        "hints": [],
+        "solution": "The newton: $1\\ \\text{N} = 1\\ \\text{kg m/s}^2$.",
+        "type": "mcq",
+        "choices": [
+          "newton",
+          "joule",
+          "watt",
+          "kilogram"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "basic",
+      "question": {
+        "id": "dn2",
+        "difficulty": 2,
+        "prompt": "What net force gives a $2$ kg object an acceleration of $3\\ \\text{m/s}^2$?",
+        "hints": [],
+        "solution": "$F = ma = 6$ N.",
+        "type": "numeric",
+        "answer": 6,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "N"
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "basic",
+      "question": {
+        "id": "dn3",
+        "difficulty": 2,
+        "prompt": "A spacecraft far from any star or planet has its engines off. What happens to its velocity?",
+        "hints": [],
+        "solution": "With no net force there is no acceleration (first law).",
+        "type": "mcq",
+        "choices": [
+          "It stays constant",
+          "It gradually decreases to zero",
+          "It gradually increases",
+          "It drops to zero immediately"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "advanced",
+      "question": {
+        "id": "dn4",
+        "difficulty": 3,
+        "prompt": "Forces of $10$ N and $4$ N act in opposite directions on a $2$ kg object. What is the size of its acceleration?",
+        "hints": [],
+        "solution": "Net force $6$ N, so $a = 3\\ \\text{m/s}^2$.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "m/s²"
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "advanced",
+      "question": {
+        "id": "dn5",
+        "difficulty": 3,
+        "prompt": "You push on a wall with a force of 50 N. What force does the wall exert on you?",
+        "hints": [],
+        "solution": "Third law: equal in size, opposite in direction, acting on you.",
+        "type": "mcq",
+        "choices": [
+          "50 N, directed back towards you",
+          "Zero, because the wall does not move",
+          "Less than 50 N",
+          "More than 50 N"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "advanced",
+      "question": {
+        "id": "dn6",
+        "difficulty": 4,
+        "prompt": "A $50$ kg person stands in a lift accelerating upward at $1.2\\ \\text{m/s}^2$. Taking $g = 9.8\\ \\text{m/s}^2$, what normal force does the floor exert?",
+        "hints": [],
+        "solution": "$N = m(g + a) = 50 \\times 11 = 550$ N.",
+        "type": "numeric",
+        "answer": 550,
+        "tolerance": {
+          "abs": 2
+        },
+        "unit": "N"
+      }
+    },
+    {
+      "nodeId": "physics.newtons-laws",
+      "tier": "advanced",
+      "question": {
+        "id": "dn7",
+        "difficulty": 5,
+        "prompt": "Masses of $2$ kg and $6$ kg hang over a frictionless pulley on a light string. Taking $g = 9.8\\ \\text{m/s}^2$, find the size of their acceleration.",
+        "hints": [],
+        "solution": "$a = (6 - 2)g / (6 + 2) = 4.9\\ \\text{m/s}^2$.",
+        "type": "numeric",
+        "answer": 4.9,
+        "tolerance": {
+          "abs": 0.03
+        },
+        "unit": "m/s²"
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "basic",
+      "question": {
+        "id": "de1",
+        "difficulty": 1,
+        "prompt": "What does the kinetic energy of an object depend on?",
+        "hints": [],
+        "solution": "$KE = \\tfrac12 m v^2$.",
+        "type": "mcq",
+        "choices": [
+          "Its mass and its speed",
+          "Its mass and its height",
+          "Its height only",
+          "Its colour and its temperature"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "basic",
+      "question": {
+        "id": "de2",
+        "difficulty": 2,
+        "prompt": "What is the kinetic energy of a $2$ kg object moving at $4$ m/s?",
+        "hints": [],
+        "solution": "$\\tfrac12 (2)(16) = 16$ J.",
+        "type": "numeric",
+        "answer": 16,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "J"
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "basic",
+      "question": {
+        "id": "de3",
+        "difficulty": 2,
+        "prompt": "What is the momentum of a $5$ kg object moving at $2$ m/s?",
+        "hints": [],
+        "solution": "$p = mv = 10$ kg m/s.",
+        "type": "numeric",
+        "answer": 10,
+        "tolerance": {
+          "abs": 0.05
+        },
+        "unit": "kg m/s"
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "advanced",
+      "question": {
+        "id": "de4",
+        "difficulty": 3,
+        "prompt": "An object falls from rest through $10$ m. Taking $g = 9.8\\ \\text{m/s}^2$ and ignoring air resistance, what is its speed at the end?",
+        "hints": [],
+        "solution": "$v = \\sqrt{2gh} = \\sqrt{196} = 14$ m/s.",
+        "type": "numeric",
+        "answer": 14,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "m/s"
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "advanced",
+      "question": {
+        "id": "de5",
+        "difficulty": 4,
+        "prompt": "A $4$ kg cart moving at $3$ m/s collides with a stationary $2$ kg cart and they stick together. What is their speed afterwards?",
+        "hints": [],
+        "solution": "$12 = 6v$, so $v = 2$ m/s.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "m/s"
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "advanced",
+      "question": {
+        "id": "de6",
+        "difficulty": 4,
+        "prompt": "What is conserved in a perfectly elastic collision between two balls?",
+        "hints": [],
+        "solution": "Momentum is always conserved; \"elastic\" means kinetic energy is conserved as well.",
+        "type": "mcq",
+        "choices": [
+          "Both total momentum and total kinetic energy",
+          "Total momentum only",
+          "Total kinetic energy only",
+          "The velocity of each ball"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "physics.energy-momentum",
+      "tier": "advanced",
+      "question": {
+        "id": "de7",
+        "difficulty": 5,
+        "prompt": "A $3$ kg ball moving at $2$ m/s collides elastically head-on with a stationary $1$ kg ball. What is the speed of the $1$ kg ball afterwards?",
+        "hints": [],
+        "solution": "$u_2 = \\dfrac{2 m_1}{m_1 + m_2} v_1 = \\dfrac{6}{4} \\times 2 = 3$ m/s.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.03
+        },
+        "unit": "m/s"
+      }
+    }
+  ]
+}

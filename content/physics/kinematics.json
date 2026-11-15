@@ -3,9 +3,428 @@
   "track": "physics",
   "title": "Kinematics",
   "summary": "Position, velocity and acceleration in one and two dimensions.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [],
   "estimatedMinutes": 40,
   "difficulty": 1,
-  "strand": "Classical mechanics"
+  "strand": "Classical mechanics",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "position-velocity",
+      "title": "Where, how fast, which way",
+      "body": "**Position** $x$ says where something is. **Velocity** $v$ says how quickly the position is changing, and in which direction: positive means moving towards larger $x$.\n\nPress **Play**. The object moves at a steady 5 m/s, so its position graph is a straight line. Now drag the *start velocity* slider and watch the line tilt: **the slope of the position graph is the velocity**.",
+      "widget": {
+        "type": "motion-graphs",
+        "props": {
+          "x0": -10,
+          "v0": 5,
+          "a": 0
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-slope",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "A position-time graph is a straight line sloping **downward**. What is the object doing?",
+        "hints": [
+          "The slope of a position-time graph is the velocity.",
+          "A straight line has the same slope everywhere."
+        ],
+        "solution": "A straight line means the slope, and so the velocity, is constant. The line slopes downward, so the velocity is negative: the object moves steadily towards smaller $x$.",
+        "type": "mcq",
+        "choices": [
+          "Moving at a constant velocity in the negative direction",
+          "Slowing down",
+          "Speeding up",
+          "Standing still"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "acceleration",
+      "title": "Acceleration: velocity that changes",
+      "body": "**Acceleration** $a$ is the rate at which velocity changes. An acceleration of $-2\\ \\text{m/s}^2$ takes 2 m/s off the velocity every second.\n\nHere the object starts at $+10$ m/s with $a = -2\\ \\text{m/s}^2$. Press **Play** and watch three things happen in order: it slows down, it stops for an instant at $t = 5$ s, and then it would move backwards. The velocity graph is a straight line whose slope is the acceleration, and the position graph bends into a curve.",
+      "widget": {
+        "type": "motion-graphs",
+        "props": {
+          "x0": -20,
+          "v0": 10,
+          "a": -2
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-v",
+      "question": {
+        "id": "s2",
+        "difficulty": 1,
+        "prompt": "A car starts from rest and accelerates at $3\\ \\text{m/s}^2$ for $4$ s. How fast is it going at the end?",
+        "hints": [
+          "Use $v = v_0 + at$.",
+          "\"From rest\" means $v_0 = 0$."
+        ],
+        "solution": "Velocity changes by $a$ every second: $v = v_0 + at = 0 + 3 \\times 4 = 12$ m/s.",
+        "type": "numeric",
+        "answer": 12,
+        "tolerance": {
+          "abs": 0.05
+        },
+        "unit": "m/s"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "equations",
+      "title": "Three equations for constant acceleration",
+      "body": "When the acceleration is constant, three equations cover everything:\n\n$$v = v_0 + at$$\n$$x = x_0 + v_0 t + \\tfrac12 a t^2$$\n$$v^2 = v_0^2 + 2a\\,(x - x_0)$$\n\nThe first is the definition of acceleration. The second adds up the distance covered while the velocity grows. The third is what you get by eliminating $t$, so use it when no time is given."
+    },
+    {
+      "kind": "question",
+      "id": "q-x",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "The same car (from rest, $a = 3\\ \\text{m/s}^2$) accelerates for $4$ s. How far does it travel?",
+        "hints": [
+          "Use $x = x_0 + v_0 t + \\tfrac12 a t^2$ with $x_0 = 0$ and $v_0 = 0$."
+        ],
+        "solution": "$x = v_0 t + \\tfrac12 a t^2 = 0 + \\tfrac12 \\times 3 \\times 4^2 = 24$ m.",
+        "type": "numeric",
+        "answer": 24,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "m"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "projectile",
+      "title": "Two dimensions: projectiles",
+      "body": "A thrown ball moves sideways and up-and-down at the same time, and the two motions **do not affect each other**.\n\n- Horizontally nothing pushes on it, so $v_x$ stays constant.\n- Vertically gravity gives $a = -g \\approx -9.8\\ \\text{m/s}^2$.\n\nLaunch the ball and watch the two arrows: the horizontal one never changes, while the vertical one shrinks, reaches zero at the top, and then grows downward. Try different angles and find the one that throws farthest.",
+      "widget": {
+        "type": "projectile",
+        "props": {
+          "speed": 20,
+          "angle": 45,
+          "height": 0,
+          "g": 9.8
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-angle",
+      "question": {
+        "id": "s4",
+        "difficulty": 2,
+        "prompt": "On level ground with no air resistance, which launch angle gives the greatest range for a fixed launch speed?",
+        "hints": [
+          "Use the sandbox: try 30, 45 and 60 degrees at the same speed."
+        ],
+        "solution": "The range is $R = \\dfrac{v^2 \\sin 2\\theta}{g}$, which is largest when $\\sin 2\\theta = 1$, that is $\\theta = 45^\\circ$. Steeper throws stay up longer but move sideways slowly; flatter throws are fast sideways but land sooner.",
+        "type": "mcq",
+        "choices": [
+          "$30^\\circ$",
+          "$45^\\circ$",
+          "$60^\\circ$",
+          "$90^\\circ$"
+        ],
+        "answer": 1
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "One ball is dropped from a table. At the same instant a second ball is fired **horizontally** off the same table. Explain which one lands first, and why.",
+        "hints": [],
+        "solution": "They land at the same time. The vertical motion is independent of the horizontal motion: both balls start with zero vertical velocity, fall the same height, and have the same downward acceleration $g$ from gravity. The fired ball simply travels sideways while it falls.",
+        "type": "explain",
+        "modelAnswer": "They land at the same time. The vertical motion is independent of the horizontal motion: both balls start with zero vertical velocity, fall the same height, and have the same downward acceleration $g$ from gravity. The fired ball simply travels sideways while it falls.",
+        "checklist": [
+          {
+            "point": "Says they land at the same time",
+            "keywords": [
+              [
+                "same time",
+                "together",
+                "simultaneously",
+                "same instant"
+              ]
+            ]
+          },
+          {
+            "point": "Says horizontal and vertical motion are independent",
+            "keywords": [
+              [
+                "independent",
+                "separate",
+                "does not affect",
+                "do not affect",
+                "no effect"
+              ]
+            ]
+          },
+          {
+            "point": "Mentions that gravity gives both the same vertical acceleration",
+            "keywords": [
+              [
+                "gravity",
+                "acceleration",
+                "g"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "A cyclist rides 150 m along a straight road in 12 s at constant speed. What is her speed?",
+      "hints": [
+        "Speed is distance divided by time."
+      ],
+      "solution": "$v = \\dfrac{\\Delta x}{\\Delta t} = \\dfrac{150}{12} = 12.5$ m/s.",
+      "type": "numeric",
+      "answer": 12.5,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "m/s"
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "A car travelling at $20$ m/s brakes with a constant acceleration of $-5\\ \\text{m/s}^2$. How far does it travel before stopping?",
+      "hints": [
+        "No time is given. Which equation has no $t$ in it?",
+        "Use $v^2 = v_0^2 + 2a\\,\\Delta x$ with final velocity $0$."
+      ],
+      "solution": "No time is given, so use $v^2 = v_0^2 + 2a\\,\\Delta x$ with $v = 0$:\n\n$$0 = 20^2 + 2(-5)\\,\\Delta x \\quad\\Rightarrow\\quad \\Delta x = \\frac{400}{10} = 40\\ \\text{m}.$$",
+      "type": "numeric",
+      "answer": 40,
+      "tolerance": {
+        "abs": 0.2
+      },
+      "unit": "m"
+    },
+    {
+      "id": "p3",
+      "difficulty": 3,
+      "prompt": "An object has initial velocity $u$ and constant acceleration $a$. Write an expression for its displacement after time $t$.",
+      "hints": [
+        "This is the second of the three equations, with $x - x_0$ as the displacement."
+      ],
+      "solution": "$\\Delta x = ut + \\tfrac12 a t^2$. The first term is the distance it would cover with no acceleration; the second is the extra distance gained because it speeds up.",
+      "type": "expression",
+      "answer": "u*t + 0.5*a*t^2",
+      "variables": [
+        "u",
+        "a",
+        "t"
+      ]
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "A ball is thrown straight up at $15$ m/s. Taking $g = 9.8\\ \\text{m/s}^2$, how high above the launch point does it rise?",
+      "hints": [
+        "What is the velocity at the highest point?",
+        "Use $v^2 = v_0^2 + 2a\\,\\Delta x$ with $a = -9.8$."
+      ],
+      "solution": "At the top $v = 0$. Using $v^2 = v_0^2 - 2g\\,h$:\n\n$$h = \\frac{v_0^2}{2g} = \\frac{15^2}{2 \\times 9.8} = \\frac{225}{19.6} \\approx 11.5\\ \\text{m}.$$",
+      "type": "numeric",
+      "answer": 11.48,
+      "tolerance": {
+        "abs": 0.1
+      },
+      "unit": "m"
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "A ball is kicked from level ground at $20$ m/s, $30^\\circ$ above the horizontal. Taking $g = 9.8\\ \\text{m/s}^2$ and ignoring air resistance, how far away does it land?",
+      "hints": [
+        "Split the launch velocity into horizontal and vertical components.",
+        "Find the time in the air from the vertical motion alone.",
+        "The horizontal distance is the horizontal velocity times that time."
+      ],
+      "solution": "Components: $v_x = 20\\cos 30^\\circ = 17.32$ m/s and $v_y = 20 \\sin 30^\\circ = 10$ m/s.\n\nTime of flight (up and back down): $t = \\dfrac{2 v_y}{g} = \\dfrac{20}{9.8} = 2.041$ s.\n\nRange: $R = v_x t = 17.32 \\times 2.041 \\approx 35.3$ m. (The formula $R = v^2 \\sin 2\\theta / g$ gives the same.)",
+      "type": "numeric",
+      "answer": 35.35,
+      "tolerance": {
+        "abs": 0.2
+      },
+      "unit": "m"
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "A stone is thrown **horizontally** at $12$ m/s from the top of a $45$ m cliff. Taking $g = 9.8\\ \\text{m/s}^2$, how far from the base of the cliff does it land?",
+      "hints": [
+        "The initial vertical velocity is zero.",
+        "Find the fall time from $h = \\tfrac12 g t^2$."
+      ],
+      "solution": "Vertically it starts with zero velocity and falls 45 m: $45 = \\tfrac12 (9.8) t^2$, so $t = \\sqrt{90/9.8} = 3.030$ s.\n\nHorizontally it moves at a constant 12 m/s for that time: $x = 12 \\times 3.030 \\approx 36.4$ m.",
+      "type": "numeric",
+      "answer": 36.37,
+      "tolerance": {
+        "abs": 0.3
+      },
+      "unit": "m"
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 2,
+      "prompt": "A velocity-time graph is a horizontal line above the time axis. What does this show?",
+      "hints": [],
+      "solution": "A horizontal velocity graph means the velocity is not changing, so the acceleration (its slope) is zero. Being above the axis means the velocity is positive.",
+      "type": "mcq",
+      "choices": [
+        "Constant positive velocity and zero acceleration",
+        "Constant positive acceleration",
+        "The object is at rest",
+        "The object is slowing down"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "An object moving at $5$ m/s accelerates at $2\\ \\text{m/s}^2$ for $6$ s. What is its final velocity?",
+      "hints": [],
+      "solution": "$v = v_0 + at = 5 + 2 \\times 6 = 17$ m/s.",
+      "type": "numeric",
+      "answer": 17,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "m/s"
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "Starting from rest, an object accelerates at $4\\ \\text{m/s}^2$ for $5$ s. How far does it travel?",
+      "hints": [],
+      "solution": "$x = \\tfrac12 a t^2 = \\tfrac12 \\times 4 \\times 25 = 50$ m.",
+      "type": "numeric",
+      "answer": 50,
+      "tolerance": {
+        "abs": 0.2
+      },
+      "unit": "m"
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "A ball is thrown straight up. At the very top of its flight, what is its acceleration?",
+      "hints": [],
+      "solution": "Gravity does not switch off at the top. The **velocity** is zero for an instant, but the velocity is still changing at $9.8\\ \\text{m/s}^2$ downward, which is exactly why the ball comes back down.",
+      "type": "mcq",
+      "choices": [
+        "$9.8\\ \\text{m/s}^2$ downward",
+        "Zero",
+        "$9.8\\ \\text{m/s}^2$ upward",
+        "It depends on how hard it was thrown"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "A car slows from $30$ m/s to $10$ m/s over a distance of $80$ m. What is the **magnitude** of its acceleration?",
+      "hints": [],
+      "solution": "$v^2 = v_0^2 + 2a\\,\\Delta x \\Rightarrow 100 = 900 + 2a(80) \\Rightarrow a = \\dfrac{-800}{160} = -5\\ \\text{m/s}^2$. The magnitude is $5\\ \\text{m/s}^2$.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "m/s²"
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "A stone is dropped from rest from a height of $80$ m. Taking $g = 9.8\\ \\text{m/s}^2$, how long does it take to reach the ground?",
+      "hints": [],
+      "solution": "$h = \\tfrac12 g t^2 \\Rightarrow t = \\sqrt{2h/g} = \\sqrt{160/9.8} \\approx 4.04$ s.",
+      "type": "numeric",
+      "answer": 4.04,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "s"
+    },
+    {
+      "id": "t2",
+      "difficulty": 3,
+      "prompt": "A ball is thrown straight up at $24.5$ m/s and caught at the same height. Taking $g = 9.8\\ \\text{m/s}^2$, how long is it in the air?",
+      "hints": [],
+      "solution": "Time up is $v_0/g = 24.5/9.8 = 2.5$ s, and the trip down takes the same, so $t = 5$ s.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "s"
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "Two balls are launched from level ground at the same speed, one at $30^\\circ$ and one at $60^\\circ$. Ignoring air resistance, how do their ranges compare?",
+      "hints": [],
+      "solution": "$R = v^2 \\sin 2\\theta / g$, and $\\sin 60^\\circ = \\sin 120^\\circ$. Angles that add up to $90^\\circ$ always give the same range.",
+      "type": "mcq",
+      "choices": [
+        "They are equal",
+        "The $30^\\circ$ ball goes farther",
+        "The $60^\\circ$ ball goes farther",
+        "The $60^\\circ$ ball goes twice as far"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "A ball is kicked at $18$ m/s, $35^\\circ$ above the horizontal. Taking $g = 9.8\\ \\text{m/s}^2$, what maximum height does it reach above the ground?",
+      "hints": [],
+      "solution": "$v_y = 18 \\sin 35^\\circ = 10.32$ m/s, and $h = \\dfrac{v_y^2}{2g} = \\dfrac{106.6}{19.6} \\approx 5.44$ m.",
+      "type": "numeric",
+      "answer": 5.44,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "m"
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "A train starts from rest, accelerates at $0.5\\ \\text{m/s}^2$ for $40$ s, then continues at constant speed for a further $60$ s. How far does it travel in total?",
+      "hints": [],
+      "solution": "Phase 1: $\\tfrac12 (0.5)(40)^2 = 400$ m, reaching $v = 0.5 \\times 40 = 20$ m/s. Phase 2: $20 \\times 60 = 1200$ m. Total $1600$ m.",
+      "type": "numeric",
+      "answer": 1600,
+      "tolerance": {
+        "abs": 5
+      },
+      "unit": "m"
+    }
+  ]
 }

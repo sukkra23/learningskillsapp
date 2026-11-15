@@ -37,7 +37,7 @@ export const widgetSchemas: Record<string, ZodTypeAny> = {
   }).strict(),
   backprop: z.object({}).strict(),
   circuit: z.object({
-    preset: z.enum(['empty', 'series', 'parallel', 'divider', 'two-loop', 'thevenin']).default('series'),
+    preset: z.enum(['empty', 'single', 'series', 'parallel', 'divider', 'two-loop', 'thevenin']).default('series'),
     editable: z.boolean().default(true),
   }).strict(),
   truss: z.object({}).strict(),

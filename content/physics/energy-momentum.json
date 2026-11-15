@@ -3,11 +3,418 @@
   "track": "physics",
   "title": "Energy and momentum",
   "summary": "Work, conservation of energy, and collisions.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "physics.newtons-laws"
   ],
   "estimatedMinutes": 45,
   "difficulty": 2,
-  "strand": "Classical mechanics"
+  "strand": "Classical mechanics",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "energy",
+      "title": "Energy changes form, the total stays",
+      "body": "A moving object has **kinetic energy** $KE = \\tfrac12 m v^2$. An object raised to height $h$ has **gravitational potential energy** $PE = mgh$.\n\nPress **Play**. As the ball rolls down, the potential bar shrinks and the kinetic bar grows by exactly the same amount. At the bottom it is all kinetic; climbing the far side, it converts back. With no friction, the sum never changes: **energy is conserved**.",
+      "widget": {
+        "type": "energy-ramp",
+        "props": {
+          "height": 5,
+          "mass": 1
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-ke",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "What is the kinetic energy of a $2$ kg ball moving at $3$ m/s?",
+        "hints": [
+          "$KE = \\tfrac12 m v^2$. Square the speed first."
+        ],
+        "solution": "$KE = \\tfrac12 m v^2 = \\tfrac12 \\times 2 \\times 3^2 = 9$ J.",
+        "type": "numeric",
+        "answer": 9,
+        "tolerance": {
+          "abs": 0.05
+        },
+        "unit": "J"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "conservation",
+      "title": "Using conservation of energy",
+      "body": "Conservation turns hard motion problems into bookkeeping. For a frictionless drop from rest through height $h$:\n\n$$mgh = \\tfrac12 m v^2 \\quad\\Rightarrow\\quad v = \\sqrt{2gh}$$\n\nThe mass cancels, and the shape of the path does not matter: only the height lost. A force does **work** $W = Fd\\cos\\theta$ when it acts through a distance, and that work is how energy gets into or out of an object. Friction does negative work, turning mechanical energy into heat."
+    },
+    {
+      "kind": "question",
+      "id": "q-drop",
+      "question": {
+        "id": "s2",
+        "difficulty": 2,
+        "prompt": "A ball is released from rest at a height of $5$ m on a frictionless track. Taking $g = 9.8\\ \\text{m/s}^2$, how fast is it moving at the bottom?",
+        "hints": [
+          "Set the potential energy at the top equal to the kinetic energy at the bottom.",
+          "The mass cancels."
+        ],
+        "solution": "$v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 5} = \\sqrt{98} \\approx 9.90$ m/s.",
+        "type": "numeric",
+        "answer": 9.9,
+        "tolerance": {
+          "abs": 0.05
+        },
+        "unit": "m/s"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "momentum",
+      "title": "Momentum and collisions",
+      "body": "**Momentum** is $\\vec p = m\\vec v$. It has a direction, so a velocity to the left counts as negative.\n\nIn a collision the two objects push on each other with equal and opposite forces (Newton's third law) for the same time, so whatever momentum one loses the other gains: **total momentum is conserved**.\n\nPress **Play**, then compare the \"before\" and \"after\" columns. Change the masses and speeds: the highlighted momentum row always matches.",
+      "widget": {
+        "type": "collision",
+        "props": {
+          "m1": 2,
+          "m2": 1,
+          "v1": 3,
+          "v2": 0,
+          "elasticity": 1
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-p",
+      "question": {
+        "id": "s3",
+        "difficulty": 1,
+        "prompt": "What is the momentum of a $3$ kg trolley moving at $4$ m/s?",
+        "hints": [],
+        "solution": "$p = mv = 3 \\times 4 = 12$ kg m/s.",
+        "type": "numeric",
+        "answer": 12,
+        "tolerance": {
+          "abs": 0.05
+        },
+        "unit": "kg m/s"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "inelastic",
+      "title": "Elastic and inelastic",
+      "body": "Momentum is conserved in **every** collision. Kinetic energy is another matter.\n\n- **Elastic:** the objects bounce apart and kinetic energy is conserved too.\n- **Inelastic:** some kinetic energy becomes heat, sound and deformation.\n- **Perfectly inelastic:** the objects stick together, which loses as much kinetic energy as momentum conservation allows.\n\nHere the bounciness is set to 0, so the blocks stick. Press **Play** and look at the kinetic energy row: half of it is gone, yet the momentum row still matches.",
+      "widget": {
+        "type": "collision",
+        "props": {
+          "m1": 1,
+          "m2": 1,
+          "v1": 2,
+          "v2": 0,
+          "elasticity": 0
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-conserved",
+      "question": {
+        "id": "s4",
+        "difficulty": 2,
+        "prompt": "Two lumps of clay collide and stick together. Which statement is correct?",
+        "hints": [],
+        "solution": "Momentum is conserved in every collision between objects that only push on each other. Sticking together is a perfectly inelastic collision: kinetic energy is turned into heat and deformation.",
+        "type": "mcq",
+        "choices": [
+          "Momentum is conserved, kinetic energy is not",
+          "Both momentum and kinetic energy are conserved",
+          "Kinetic energy is conserved, momentum is not",
+          "Neither is conserved"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "Go back to the bowl, turn the friction up and press Play. The ball eventually stops at the bottom. Explain where its energy went, and whether energy was conserved.",
+        "hints": [],
+        "solution": "Friction does negative work on the ball, converting its kinetic and potential (mechanical) energy into heat, which warms the ball and the track. Total energy is still conserved: the heat produced equals the mechanical energy lost. Only the mechanical energy is not conserved.",
+        "type": "explain",
+        "modelAnswer": "Friction does negative work on the ball, converting its kinetic and potential (mechanical) energy into heat, which warms the ball and the track. Total energy is still conserved: the heat produced equals the mechanical energy lost. Only the mechanical energy is not conserved.",
+        "checklist": [
+          {
+            "point": "Says friction converts the energy",
+            "keywords": [
+              [
+                "friction"
+              ]
+            ]
+          },
+          {
+            "point": "Says it becomes heat (thermal energy)",
+            "keywords": [
+              [
+                "heat",
+                "thermal",
+                "warm",
+                "internal"
+              ]
+            ]
+          },
+          {
+            "point": "Says total energy is still conserved",
+            "keywords": [
+              [
+                "conserved",
+                "conservation",
+                "same total",
+                "not destroyed",
+                "not lost"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "A $50$ N force pushes a crate $4$ m in the direction of the force. How much work does it do?",
+      "hints": [
+        "Work is force times distance when they are in the same direction."
+      ],
+      "solution": "$W = Fd = 50 \\times 4 = 200$ J.",
+      "type": "numeric",
+      "answer": 200,
+      "tolerance": {
+        "abs": 1
+      },
+      "unit": "J"
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "How much gravitational potential energy does a $3$ kg object gain when it is lifted $10$ m? Take $g = 9.8\\ \\text{m/s}^2$.",
+      "hints": [],
+      "solution": "$PE = mgh = 3 \\times 9.8 \\times 10 = 294$ J.",
+      "type": "numeric",
+      "answer": 294,
+      "tolerance": {
+        "abs": 1
+      },
+      "unit": "J"
+    },
+    {
+      "id": "p3",
+      "difficulty": 3,
+      "prompt": "A $1000$ kg car travelling at $20$ m/s brakes with a constant force of $8000$ N. How far does it travel before stopping?",
+      "hints": [
+        "How much kinetic energy must the brakes remove?",
+        "Work done by the braking force is $F \\times d$."
+      ],
+      "solution": "The brakes must remove all the kinetic energy: $KE = \\tfrac12 (1000)(20)^2 = 200\\,000$ J. Work done by the brakes is $Fd$, so $d = \\dfrac{200\\,000}{8000} = 25$ m.",
+      "type": "numeric",
+      "answer": 25,
+      "tolerance": {
+        "abs": 0.2
+      },
+      "unit": "m"
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "A $2$ kg cart moving at $3$ m/s collides with a stationary $1$ kg cart and they stick together. What is their speed afterwards?",
+      "hints": [
+        "Total momentum before equals total momentum after.",
+        "After sticking, treat the two carts as one object of mass 3 kg."
+      ],
+      "solution": "Momentum before: $2 \\times 3 + 0 = 6$ kg m/s. Afterwards the combined mass is 3 kg: $3v = 6$, so $v = 2$ m/s.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "m/s"
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "In the collision of the previous problem ($2$ kg at $3$ m/s sticking to $1$ kg at rest), how much kinetic energy is lost?",
+      "hints": [
+        "Find the kinetic energy before and after, using the final speed of 2 m/s."
+      ],
+      "solution": "Before: $\\tfrac12 (2)(3)^2 = 9$ J. After: $\\tfrac12 (3)(2)^2 = 6$ J. Lost: $3$ J, one third of the original.",
+      "type": "numeric",
+      "answer": 3,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "J"
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "A $2$ kg ball moving at $3$ m/s collides **elastically** head-on with a stationary $1$ kg ball. What is the velocity of the $1$ kg ball afterwards?",
+      "hints": [
+        "You need two equations: conservation of momentum and conservation of kinetic energy.",
+        "For an elastic head-on collision, the speed at which the balls separate equals the speed at which they approached."
+      ],
+      "solution": "Momentum: $2(3) = 2u_1 + u_2$. Elastic collisions reverse the relative velocity: $u_2 - u_1 = 3$. Substituting $u_1 = u_2 - 3$: $6 = 2u_2 - 6 + u_2$, so $u_2 = 4$ m/s (and $u_1 = 1$ m/s).\n\nCheck the energy: before $9$ J; after $\\tfrac12(2)(1)^2 + \\tfrac12(1)(4)^2 = 1 + 8 = 9$ J.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "m/s"
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 2,
+      "prompt": "What is the kinetic energy of a $4$ kg object moving at $5$ m/s?",
+      "hints": [],
+      "solution": "$KE = \\tfrac12 (4)(5)^2 = 50$ J.",
+      "type": "numeric",
+      "answer": 50,
+      "tolerance": {
+        "abs": 0.2
+      },
+      "unit": "J"
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "A car doubles its speed. By what factor does its kinetic energy change?",
+      "hints": [],
+      "solution": "$KE \\propto v^2$, so doubling $v$ multiplies the kinetic energy by $2^2 = 4$. This is why stopping distances grow so quickly with speed.",
+      "type": "mcq",
+      "choices": [
+        "It is multiplied by 4",
+        "It doubles",
+        "It is multiplied by 8",
+        "It stays the same"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "difficulty": 3,
+      "prompt": "A roller-coaster car starts from rest at the top of a $20$ m drop. Ignoring friction and taking $g = 9.8\\ \\text{m/s}^2$, what is its speed at the bottom?",
+      "hints": [],
+      "solution": "$v = \\sqrt{2gh} = \\sqrt{2 \\times 9.8 \\times 20} = \\sqrt{392} \\approx 19.8$ m/s.",
+      "type": "numeric",
+      "answer": 19.8,
+      "tolerance": {
+        "abs": 0.1
+      },
+      "unit": "m/s"
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "A $0.15$ kg ball arrives at $40$ m/s and is hit straight back at $30$ m/s. What is the size of the change in its momentum?",
+      "hints": [],
+      "solution": "Taking the incoming direction as positive: $\\Delta p = m(v_f - v_i) = 0.15 \\times (-30 - 40) = -10.5$ kg m/s. The size is $10.5$ kg m/s. The velocities add because the direction reverses.",
+      "type": "numeric",
+      "answer": 10.5,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "kg m/s"
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "A $1$ kg ball of clay moving at $4$ m/s hits a stationary $3$ kg ball of clay and sticks. What is their speed afterwards?",
+      "hints": [],
+      "solution": "$1 \\times 4 = (1 + 3)v$, so $v = 1$ m/s.",
+      "type": "mcq",
+      "choices": [
+        "1 m/s",
+        "2 m/s",
+        "4 m/s",
+        "1.33 m/s"
+      ],
+      "answer": 0
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 4,
+      "prompt": "A block slides from rest down a frictionless ramp, losing $3$ m of height, then slides across a rough horizontal floor with coefficient of kinetic friction $0.3$. How far along the floor does it travel before stopping?",
+      "hints": [],
+      "solution": "Energy at the bottom: $mgh$. Friction force on the floor: $\\mu mg$, doing work $\\mu mg\\,d$. Setting them equal: $d = h/\\mu = 3/0.3 = 10$ m. Neither the mass nor $g$ matters.",
+      "type": "numeric",
+      "answer": 10,
+      "tolerance": {
+        "abs": 0.1
+      },
+      "unit": "m"
+    },
+    {
+      "id": "t2",
+      "difficulty": 3,
+      "prompt": "A $100$ N force pulls a sledge $8$ m along level ground. The force is directed $60^\\circ$ above the horizontal. How much work does it do?",
+      "hints": [],
+      "solution": "$W = Fd\\cos\\theta = 100 \\times 8 \\times \\cos 60^\\circ = 400$ J. Only the component of the force along the motion does work.",
+      "type": "numeric",
+      "answer": 400,
+      "tolerance": {
+        "abs": 2
+      },
+      "unit": "J"
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "A $3$ kg trolley moving east at $4$ m/s collides head-on with a $2$ kg trolley moving west at $6$ m/s. They stick together. What is their speed afterwards?",
+      "hints": [],
+      "solution": "Taking east as positive: $3(4) + 2(-6) = 0$. The total momentum is zero, so the joined trolleys are at rest. All of the kinetic energy has gone.",
+      "type": "numeric",
+      "answer": 0,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "m/s"
+    },
+    {
+      "id": "t4",
+      "difficulty": 5,
+      "prompt": "A $1$ kg ball moving at $+6$ m/s collides **elastically** head-on with a stationary $2$ kg ball. What is the velocity of the $1$ kg ball afterwards? Include the sign.",
+      "hints": [],
+      "solution": "For an elastic collision with a stationary target, $u_1 = \\dfrac{m_1 - m_2}{m_1 + m_2}\\,v_1 = \\dfrac{1 - 2}{3} \\times 6 = -2$ m/s. The lighter ball bounces back. (The 2 kg ball leaves at $+4$ m/s: momentum $-2 + 8 = 6$ and energy $2 + 16 = 18$ J both check.)",
+      "type": "numeric",
+      "answer": -2,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "m/s"
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "A pendulum bob released from height $h$ passes through its lowest point at speed $v$. If it is released from height $4h$ instead, what is its speed at the lowest point?",
+      "hints": [],
+      "solution": "$v = \\sqrt{2gh}$, so the speed grows as the square root of the height: $\\sqrt 4 = 2$ times faster.",
+      "type": "mcq",
+      "choices": [
+        "$2v$",
+        "$4v$",
+        "$16v$",
+        "$\\sqrt2\\,v$"
+      ],
+      "answer": 0
+    }
+  ]
 }

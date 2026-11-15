@@ -3,11 +3,437 @@
   "track": "math",
   "title": "Limits and derivatives",
   "summary": "Instantaneous rate of change, from secant lines to the rules of differentiation.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "math.functions"
   ],
   "estimatedMinutes": 45,
   "difficulty": 3,
-  "strand": "Calculus"
+  "strand": "Calculus",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "secant",
+      "title": "Average rate of change",
+      "body": "How fast is $f(x) = x^2$ changing? Between two points the answer is easy: the **average rate of change** is rise over run, the slope of the **secant line** through them:\n\n$$\\frac{f(x + h) - f(x)}{h}$$\n\nThe red line joins the points at $x$ and $x + h$. Slide the gap $h$ towards zero and watch two things: the secant line swings round to touch the curve at one point, and its slope settles towards a definite number.",
+      "widget": {
+        "type": "function-plot",
+        "props": {
+          "expr": "x^2",
+          "mode": "secant",
+          "xRange": [
+            -1,
+            4
+          ],
+          "yRange": [
+            -2,
+            12
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-avg",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "What is the average rate of change of $f(x) = x^2$ between $x = 1$ and $x = 3$?",
+        "hints": [
+          "Rise over run.",
+          "$f(3) = 9$ and $f(1) = 1$."
+        ],
+        "solution": "$\\dfrac{f(3) - f(1)}{3 - 1} = \\dfrac{9 - 1}{2} = 4$.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0.001
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "limit",
+      "title": "The limit",
+      "body": "We cannot simply set $h = 0$: that gives $\\frac{0}{0}$. Instead we ask what value the slope **approaches** as $h$ gets closer and closer to 0. That value is a **limit**.\n\nFor $f(x) = x^2$:\n\n$$\\frac{(x + h)^2 - x^2}{h} = \\frac{2xh + h^2}{h} = 2x + h \\quad (h \\ne 0)$$\n\nAs $h \\to 0$ this approaches $2x$. The limit is the **derivative**, the slope of the tangent line:\n\n$$f'(x) = \\lim_{h \\to 0} \\frac{f(x + h) - f(x)}{h}$$\n\nSo the slope of $x^2$ at any point is $2x$. Check it in the plot above: at $x = 1.5$ the tangent slope reads 3."
+    },
+    {
+      "kind": "question",
+      "id": "q-tangent",
+      "question": {
+        "id": "s2",
+        "difficulty": 2,
+        "prompt": "What is the slope of the tangent to $y = x^2$ at $x = 3$?",
+        "hints": [
+          "You just saw that the derivative of $x^2$ is $2x$."
+        ],
+        "solution": "The derivative of $x^2$ is $2x$, so at $x = 3$ the slope is $6$.",
+        "type": "numeric",
+        "answer": 6,
+        "tolerance": {
+          "abs": 0.001
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "derivative-function",
+      "title": "The derivative is itself a function",
+      "body": "The derivative gives a slope at **every** point, so it is a new function. Drag the point along $y = x^3 - 3x$ and watch the tangent slope:\n\n- positive where the curve is rising,\n- negative where it is falling,\n- **zero at the turning points**, where the tangent is horizontal.\n\nFinding where $f'(x) = 0$ is how calculus locates maxima and minima.",
+      "widget": {
+        "type": "function-plot",
+        "props": {
+          "expr": "x^3 - 3*x",
+          "mode": "tangent",
+          "xRange": [
+            -3,
+            3
+          ],
+          "yRange": [
+            -5,
+            5
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-flat",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "At which $x$ values is the tangent to $y = x^3 - 3x$ horizontal?",
+        "hints": [
+          "Use the plot: where does the slope readout say 0?"
+        ],
+        "solution": "The slope is $f'(x) = 3x^2 - 3$, which is zero when $x^2 = 1$, so $x = \\pm 1$. (The values $0, \\pm\\sqrt3$ are where the *curve* is zero, not its slope.)",
+        "type": "mcq",
+        "choices": [
+          "$x = -1$ and $x = 1$",
+          "$x = 0$ only",
+          "$x = -\\sqrt3$, $0$ and $\\sqrt3$",
+          "Nowhere"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "rules",
+      "title": "Rules that replace the limit",
+      "body": "Taking a limit every time would be slow. A few rules cover most functions:\n\n| Function | Derivative |\n|---|---|\n| constant $c$ | $0$ |\n| $x^n$ | $n\\,x^{n-1}$ |\n| $c \\cdot f(x)$ | $c \\cdot f'(x)$ |\n| $f(x) + g(x)$ | $f'(x) + g'(x)$ |\n| $\\sin x$ | $\\cos x$ |\n| $\\cos x$ | $-\\sin x$ |\n| $e^x$ | $e^x$ |\n\nSo for $5x^3 - 4x + 9$: bring each power down and reduce it by one, term by term, to get $15x^2 - 4$."
+    },
+    {
+      "kind": "question",
+      "id": "q-power",
+      "question": {
+        "id": "s4",
+        "difficulty": 3,
+        "prompt": "Differentiate $4x^3 - 2x + 7$ with respect to $x$.",
+        "hints": [
+          "Use the power rule on each term: $x^n \\to n x^{n-1}$.",
+          "A constant on its own has derivative zero."
+        ],
+        "solution": "Term by term: $4 \\cdot 3x^2 = 12x^2$; the derivative of $-2x$ is $-2$; the constant $7$ has derivative 0. Result: $12x^2 - 2$.",
+        "type": "expression",
+        "answer": "12*x^2 - 2",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "product-chain",
+      "title": "Products and chains",
+      "body": "Two more rules handle functions built from others.\n\n**Product rule:** $\\;(fg)' = f'g + fg'$\n\nExample: $\\dfrac{d}{dx}\\big(x^2 \\sin x\\big) = 2x \\sin x + x^2 \\cos x$.\n\n**Chain rule:** for a function inside a function, differentiate the outside (leaving the inside alone), then multiply by the derivative of the inside:\n\n$$\\frac{d}{dx} f(g(x)) = f'(g(x)) \\cdot g'(x)$$\n\nExample: $\\dfrac{d}{dx}(3x + 1)^2 = 2(3x + 1) \\cdot 3 = 6(3x + 1)$."
+    },
+    {
+      "kind": "question",
+      "id": "q-chain",
+      "question": {
+        "id": "s5",
+        "difficulty": 4,
+        "prompt": "Differentiate $(x^2 + 1)^3$ with respect to $x$.",
+        "hints": [
+          "Which function is on the outside, and which is inside?",
+          "Differentiate the outside, keep the inside unchanged, then multiply by the derivative of the inside."
+        ],
+        "solution": "Outside function: $(\\ )^3$, with derivative $3(\\ )^2$. Inside function: $x^2 + 1$, with derivative $2x$. Chain rule: $3(x^2 + 1)^2 \\cdot 2x = 6x(x^2 + 1)^2$.",
+        "type": "expression",
+        "answer": "6*x*(x^2 + 1)^2",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s6",
+        "difficulty": 3,
+        "prompt": "The derivative is defined as a limit as $h \\to 0$ rather than by setting $h = 0$. Explain why, and say what the derivative means on a graph.",
+        "hints": [],
+        "solution": "Setting $h = 0$ in the difference quotient gives 0 divided by 0, which is undefined. The limit instead asks what value the secant slope approaches as h gets close to zero without reaching it. On a graph the derivative is the slope of the tangent line at a point: the instantaneous rate of change.",
+        "type": "explain",
+        "modelAnswer": "Setting $h = 0$ in the difference quotient gives 0 divided by 0, which is undefined. The limit instead asks what value the secant slope approaches as h gets close to zero without reaching it. On a graph the derivative is the slope of the tangent line at a point: the instantaneous rate of change.",
+        "checklist": [
+          {
+            "point": "Says h = 0 gives division by zero (0/0)",
+            "keywords": [
+              [
+                "divide by zero",
+                "division by zero",
+                "dividing by zero",
+                "0/0",
+                "undefined",
+                "zero divided",
+                "divided by 0"
+              ]
+            ]
+          },
+          {
+            "point": "Says the limit is the value the slope approaches",
+            "keywords": [
+              [
+                "approach",
+                "closer",
+                "tends",
+                "gets close"
+              ]
+            ]
+          },
+          {
+            "point": "Says the derivative is the slope of the tangent / instantaneous rate of change",
+            "keywords": [
+              [
+                "tangent",
+                "instantaneous",
+                "slope at a point"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "Differentiate $x^5$.",
+      "hints": [
+        "$x^n \\to n x^{n-1}$."
+      ],
+      "solution": "Power rule: bring down the 5 and reduce the power by one: $5x^4$.",
+      "type": "expression",
+      "answer": "5*x^4",
+      "variables": [
+        "x"
+      ]
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "If $f(x) = x^2 + 3x$, what is $f'(2)$?",
+      "hints": [
+        "Differentiate first, then substitute."
+      ],
+      "solution": "$f'(x) = 2x + 3$, so $f'(2) = 7$.",
+      "type": "numeric",
+      "answer": 7,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "p3",
+      "difficulty": 3,
+      "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}$.",
+      "hints": [
+        "Factor the top.",
+        "Cancel the common factor, which is allowed because x is never exactly 2."
+      ],
+      "solution": "Substituting gives $\\frac00$, so simplify first: $\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2$ for $x \\ne 2$. As $x \\to 2$ this approaches $4$.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "Differentiate $x^2 \\sin x$.",
+      "hints": [
+        "Product rule: $(fg)' = f'g + fg'$."
+      ],
+      "solution": "Product rule with $f = x^2$ and $g = \\sin x$: $f'g + fg' = 2x \\sin x + x^2 \\cos x$.",
+      "type": "expression",
+      "answer": "2*x*sin(x) + x^2*cos(x)",
+      "variables": [
+        "x"
+      ]
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "At what value of $x$ does $f(x) = x^2 - 8x + 3$ have a horizontal tangent?",
+      "hints": [
+        "A horizontal tangent means the derivative is zero."
+      ],
+      "solution": "$f'(x) = 2x - 8 = 0$ when $x = 4$. This is the vertex of the parabola.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "Differentiate $\\sin(x^2)$.",
+      "hints": [
+        "The inside function is x squared.",
+        "Differentiate $\\sin$ to get $\\cos$, keeping $x^2$ inside, then multiply by $2x$."
+      ],
+      "solution": "Chain rule: the outside is $\\sin(\\ )$ with derivative $\\cos(\\ )$; the inside is $x^2$ with derivative $2x$. Result: $\\cos(x^2) \\cdot 2x$.",
+      "type": "expression",
+      "answer": "2*x*cos(x^2)",
+      "variables": [
+        "x"
+      ]
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 2,
+      "prompt": "Differentiate $3x^2 + 5x$.",
+      "hints": [],
+      "solution": "$3 \\cdot 2x + 5 = 6x + 5$.",
+      "type": "expression",
+      "answer": "6*x + 5",
+      "variables": [
+        "x"
+      ]
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "What is the slope of the curve $y = x^3$ at $x = 2$?",
+      "hints": [],
+      "solution": "$y' = 3x^2$, which is $12$ at $x = 2$.",
+      "type": "numeric",
+      "answer": 12,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "What is the derivative of a constant function, such as $f(x) = 7$?",
+      "hints": [],
+      "solution": "A constant does not change, so its rate of change is zero. Its graph is a horizontal line.",
+      "type": "mcq",
+      "choices": [
+        "0",
+        "7",
+        "1",
+        "$7x$"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 0} \\frac{3x^2 + 2x}{x}$.",
+      "hints": [],
+      "solution": "For $x \\ne 0$ the fraction equals $3x + 2$, which approaches $2$ as $x \\to 0$.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "If $f'(a) > 0$, what can you say about $f$ at $x = a$?",
+      "hints": [],
+      "solution": "A positive derivative means a positive tangent slope: the function is rising as $x$ increases. It says nothing about the sign of $f(a)$ itself.",
+      "type": "mcq",
+      "choices": [
+        "It is increasing",
+        "It is decreasing",
+        "It has a maximum",
+        "$f(a)$ is positive"
+      ],
+      "answer": 0
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "Differentiate $(2x + 1)^3$.",
+      "hints": [],
+      "solution": "Chain rule: $3(2x + 1)^2 \\cdot 2 = 6(2x + 1)^2$.",
+      "type": "expression",
+      "answer": "6*(2*x + 1)^2",
+      "variables": [
+        "x"
+      ]
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "At what value of $x$ does $f(x) = x^3 - 6x^2$ have its local **minimum**?",
+      "hints": [],
+      "solution": "$f'(x) = 3x^2 - 12x = 3x(x - 4)$, zero at $x = 0$ and $x = 4$. The slope is negative between them and positive after 4, so $x = 4$ is the minimum (and $x = 0$ a maximum).",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "Differentiate $x\\,e^x$. (Type $e^x$ as `exp(x)` or `e^x`.)",
+      "hints": [],
+      "solution": "Product rule: $1 \\cdot e^x + x \\cdot e^x = (1 + x)e^x$.",
+      "type": "expression",
+      "answer": "exp(x) + x*exp(x)",
+      "variables": [
+        "x"
+      ]
+    },
+    {
+      "id": "t4",
+      "difficulty": 3,
+      "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$.",
+      "hints": [],
+      "solution": "$\\dfrac{(x - 3)(x + 3)}{x - 3} = x + 3 \\to 6$.",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.001
+      }
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "The tangent to $y = x^2$ at $x = 1$ has equation $y = 2x + b$. What is $b$?",
+      "hints": [],
+      "solution": "The slope is $2x = 2$ and the line passes through $(1, 1)$: $1 = 2(1) + b$, so $b = -1$.",
+      "type": "numeric",
+      "answer": -1,
+      "tolerance": {
+        "abs": 0.001
+      }
+    }
+  ]
 }

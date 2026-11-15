@@ -3,11 +3,450 @@
   "track": "physics",
   "title": "Newton's laws",
   "summary": "Forces, free-body diagrams, and why things accelerate.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "physics.kinematics"
   ],
   "estimatedMinutes": 40,
   "difficulty": 2,
-  "strand": "Classical mechanics"
+  "strand": "Classical mechanics",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "first-law",
+      "title": "The first law: no net force, no change",
+      "body": "Forces are pushes and pulls, and they add like arrows. The sum of all the forces on an object is the **net force**.\n\n**Newton's first law:** if the net force is zero, the velocity does not change. An object at rest stays at rest, and a moving object keeps moving in a straight line at the same speed.\n\nThese two 10 N forces cancel. Drag an arrow tip to unbalance them and a dashed **net** arrow appears.",
+      "widget": {
+        "type": "force-diagram",
+        "props": {
+          "mass": 2,
+          "forces": [
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              180
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-first",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "A hockey puck slides across frictionless ice in a straight line at constant speed. What is the net force on it?",
+        "hints": [
+          "Is the velocity changing?"
+        ],
+        "solution": "Constant velocity means zero acceleration, and that requires zero net force. No force is needed to keep something moving; a force is needed only to change its motion.",
+        "type": "mcq",
+        "choices": [
+          "Zero",
+          "A small force in the direction of motion",
+          "A force equal to its weight, forwards",
+          "A force opposing the motion"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "second-law",
+      "title": "The second law: F = ma",
+      "body": "When the net force is not zero, the object accelerates in the direction of the net force:\n\n$$\\vec F_\\text{net} = m\\,\\vec a$$\n\nThe same force gives a heavy object a smaller acceleration. Here 12 N acts on 3 kg, so $a = 12/3 = 4\\ \\text{m/s}^2$. Change the mass and watch the acceleration, then add a second force and see that only the **net** force matters.",
+      "widget": {
+        "type": "force-diagram",
+        "props": {
+          "mass": 3,
+          "forces": [
+            [
+              12,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-second",
+      "question": {
+        "id": "s2",
+        "difficulty": 1,
+        "prompt": "A net force of $20$ N acts on a $4$ kg box. What is its acceleration?",
+        "hints": [
+          "Rearrange $F = ma$."
+        ],
+        "solution": "$a = \\dfrac{F_\\text{net}}{m} = \\dfrac{20}{4} = 5\\ \\text{m/s}^2$.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "m/s²"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "vectors",
+      "title": "Forces in three dimensions",
+      "body": "Forces are **vectors**: to add them, add their components. Drawn tip to tail, the arrows lead from the start to the net force.\n\nThese two forces are at right angles, $3$ N along $x$ and $4$ N along $y$. Their sum has size $\\sqrt{3^2 + 4^2} = 5$ N, not 7 N. Rotate the view, then change a component and watch the red sum arrow follow.",
+      "widget": {
+        "type": "vector-3d",
+        "props": {
+          "vectors": [
+            [
+              3,
+              0,
+              0
+            ],
+            [
+              0,
+              4,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-perp",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "Two forces act on a $2$ kg object at right angles to each other: $6$ N and $8$ N. What is the size of its acceleration?",
+        "hints": [
+          "Perpendicular forces combine by Pythagoras.",
+          "Find the net force first, then divide by the mass."
+        ],
+        "solution": "Net force: $\\sqrt{6^2 + 8^2} = 10$ N. Then $a = F/m = 10/2 = 5\\ \\text{m/s}^2$.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "m/s²"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "third-law",
+      "title": "The third law: forces come in pairs",
+      "body": "**Newton's third law:** if A pushes on B, then B pushes on A with a force of the same size in the opposite direction.\n\nThe two forces of a pair always act on **different objects**, so they never cancel each other. When you stand on the floor:\n\n- Earth pulls you down (your **weight**, $mg$). Its partner: you pull Earth up.\n- The floor pushes you up (the **normal force**). Its partner: you push the floor down.\n\nYour weight and the normal force are equal when you stand still, but they are *not* a third-law pair: they both act on you, and they balance because of the first law."
+    },
+    {
+      "kind": "question",
+      "id": "q-third",
+      "question": {
+        "id": "s4",
+        "difficulty": 3,
+        "prompt": "A book rests on a table. Earth's gravity pulls the book downward. What is the third-law partner of that force?",
+        "hints": [
+          "Name the two objects involved in the first force, then swap them."
+        ],
+        "solution": "A third-law pair swaps the two objects: Earth pulls book, so book pulls Earth. The table's push on the book also acts on the book, so it cannot be the partner.",
+        "type": "mcq",
+        "choices": [
+          "The book's gravitational pull on Earth, upward",
+          "The table's upward push on the book",
+          "The book's downward push on the table",
+          "Friction between the book and the table"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "A bus brakes suddenly and the standing passengers lurch forwards. Explain why, using Newton's laws.",
+        "hints": [],
+        "solution": "The passengers were moving forward with the bus. When the bus brakes, the brakes exert a force on the bus but not directly on the passengers. By the first law (inertia) the passengers keep moving at their original velocity until a force acts on them, so relative to the slowing bus they move forwards. Only friction from the floor or a pull from a handrail slows them down.",
+        "type": "explain",
+        "modelAnswer": "The passengers were moving forward with the bus. When the bus brakes, the brakes exert a force on the bus but not directly on the passengers. By the first law (inertia) the passengers keep moving at their original velocity until a force acts on them, so relative to the slowing bus they move forwards. Only friction from the floor or a pull from a handrail slows them down.",
+        "checklist": [
+          {
+            "point": "Says the passengers keep moving (inertia / first law)",
+            "keywords": [
+              [
+                "inertia",
+                "keep moving",
+                "continue",
+                "first law",
+                "stay in motion",
+                "original velocity"
+              ]
+            ]
+          },
+          {
+            "point": "Says the braking force acts on the bus, not on the passengers",
+            "keywords": [
+              [
+                "force"
+              ],
+              [
+                "bus"
+              ]
+            ]
+          },
+          {
+            "point": "Mentions what eventually slows the passengers (friction, handrail, seat)",
+            "keywords": [
+              [
+                "friction",
+                "handrail",
+                "rail",
+                "floor",
+                "seat",
+                "hold"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "What is the weight of a $70$ kg person on Earth? Take $g = 9.8\\ \\text{m/s}^2$.",
+      "hints": [
+        "Weight is the force of gravity: $W = mg$."
+      ],
+      "solution": "$W = mg = 70 \\times 9.8 = 686$ N.",
+      "type": "numeric",
+      "answer": 686,
+      "tolerance": {
+        "abs": 1
+      },
+      "unit": "N"
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "A $1200$ kg car accelerates steadily from rest to $25$ m/s in $10$ s. What net force acts on it?",
+      "hints": [
+        "Find the acceleration first."
+      ],
+      "solution": "$a = \\dfrac{25 - 0}{10} = 2.5\\ \\text{m/s}^2$, so $F = ma = 1200 \\times 2.5 = 3000$ N.",
+      "type": "numeric",
+      "answer": 3000,
+      "tolerance": {
+        "abs": 10
+      },
+      "unit": "N"
+    },
+    {
+      "id": "p3",
+      "difficulty": 3,
+      "prompt": "A $60$ kg person stands on a scale in a lift that is accelerating **upward** at $2\\ \\text{m/s}^2$. Taking $g = 9.8\\ \\text{m/s}^2$, what does the scale read (the normal force)?",
+      "hints": [
+        "Two forces act on the person: the normal force up and weight down.",
+        "Write $F_\\text{net} = ma$ with up as positive."
+      ],
+      "solution": "Taking up as positive: $N - mg = ma$, so $N = m(g + a) = 60 \\times 11.8 = 708$ N. The scale reads more than the person's weight of 588 N.",
+      "type": "numeric",
+      "answer": 708,
+      "tolerance": {
+        "abs": 2
+      },
+      "unit": "N"
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "A block slides down a frictionless slope inclined at angle $\\theta$ to the horizontal. Write its acceleration along the slope in terms of $g$ and $\\theta$ (type the angle as `theta`).",
+      "hints": [
+        "Only the component of weight along the slope accelerates the block.",
+        "Check the extremes: at $\\theta = 0$ the answer should be 0, and at $90^\\circ$ it should be $g$."
+      ],
+      "solution": "Resolve the weight $mg$ along the slope: the component is $mg\\sin\\theta$. The normal force is perpendicular to the slope and has no component along it. So $ma = mg \\sin\\theta$ and $a = g\\sin\\theta$. The mass cancels.",
+      "type": "expression",
+      "answer": "g*sin(theta)",
+      "variables": [
+        "g",
+        "theta"
+      ]
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "A $5$ kg block is pulled along a horizontal floor by a horizontal $30$ N force. The coefficient of kinetic friction is $0.2$. Taking $g = 9.8\\ \\text{m/s}^2$, find the acceleration.",
+      "hints": [
+        "Kinetic friction is $f = \\mu N$.",
+        "On a horizontal floor with a horizontal pull, the normal force equals the weight."
+      ],
+      "solution": "Normal force: $N = mg = 49$ N. Friction: $f = \\mu N = 0.2 \\times 49 = 9.8$ N, opposing the motion.\n\n$F_\\text{net} = 30 - 9.8 = 20.2$ N, so $a = 20.2 / 5 = 4.04\\ \\text{m/s}^2$.",
+      "type": "numeric",
+      "answer": 4.04,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "m/s²"
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "Masses of $3$ kg and $5$ kg hang from the two ends of a light string over a frictionless pulley. Taking $g = 9.8\\ \\text{m/s}^2$, find the size of their acceleration.",
+      "hints": [
+        "Write F = ma for each mass separately. They share the same tension and the same size of acceleration.",
+        "Add the two equations to eliminate the tension."
+      ],
+      "solution": "For the 5 kg mass (moving down): $5g - T = 5a$. For the 3 kg mass (moving up): $T - 3g = 3a$. Adding: $2g = 8a$, so\n\n$$a = \\frac{(5 - 3)\\,g}{5 + 3} = \\frac{2 \\times 9.8}{8} = 2.45\\ \\text{m/s}^2.$$",
+      "type": "numeric",
+      "answer": 2.45,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "m/s²"
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 2,
+      "prompt": "A skydiver falls at a constant terminal velocity. How does the air resistance on her compare with her weight?",
+      "hints": [],
+      "solution": "Constant velocity means zero net force, so the upward air resistance exactly balances the downward weight.",
+      "type": "mcq",
+      "choices": [
+        "It is equal to her weight",
+        "It is less than her weight",
+        "It is greater than her weight",
+        "It is zero"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "A net force of $4$ N acts on a $0.5$ kg ball. What is its acceleration?",
+      "hints": [],
+      "solution": "$a = F/m = 4 / 0.5 = 8\\ \\text{m/s}^2$.",
+      "type": "numeric",
+      "answer": 8,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "m/s²"
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "A $3$ kg cart is pushed east with $10$ N and west with $4$ N. What is the size of its acceleration?",
+      "hints": [],
+      "solution": "Net force $= 10 - 4 = 6$ N east, so $a = 6/3 = 2\\ \\text{m/s}^2$.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "m/s²"
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "A heavy truck collides with a small car. During the collision, how does the force the truck exerts on the car compare with the force the car exerts on the truck?",
+      "hints": [],
+      "solution": "By the third law the two forces are always equal in size and opposite in direction. The car suffers more because the same force acting on its smaller mass produces a larger acceleration.",
+      "type": "mcq",
+      "choices": [
+        "They are equal in size",
+        "The truck exerts a larger force",
+        "The car exerts a larger force",
+        "It depends on which was moving faster"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "A $12$ kg lamp hangs at rest from a single cable. Taking $g = 9.8\\ \\text{m/s}^2$, what is the tension in the cable?",
+      "hints": [],
+      "solution": "At rest the net force is zero, so $T = mg = 12 \\times 9.8 = 117.6$ N.",
+      "type": "numeric",
+      "answer": 117.6,
+      "tolerance": {
+        "abs": 0.5
+      },
+      "unit": "N"
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "A $2$ kg block slides down a frictionless slope inclined at $30^\\circ$. Taking $g = 9.8\\ \\text{m/s}^2$, find its acceleration.",
+      "hints": [],
+      "solution": "$a = g \\sin\\theta = 9.8 \\times 0.5 = 4.9\\ \\text{m/s}^2$, whatever the mass.",
+      "type": "numeric",
+      "answer": 4.9,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "m/s²"
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "A $10$ kg crate is pushed across a level floor at **constant velocity** by a horizontal force of $50$ N. Taking $g = 9.8\\ \\text{m/s}^2$, what is the coefficient of kinetic friction?",
+      "hints": [],
+      "solution": "Constant velocity means friction equals the push: $f = 50$ N. With $N = mg = 98$ N, $\\mu = f/N = 50/98 \\approx 0.51$.",
+      "type": "numeric",
+      "answer": 0.51,
+      "tolerance": {
+        "abs": 0.01
+      }
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "A $60$ kg person stands on a scale in a lift. The scale reads $480$ N. Taking $g = 9.8\\ \\text{m/s}^2$ and **up as positive**, what is the lift's acceleration?",
+      "hints": [],
+      "solution": "$N - mg = ma \\Rightarrow a = \\dfrac{480 - 588}{60} = -1.8\\ \\text{m/s}^2$. The lift is accelerating downward.",
+      "type": "numeric",
+      "answer": -1.8,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "m/s²"
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "Blocks of $2$ kg and $3$ kg sit touching on a frictionless table. A horizontal $10$ N force pushes on the $2$ kg block, which pushes the $3$ kg block ahead of it. What force does the $2$ kg block exert on the $3$ kg block?",
+      "hints": [],
+      "solution": "Together: $a = 10 / (2 + 3) = 2\\ \\text{m/s}^2$. The only horizontal force on the 3 kg block is the contact force, so it is $3 \\times 2 = 6$ N.",
+      "type": "mcq",
+      "choices": [
+        "6 N",
+        "10 N",
+        "4 N",
+        "5 N"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t5",
+      "difficulty": 5,
+      "prompt": "Two forces act on a $1$ kg object: $5$ N along the $+x$ direction, and $5$ N at $120^\\circ$ anticlockwise from $+x$. What is the size of its acceleration?",
+      "hints": [],
+      "solution": "Components: $F_x = 5 + 5\\cos 120^\\circ = 2.5$ N and $F_y = 5 \\sin 120^\\circ = 4.33$ N. Net: $\\sqrt{2.5^2 + 4.33^2} = 5$ N, so $a = 5\\ \\text{m/s}^2$.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "m/s²"
+    }
+  ]
 }

@@ -49,6 +49,8 @@ export const ExpressionQuestion = z.object({
   answer: z.string().min(1),
   variables: z.array(z.string().regex(/^[a-zA-Z]\w*$/)).default([]),
   domain: z.tuple([z.number(), z.number()]).default([0.5, 3]),
+  /** 'expanded' rejects answers that still contain brackets, so the prompt cannot be typed back. */
+  form: z.enum(['any', 'expanded']).default('any'),
 }).strict();
 
 export const OrderQuestion = z.object({

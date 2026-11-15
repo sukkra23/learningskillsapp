@@ -1,0 +1,356 @@
+{
+  "track": "math",
+  "items": [
+    {
+      "nodeId": "math.algebra",
+      "tier": "basic",
+      "question": {
+        "id": "ma1",
+        "difficulty": 1,
+        "prompt": "Evaluate $7 + 3 \\times 4$.",
+        "hints": [],
+        "solution": "Multiply first: $7 + 12 = 19$.",
+        "type": "numeric",
+        "answer": 19,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.algebra",
+      "tier": "basic",
+      "question": {
+        "id": "ma2",
+        "difficulty": 2,
+        "prompt": "Solve $2x + 5 = 17$.",
+        "hints": [],
+        "solution": "$2x = 12$, so $x = 6$.",
+        "type": "numeric",
+        "answer": 6,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.algebra",
+      "tier": "basic",
+      "question": {
+        "id": "ma3",
+        "difficulty": 2,
+        "prompt": "Which expression equals $3(x + 2)$?",
+        "hints": [],
+        "solution": "Multiply both terms in the bracket by 3.",
+        "type": "mcq",
+        "choices": [
+          "$3x + 6$",
+          "$3x + 2$",
+          "$x + 6$",
+          "$6x$"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "math.algebra",
+      "tier": "basic",
+      "question": {
+        "id": "ma4",
+        "difficulty": 3,
+        "prompt": "Which expression equals $(x + 1)(x + 5)$?",
+        "hints": [],
+        "solution": "$x^2 + 5x + x + 5 = x^2 + 6x + 5$.",
+        "type": "mcq",
+        "choices": [
+          "$x^2 + 6x + 5$",
+          "$x^2 + 5$",
+          "$x^2 + 5x + 6$",
+          "$2x + 6$"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "math.algebra",
+      "tier": "advanced",
+      "question": {
+        "id": "ma5",
+        "difficulty": 3,
+        "prompt": "Solve $3(x - 1) = x + 7$.",
+        "hints": [],
+        "solution": "$3x - 3 = x + 7 \\Rightarrow 2x = 10 \\Rightarrow x = 5$.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.algebra",
+      "tier": "advanced",
+      "question": {
+        "id": "ma6",
+        "difficulty": 4,
+        "prompt": "Find the **larger** solution of $x^2 - 7x + 10 = 0$.",
+        "hints": [],
+        "solution": "$(x - 2)(x - 5) = 0$, so $x = 2$ or $5$.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.algebra",
+      "tier": "advanced",
+      "question": {
+        "id": "ma7",
+        "difficulty": 5,
+        "prompt": "If $3x + 2y = 16$ and $x - y = 2$, what is $x$?",
+        "hints": [],
+        "solution": "$y = x - 2$, so $3x + 2x - 4 = 16$ and $x = 4$.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "basic",
+      "question": {
+        "id": "mf1",
+        "difficulty": 1,
+        "prompt": "If $f(x) = 2x + 1$, what is $f(3)$?",
+        "hints": [],
+        "solution": "$2(3) + 1 = 7$.",
+        "type": "numeric",
+        "answer": 7,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "basic",
+      "question": {
+        "id": "mf2",
+        "difficulty": 2,
+        "prompt": "How does the graph of $y = f(x) + 4$ compare with $y = f(x)$?",
+        "hints": [],
+        "solution": "Adding 4 to every output raises every point by 4.",
+        "type": "mcq",
+        "choices": [
+          "Shifted up 4",
+          "Shifted down 4",
+          "Shifted right 4",
+          "Shifted left 4"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "basic",
+      "question": {
+        "id": "mf3",
+        "difficulty": 2,
+        "prompt": "Which of these does **not** define $y$ as a function of $x$?",
+        "hints": [],
+        "solution": "For $y^2 = x$, the input $x = 4$ gives two outputs, $\\pm 2$.",
+        "type": "mcq",
+        "choices": [
+          "$y^2 = x$",
+          "$y = x^2$",
+          "$y = 2x + 1$",
+          "$y = 2^x$"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "advanced",
+      "question": {
+        "id": "mf4",
+        "difficulty": 3,
+        "prompt": "Let $f(x) = x^2$ and $g(x) = x + 1$. Write $f(g(x))$.",
+        "hints": [],
+        "solution": "$f(x + 1) = (x + 1)^2$.",
+        "type": "expression",
+        "answer": "(x + 1)^2",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "advanced",
+      "question": {
+        "id": "mf5",
+        "difficulty": 4,
+        "prompt": "Find the inverse of $f(x) = 2x - 8$.",
+        "hints": [],
+        "solution": "$y = 2x - 8 \\Rightarrow x = (y + 8)/2$.",
+        "type": "expression",
+        "answer": "(x + 8)/2",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "advanced",
+      "question": {
+        "id": "mf6",
+        "difficulty": 4,
+        "prompt": "Solve $3^x = 81$.",
+        "hints": [],
+        "solution": "$81 = 3^4$.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "math.functions",
+      "tier": "advanced",
+      "question": {
+        "id": "mf7",
+        "difficulty": 5,
+        "prompt": "What is the maximum value of $f(x) = -2x^2 + 8x + 1$?",
+        "hints": [],
+        "solution": "The vertex is at $x = -b/2a = 2$, where $f = -8 + 16 + 1 = 9$.",
+        "type": "numeric",
+        "answer": 9,
+        "tolerance": {
+          "abs": 0.001
+        }
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "basic",
+      "question": {
+        "id": "ml1",
+        "difficulty": 2,
+        "prompt": "What does the derivative of a function at a point tell you?",
+        "hints": [],
+        "solution": "The derivative is the limit of secant slopes: the slope of the tangent.",
+        "type": "mcq",
+        "choices": [
+          "The slope of the tangent line there (the instantaneous rate of change)",
+          "The area under the curve up to that point",
+          "The height of the curve there",
+          "The average of the function"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "basic",
+      "question": {
+        "id": "ml2",
+        "difficulty": 3,
+        "prompt": "Differentiate $x^3$.",
+        "hints": [],
+        "solution": "Power rule.",
+        "type": "expression",
+        "answer": "3*x^2",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "advanced",
+      "question": {
+        "id": "ml3",
+        "difficulty": 3,
+        "prompt": "If $f(x) = x^2 - 5x$, what is $f'(4)$?",
+        "hints": [],
+        "solution": "$f'(x) = 2x - 5$, so $f'(4) = 3$.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.001
+        }
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "advanced",
+      "question": {
+        "id": "ml4",
+        "difficulty": 4,
+        "prompt": "Differentiate $5x^4 - 3x^2 + 2$.",
+        "hints": [],
+        "solution": "Power rule term by term.",
+        "type": "expression",
+        "answer": "20*x^3 - 6*x",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "advanced",
+      "question": {
+        "id": "ml5",
+        "difficulty": 4,
+        "prompt": "Evaluate $\\displaystyle\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1}$.",
+        "hints": [],
+        "solution": "$(x - 1)(x + 1)/(x - 1) = x + 1 \\to 2$.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0.001
+        }
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "advanced",
+      "question": {
+        "id": "ml6",
+        "difficulty": 5,
+        "prompt": "Differentiate $(x^2 + 1)^3$.",
+        "hints": [],
+        "solution": "Chain rule.",
+        "type": "expression",
+        "answer": "6*x*(x^2 + 1)^2",
+        "variables": [
+          "x"
+        ]
+      }
+    },
+    {
+      "nodeId": "math.limits-derivatives",
+      "tier": "advanced",
+      "question": {
+        "id": "ml7",
+        "difficulty": 5,
+        "prompt": "Differentiate $x \\cos x$.",
+        "hints": [],
+        "solution": "Product rule: $1 \\cdot \\cos x + x \\cdot (-\\sin x)$.",
+        "type": "expression",
+        "answer": "cos(x) - x*sin(x)",
+        "variables": [
+          "x"
+        ]
+      }
+    }
+  ]
+}

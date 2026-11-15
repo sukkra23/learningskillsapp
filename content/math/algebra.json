@@ -3,9 +3,499 @@
   "track": "math",
   "title": "Arithmetic and algebra",
   "summary": "Expressions, equations, and the rules that let you rearrange them.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [],
   "estimatedMinutes": 35,
   "difficulty": 1,
-  "strand": "Foundations"
+  "strand": "Foundations",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "order",
+      "title": "Expressions and the order of operations",
+      "body": "An **expression** such as $3 + 4 \\times 2^2$ is a recipe for a number. So that everyone gets the same number, the steps are done in a fixed order:\n\n1. Brackets\n2. Powers\n3. Multiplication and division, left to right\n4. Addition and subtraction, left to right\n\nSo $3 + 4 \\times 2^2 = 3 + 4 \\times 4 = 3 + 16 = 19$, not $(3 + 4) \\times 4 = 28$. A **variable** such as $x$ stands for a number we do not know yet, and it obeys exactly the same rules."
+    },
+    {
+      "kind": "question",
+      "id": "q-order",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "Evaluate $20 - 3 \\times (1 + 2)^2$.",
+        "hints": [
+          "Brackets first, then the power.",
+          "Multiply before you subtract."
+        ],
+        "solution": "Brackets: $1 + 2 = 3$. Power: $3^2 = 9$. Multiply: $3 \\times 9 = 27$. Subtract: $20 - 27 = -7$.",
+        "type": "numeric",
+        "answer": -7,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "solving",
+      "title": "Solving is undoing",
+      "body": "An **equation** says two expressions are equal. To solve $2x + 3 = 11$ we undo what was done to $x$, in reverse order, doing the same to both sides so they stay equal:\n\n$$2x + 3 = 11 \\;\\xrightarrow{\\;-3\\;}\\; 2x = 8 \\;\\xrightarrow{\\;\\div 2\\;}\\; x = 4$$\n\nThe picture shows the same thing. The solid line is the left side, $y = ax + b$; the dashed line is the right side, $y = c$. **The solution is the $x$ where they cross.** Move the sliders to build a different equation and read off its solution.",
+      "widget": {
+        "type": "function-plot",
+        "props": {
+          "expr": "a*x + b",
+          "compare": "c",
+          "params": [
+            {
+              "name": "a",
+              "label": "a (multiplies x)",
+              "min": -4,
+              "max": 4,
+              "step": 0.5,
+              "value": 2
+            },
+            {
+              "name": "b",
+              "label": "b (added on)",
+              "min": -8,
+              "max": 8,
+              "step": 1,
+              "value": 3
+            },
+            {
+              "name": "c",
+              "label": "c (right-hand side)",
+              "min": -10,
+              "max": 14,
+              "step": 1,
+              "value": 11
+            }
+          ],
+          "xRange": [
+            -8,
+            8
+          ],
+          "yRange": [
+            -12,
+            16
+          ],
+          "caption": "Solid: y = a x + b. Dashed: y = c."
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-solve",
+      "question": {
+        "id": "s2",
+        "difficulty": 1,
+        "prompt": "Solve $5x - 7 = 18$ for $x$.",
+        "hints": [
+          "Undo the subtraction first.",
+          "Then undo the multiplication."
+        ],
+        "solution": "Add 7 to both sides: $5x = 25$. Divide both sides by 5: $x = 5$. Check: $5(5) - 7 = 18$.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "distribute",
+      "title": "Multiplying out brackets",
+      "body": "The **distributive law** says $a(b + c) = ab + ac$: everything inside the bracket gets multiplied. For two brackets, every term in the first multiplies every term in the second:\n\n$$(x + p)(x + q) = x^2 + (p + q)\\,x + pq$$\n\nThe plot draws both sides of that identity. The dashed curve is hidden exactly underneath the solid one, for every $p$ and $q$ you choose, because the two expressions are the same function written two ways.",
+      "widget": {
+        "type": "function-plot",
+        "props": {
+          "expr": "(x + p)*(x + q)",
+          "compare": "x^2 + (p + q)*x + p*q",
+          "params": [
+            {
+              "name": "p",
+              "label": "p",
+              "min": -4,
+              "max": 4,
+              "step": 0.5,
+              "value": 2
+            },
+            {
+              "name": "q",
+              "label": "q",
+              "min": -4,
+              "max": 4,
+              "step": 0.5,
+              "value": 3
+            }
+          ],
+          "xRange": [
+            -8,
+            8
+          ],
+          "yRange": [
+            -10,
+            20
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-expand",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "Multiply out $(x + 3)(x - 2)$.",
+        "hints": [
+          "Multiply each term in the first bracket by each term in the second: four products.",
+          "Collect the two x terms."
+        ],
+        "solution": "$(x + 3)(x - 2) = x^2 - 2x + 3x - 6 = x^2 + x - 6$.",
+        "type": "expression",
+        "answer": "x^2 + x - 6",
+        "variables": [
+          "x"
+        ],
+        "form": "expanded"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "quadratics",
+      "title": "Quadratics and their roots",
+      "body": "Running the last idea backwards is **factoring**. If a quadratic can be written as $(x - r)(x - s)$, then it equals zero exactly when one of the brackets is zero, so its solutions (its **roots**) are $x = r$ and $x = s$.\n\nOn the graph the roots are where the curve crosses the $x$-axis. Drag $r$ and $s$ and watch the crossings follow. When a quadratic does not factor nicely, the **quadratic formula** always works:\n\n$$ax^2 + bx + c = 0 \\quad\\Rightarrow\\quad x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$",
+      "widget": {
+        "type": "function-plot",
+        "props": {
+          "expr": "(x - r)*(x - s)",
+          "params": [
+            {
+              "name": "r",
+              "label": "root r",
+              "min": -6,
+              "max": 6,
+              "step": 0.5,
+              "value": -1
+            },
+            {
+              "name": "s",
+              "label": "root s",
+              "min": -6,
+              "max": 6,
+              "step": 0.5,
+              "value": 3
+            }
+          ],
+          "xRange": [
+            -8,
+            8
+          ],
+          "yRange": [
+            -12,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-roots",
+      "question": {
+        "id": "s4",
+        "difficulty": 3,
+        "prompt": "Which of these are solutions of $x^2 - 5x + 6 = 0$?",
+        "hints": [
+          "Find two numbers that multiply to 6 and add to -5.",
+          "Or just substitute each choice and see whether you get 0."
+        ],
+        "solution": "$x^2 - 5x + 6 = (x - 2)(x - 3)$, which is zero when $x = 2$ or $x = 3$. Check: $4 - 10 + 6 = 0$ and $9 - 15 + 6 = 0$.",
+        "type": "multi",
+        "choices": [
+          "$x = 1$",
+          "$x = 2$",
+          "$x = 3$",
+          "$x = 6$"
+        ],
+        "answers": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s5",
+        "difficulty": 2,
+        "prompt": "When solving an equation, why must you do the same thing to both sides?",
+        "hints": [],
+        "solution": "An equation says the two sides are equal, like a balanced scale. If you change only one side, the two sides are no longer equal, so the new statement is not true for the same value of x. Doing the same operation to both sides keeps them equal, so the solution is unchanged.",
+        "type": "explain",
+        "modelAnswer": "An equation says the two sides are equal, like a balanced scale. If you change only one side, the two sides are no longer equal, so the new statement is not true for the same value of x. Doing the same operation to both sides keeps them equal, so the solution is unchanged.",
+        "checklist": [
+          {
+            "point": "Says the two sides are equal (a balance)",
+            "keywords": [
+              [
+                "equal",
+                "balance",
+                "balanced",
+                "same value"
+              ]
+            ]
+          },
+          {
+            "point": "Says changing only one side breaks the equality",
+            "keywords": [
+              [
+                "one side",
+                "only one",
+                "no longer",
+                "unequal",
+                "unbalanced",
+                "not equal"
+              ]
+            ]
+          },
+          {
+            "point": "Says the solution stays the same",
+            "keywords": [
+              [
+                "solution",
+                "still true",
+                "same x",
+                "keeps",
+                "unchanged",
+                "remain"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "Evaluate $2(3 + 5) - 4$.",
+      "hints": [
+        "Brackets first."
+      ],
+      "solution": "$2 \\times 8 - 4 = 16 - 4 = 12$.",
+      "type": "numeric",
+      "answer": 12,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "Simplify $3x + 2(x - 4)$ so that it has no brackets.",
+      "hints": [
+        "Multiply out the bracket, then collect like terms."
+      ],
+      "solution": "$3x + 2x - 8 = 5x - 8$.",
+      "type": "expression",
+      "answer": "5*x - 8",
+      "variables": [
+        "x"
+      ],
+      "form": "expanded"
+    },
+    {
+      "id": "p3",
+      "difficulty": 2,
+      "prompt": "Solve $3(x - 2) = 2x + 5$.",
+      "hints": [
+        "Multiply out the bracket first.",
+        "Collect the x terms on one side."
+      ],
+      "solution": "Expand: $3x - 6 = 2x + 5$. Subtract $2x$: $x - 6 = 5$. Add 6: $x = 11$. Check: $3(9) = 27 = 22 + 5$.",
+      "type": "numeric",
+      "answer": 11,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "Multiply out $(2x - 1)^2$.",
+      "hints": [
+        "Write it as $(2x - 1)(2x - 1)$."
+      ],
+      "solution": "$(2x - 1)(2x - 1) = 4x^2 - 2x - 2x + 1 = 4x^2 - 4x + 1$. A common slip is to write $4x^2 + 1$ and forget the middle term.",
+      "type": "expression",
+      "answer": "4*x^2 - 4*x + 1",
+      "variables": [
+        "x"
+      ],
+      "form": "expanded"
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "If $x + y = 10$ and $x - y = 4$, what is $x$?",
+      "hints": [
+        "Add the two equations together. What happens to y?"
+      ],
+      "solution": "Add the two equations: $2x = 14$, so $x = 7$ (and then $y = 3$).",
+      "type": "numeric",
+      "answer": 7,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "Find the **larger** solution of $2x^2 - 3x - 5 = 0$.",
+      "hints": [
+        "Use the quadratic formula with $a = 2$, $b = -3$, $c = -5$.",
+        "$b^2 - 4ac = 9 + 40 = 49$."
+      ],
+      "solution": "Quadratic formula with $a = 2$, $b = -3$, $c = -5$:\n\n$$x = \\frac{3 \\pm \\sqrt{9 + 40}}{4} = \\frac{3 \\pm 7}{4}$$\n\nso $x = 2.5$ or $x = -1$. The larger is $2.5$. (It also factors as $(2x - 5)(x + 1)$.)",
+      "type": "numeric",
+      "answer": 2.5,
+      "tolerance": {
+        "abs": 0.001
+      }
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 1,
+      "prompt": "Evaluate $18 - 2 \\times (4 + 1)$.",
+      "hints": [],
+      "solution": "$18 - 2 \\times 5 = 18 - 10 = 8$.",
+      "type": "numeric",
+      "answer": 8,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "Solve $4x + 9 = 1$.",
+      "hints": [],
+      "solution": "$4x = -8$, so $x = -2$.",
+      "type": "numeric",
+      "answer": -2,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "Multiply out $(x + 4)(x - 4)$.",
+      "hints": [],
+      "solution": "$x^2 - 4x + 4x - 16 = x^2 - 16$. The middle terms cancel: this is the \"difference of two squares\".",
+      "type": "expression",
+      "answer": "x^2 - 16",
+      "variables": [
+        "x"
+      ],
+      "form": "expanded"
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "Which expression is equivalent to $2(x + 3) - (x - 1)$?",
+      "hints": [],
+      "solution": "$2x + 6 - x + 1 = x + 7$. The minus sign in front of the second bracket changes $-1$ into $+1$.",
+      "type": "mcq",
+      "choices": [
+        "$x + 7$",
+        "$x + 5$",
+        "$3x + 7$",
+        "$x + 2$"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "Find the **positive** solution of $x^2 - x - 12 = 0$.",
+      "hints": [],
+      "solution": "$x^2 - x - 12 = (x - 4)(x + 3)$, so $x = 4$ or $x = -3$. The positive one is 4.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0
+      }
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 2,
+      "prompt": "Solve $\\dfrac{2x + 1}{3} = 5$.",
+      "hints": [],
+      "solution": "Multiply by 3: $2x + 1 = 15$. So $2x = 14$ and $x = 7$.",
+      "type": "numeric",
+      "answer": 7,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t2",
+      "difficulty": 3,
+      "prompt": "Solve $\\dfrac{x}{2} + \\dfrac{x}{3} = 10$.",
+      "hints": [],
+      "solution": "Multiply through by 6: $3x + 2x = 60$, so $x = 12$.",
+      "type": "numeric",
+      "answer": 12,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "Multiply out $(x - 2)(x^2 + 2x + 4)$.",
+      "hints": [],
+      "solution": "$x^3 + 2x^2 + 4x - 2x^2 - 4x - 8 = x^3 - 8$.",
+      "type": "expression",
+      "answer": "x^3 - 8",
+      "variables": [
+        "x"
+      ],
+      "form": "expanded"
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "If $2x + 3y = 12$ and $x - y = 1$, what is $y$?",
+      "hints": [],
+      "solution": "From the second equation $x = y + 1$. Substitute: $2(y + 1) + 3y = 12 \\Rightarrow 5y = 10 \\Rightarrow y = 2$ (and $x = 3$).",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "How many real solutions does $x^2 + 4x + 5 = 0$ have?",
+      "hints": [],
+      "solution": "The discriminant is $b^2 - 4ac = 16 - 20 = -4 < 0$, so the square root in the quadratic formula is not a real number. The parabola never reaches the $x$-axis.",
+      "type": "mcq",
+      "choices": [
+        "None",
+        "One",
+        "Two",
+        "Infinitely many"
+      ],
+      "answer": 0
+    }
+  ]
 }

@@ -116,6 +116,9 @@ describe('grade', () => {
     expect(grade(e, { type: 'expression', text: '3x*x' }).correct).toBe(true);
     expect(grade(e, { type: 'expression', text: '2x^3' }).correct).toBe(false);
     expect(grade(e, { type: 'expression', text: '3y^2' }).invalid).toBeTruthy();
+    const x = Q({ type: 'expression', answer: 'x^2 + x - 6', variables: ['x'], form: 'expanded' });
+    expect(grade(x, { type: 'expression', text: '(x+3)(x-2)' }).invalid).toMatch(/no brackets/);
+    expect(grade(x, { type: 'expression', text: 'x^2 + x - 6' }).correct).toBe(true);
   });
   it('order compares by text', () => {
     const o = Q({ type: 'order', items: ['fetch', 'decode', 'execute'] });
