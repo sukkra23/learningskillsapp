@@ -5,6 +5,7 @@ import { ProblemsPage } from '../pages/ProblemsPage';
 import { ReviewPage } from '../pages/ReviewPage';
 import { Bookmarks } from '../pages/Bookmarks';
 import { Dashboard } from '../pages/Dashboard';
+import { DiagnosticPage } from '../pages/DiagnosticPage';
 import { NodePage } from '../pages/NodePage';
 import { NotFound } from '../pages/NotFound';
 import { SearchPage } from '../pages/SearchPage';
@@ -26,7 +27,7 @@ export const routes = [
       { path: '/learn/:nodeId/problems', loader: guardLearn, element: <ProblemsPage />, errorElement: <NotFound /> },
       { path: '/learn/:nodeId/checkpoint', loader: guardLearn, element: <CheckpointPage />, errorElement: <NotFound /> },
       { path: '/node/:nodeId/test-out', loader: guardTestOut, element: <TestOutPage />, errorElement: <NotFound /> },
-      { path: '/diagnostic/:track', element: <Soon what="Placement test" /> },
+      { path: '/diagnostic/:track', element: <DiagnosticPage /> },
       { path: '/review', element: <ReviewPage /> },
       { path: '/lab', element: <Soon what="Lab" /> },
       { path: '/search', element: <SearchPage /> },

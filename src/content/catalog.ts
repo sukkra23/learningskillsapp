@@ -70,6 +70,7 @@ export function buildCatalog(files: Record<string, unknown>): { catalog: Catalog
       const target = byId.get(item.nodeId);
       if (!target) errors.push(`${where}: unknown node "${item.nodeId}"`);
       else if (target.track !== t) errors.push(`${where}: node "${item.nodeId}" belongs to another track`);
+      else if (target.status !== 'ready') errors.push(`${where}: node "${item.nodeId}" is a stub; diagnostic items must target ready nodes`);
       if (!AUTO_GRADED.includes(item.question.type)) errors.push(`${where}: type "${item.question.type}" cannot be used in a diagnostic`);
     }
   }
