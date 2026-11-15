@@ -3,11 +3,502 @@
   "track": "cs",
   "title": "Binary arithmetic and the ALU",
   "summary": "Binary numbers, two's complement, adders, and the unit that does a CPU's arithmetic.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "cs.logic-gates"
   ],
   "estimatedMinutes": 40,
   "difficulty": 2,
-  "strand": "Hardware tour"
+  "strand": "Hardware tour",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "binary",
+      "title": "Counting with two digits",
+      "body": "With only 0 and 1 available, computers write numbers in **binary**. It works like decimal, but each place is worth twice the one to its right instead of ten times:\n\n$$1011_2 = 1 \\times 8 + 0 \\times 4 + 1 \\times 2 + 1 \\times 1 = 11$$\n\nEach binary digit is a **bit**. With $n$ bits you can write $2^n$ different patterns, so 4 bits count from 0 to 15.\n\nClick the bits of A below to flip them and read the \"unsigned\" value. Ignore the rest of the panel for now.",
+      "widget": {
+        "type": "alu",
+        "props": {
+          "bits": 4
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-read",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "What is $1101_2$ in decimal?",
+        "hints": [
+          "The places are worth 8, 4, 2 and 1."
+        ],
+        "solution": "$8 + 4 + 0 + 1 = 13$.",
+        "type": "numeric",
+        "answer": 13,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "adding",
+      "title": "Adding in binary",
+      "body": "Binary addition follows the school method, column by column from the right, with one rule: $1 + 1 = 10_2$, so write 0 and **carry** 1.\n\nA column therefore has *three* inputs: the two bits and the carry coming in. The circuit for one column is a **full adder**. Try all eight input combinations and check that the two output bits always spell the total in binary.\n\nChain one full adder per bit, feeding each carry-out into the next column's carry-in, and you can add numbers of any size. That chain is called a **ripple-carry adder**.",
+      "widget": {
+        "type": "logic-gates",
+        "props": {
+          "mode": "full-adder"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-add",
+      "question": {
+        "id": "s2",
+        "difficulty": 2,
+        "prompt": "What is $0110_2 + 0011_2$?",
+        "hints": [
+          "Convert both to decimal to check your answer."
+        ],
+        "solution": "From the right: $0 + 1 = 1$; $1 + 1 = 0$ carry 1; $1 + 0 + 1 = 0$ carry 1; $0 + 0 + 1 = 1$. Result $1001_2$. Check in decimal: $6 + 3 = 9$.",
+        "type": "mcq",
+        "choices": [
+          "$1001_2$",
+          "$0111_2$",
+          "$1011_2$",
+          "$0101_2$"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "twos",
+      "title": "Negative numbers",
+      "body": "How do you store $-3$ with only 0s and 1s? Nearly every computer uses **two's complement**: the leftmost bit is worth *minus* its usual value. In 4 bits the places are $-8, 4, 2, 1$:\n\n$$1101_2 = -8 + 4 + 0 + 1 = -3$$\n\nSo 4 bits cover $-8$ to $7$. To negate a number, **flip every bit and add 1**: $3 = 0011 \\to 1100 \\to 1101 = -3$.\n\nThe pay-off is that the ordinary adder already gives correct answers for negative numbers, with no extra circuitry. Set the bits of A and compare the \"unsigned\" and \"signed\" readings of the same pattern.",
+      "widget": {
+        "type": "alu",
+        "props": {
+          "bits": 4
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-signed",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "Read as a 4-bit **two's complement** number, what is $1010_2$?",
+        "hints": [
+          "The leftmost place is worth -8."
+        ],
+        "solution": "$-8 + 0 + 2 + 0 = -6$.",
+        "type": "numeric",
+        "answer": -6,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "alu",
+      "title": "The arithmetic logic unit",
+      "body": "The **ALU** is the part of a processor that calculates. It takes two numbers and an operation code, and produces a result plus a few one-bit **flags** that describe it:\n\n- **Zero**: the result is 0.\n- **Negative**: the top bit of the result is 1.\n- **Carry**: the addition carried out of the top bit (the *unsigned* answer did not fit).\n- **Overflow**: the *signed* answer did not fit.\n\nSubtraction needs no new hardware: $A - B$ is computed as $A + (\\text{NOT } B) + 1$, which is $A$ plus the two's complement of $B$. Try $100 + 50$ here (A = 01100100, B = 00110010) and see which flag complains.",
+      "widget": {
+        "type": "alu",
+        "props": {
+          "bits": 8
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-overflow",
+      "question": {
+        "id": "s4",
+        "difficulty": 3,
+        "prompt": "A 4-bit ALU adds $0111_2 + 0001_2$ and produces $1000_2$. Treating the numbers as **signed**, what has happened?",
+        "hints": [
+          "What is the largest value a 4-bit signed number can hold?"
+        ],
+        "solution": "The bit pattern $1000$ is $8$ if read as unsigned, but $-8$ in two's complement. Adding two positive numbers and getting a negative one is the signature of signed overflow.",
+        "type": "mcq",
+        "choices": [
+          "Overflow: 7 + 1 = 8 does not fit in the range -8 to 7, and the result reads as -8",
+          "Nothing unusual: the result is correct",
+          "A carry out of the top bit, so the result is 0",
+          "The zero flag is set"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-sub",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "How does a typical ALU subtract B from A?",
+        "hints": [],
+        "solution": "Negating B in two's complement and adding reuses the adder that is already there: A - B = A + (NOT B) + 1.",
+        "type": "mcq",
+        "choices": [
+          "It adds A to the two's complement of B (invert B's bits and add 1)",
+          "It uses a separate subtractor circuit built from XOR gates only",
+          "It repeatedly subtracts 1 from A, B times",
+          "It converts both numbers to decimal first"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s6",
+        "difficulty": 4,
+        "prompt": "Explain the difference between the carry flag and the overflow flag.",
+        "hints": [],
+        "solution": "The carry flag reports that an addition produced a carry out of the top bit, which means the result is wrong if the numbers are treated as unsigned. The overflow flag reports that the result is wrong if the numbers are treated as signed (two's complement), for example when adding two positive numbers gives a negative result. The same bits can set one flag and not the other, because the ALU does not know which interpretation the program intends.",
+        "type": "explain",
+        "modelAnswer": "The carry flag reports that an addition produced a carry out of the top bit, which means the result is wrong if the numbers are treated as unsigned. The overflow flag reports that the result is wrong if the numbers are treated as signed (two's complement), for example when adding two positive numbers gives a negative result. The same bits can set one flag and not the other, because the ALU does not know which interpretation the program intends.",
+        "checklist": [
+          {
+            "point": "Links carry to unsigned numbers",
+            "keywords": [
+              [
+                "carry"
+              ],
+              [
+                "unsigned"
+              ]
+            ]
+          },
+          {
+            "point": "Links overflow to signed (two's complement) numbers",
+            "keywords": [
+              [
+                "overflow"
+              ],
+              [
+                "signed",
+                "two's complement",
+                "twos complement"
+              ]
+            ]
+          },
+          {
+            "point": "Says both mean the result did not fit / is wrong for that interpretation",
+            "keywords": [
+              [
+                "fit",
+                "wrong",
+                "incorrect",
+                "too large",
+                "too big",
+                "out of range",
+                "range"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "What is $0101_2$ in decimal?",
+      "hints": [],
+      "solution": "$4 + 1 = 5$.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "What is the largest unsigned number that fits in 8 bits?",
+      "hints": [
+        "8 bits give $2^8$ patterns, starting from 0."
+      ],
+      "solution": "$2^8 - 1 = 255$ (eight 1s).",
+      "type": "numeric",
+      "answer": 255,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p3",
+      "difficulty": 2,
+      "prompt": "What is 13 in binary?",
+      "hints": [],
+      "solution": "$13 = 8 + 4 + 1$, so the bits for 8, 4 and 1 are set: $1101_2$.",
+      "type": "mcq",
+      "choices": [
+        "$1101_2$",
+        "$1011_2$",
+        "$1110_2$",
+        "$1001_2$"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "Read as an 8-bit two's complement number, what is $11111111_2$?",
+      "hints": [
+        "The top bit is worth -128; the rest add up to 127."
+      ],
+      "solution": "$-128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = -128 + 127 = -1$. All ones is always $-1$: adding 1 to it rolls every bit over to 0.",
+      "type": "numeric",
+      "answer": -1,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "A 4-bit unsigned ALU adds $1100_2 + 0110_2$. Only 4 bits of the result are kept. What value (in decimal) is left in the result?",
+      "hints": [
+        "Work out the true sum, then see what remains after discarding anything worth 16 or more."
+      ],
+      "solution": "$12 + 6 = 18 = 10010_2$. The fifth bit does not fit and becomes the carry flag, leaving $0010_2 = 2$. Equivalently, $18 - 16 = 2$.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "What is the most negative number an 8-bit two's complement value can hold?",
+      "hints": [],
+      "solution": "Only the top bit set: $10000000_2 = -128$. The range is $-128$ to $127$: one more negative value than positive.",
+      "type": "numeric",
+      "answer": -128,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p7",
+      "difficulty": 5,
+      "prompt": "Write a function `to_binary(n, bits)` that returns the unsigned integer `n` as a string of exactly `bits` binary digits, with leading zeros. For example `to_binary(5, 4)` returns `\"0101\"`. You may assume `n` fits.",
+      "hints": [
+        "Bit i of n is `(n >> i) & 1`.",
+        "Start from the highest bit so the string comes out in the right order."
+      ],
+      "solution": "Walk from the most significant bit down to bit 0. Shifting `n` right by `i` places and taking `& 1` gives bit `i`. Repeatedly dividing by 2 and collecting remainders also works, but produces the bits in reverse order.",
+      "type": "code",
+      "entry": "to_binary",
+      "variants": {
+        "python": {
+          "starter": "def to_binary(n, bits):\n    # build the string one bit at a time\n    pass\n",
+          "reference": "def to_binary(n, bits):\n    out = \"\"\n    for i in range(bits - 1, -1, -1):\n        out += \"1\" if (n >> i) & 1 else \"0\"\n    return out\n"
+        },
+        "javascript": {
+          "starter": "function to_binary(n, bits) {\n  // build the string one bit at a time\n}\n",
+          "reference": "function to_binary(n, bits) {\n  let out = \"\";\n  for (let i = bits - 1; i >= 0; i--) out += (n >> i) & 1 ? \"1\" : \"0\";\n  return out;\n}\n"
+        }
+      },
+      "tests": [
+        {
+          "args": [
+            5,
+            4
+          ],
+          "expected": "0101",
+          "hidden": false
+        },
+        {
+          "args": [
+            0,
+            3
+          ],
+          "expected": "000",
+          "hidden": false
+        },
+        {
+          "args": [
+            255,
+            8
+          ],
+          "expected": "11111111",
+          "hidden": true
+        },
+        {
+          "args": [
+            1,
+            1
+          ],
+          "expected": "1",
+          "hidden": true
+        },
+        {
+          "args": [
+            10,
+            8
+          ],
+          "expected": "00001010",
+          "hidden": true
+        },
+        {
+          "args": [
+            6,
+            3
+          ],
+          "expected": "110",
+          "hidden": true
+        }
+      ]
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 1,
+      "prompt": "What is $1001_2$ in decimal?",
+      "hints": [],
+      "solution": "$8 + 1 = 9$.",
+      "type": "numeric",
+      "answer": 9,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "What is 6 as a 4-bit binary number?",
+      "hints": [],
+      "solution": "$6 = 4 + 2$.",
+      "type": "mcq",
+      "choices": [
+        "$0110_2$",
+        "$0101_2$",
+        "$1010_2$",
+        "$0011_2$"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "difficulty": 3,
+      "prompt": "Read as a 4-bit two's complement number, what is $1000_2$?",
+      "hints": [],
+      "solution": "Only the $-8$ place is set.",
+      "type": "numeric",
+      "answer": -8,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "What is -3 as a 4-bit two's complement number?",
+      "hints": [],
+      "solution": "$3 = 0011$. Flip: $1100$. Add 1: $1101$. Check: $-8 + 4 + 1 = -3$.",
+      "type": "mcq",
+      "choices": [
+        "$1101_2$",
+        "$1011_2$",
+        "$1100_2$",
+        "$0011_2$"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c5",
+      "difficulty": 2,
+      "prompt": "How many different values can 5 bits represent?",
+      "hints": [],
+      "solution": "$2^5 = 32$.",
+      "type": "numeric",
+      "answer": 32,
+      "tolerance": {
+        "abs": 0
+      }
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 4,
+      "prompt": "Read as an 8-bit two's complement number, what is $10010110_2$?",
+      "hints": [],
+      "solution": "$-128 + 16 + 4 + 2 = -106$.",
+      "type": "numeric",
+      "answer": -106,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "A 4-bit ALU computes $0101_2 - 0111_2$. Read as a signed number, what is the result?",
+      "hints": [],
+      "solution": "$5 - 7 = -2$, which fits in 4 bits. The ALU computes $0101 + 1001 = 1110$, and $1110_2 = -8 + 4 + 2 = -2$.",
+      "type": "numeric",
+      "answer": -2,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t3",
+      "difficulty": 5,
+      "prompt": "An 8-bit ALU adds 100 and 50 ($01100100_2 + 00110010_2$). Which flags are set?",
+      "hints": [],
+      "solution": "The sum is $10010110_2 = 150$, which fits in 8 unsigned bits, so there is no carry. But as a signed value it reads $-106$: two positive numbers gave a negative result, so overflow is set.",
+      "type": "mcq",
+      "choices": [
+        "Overflow set, carry clear",
+        "Carry set, overflow clear",
+        "Both carry and overflow set",
+        "Neither"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t4",
+      "difficulty": 3,
+      "prompt": "How many bits are needed to store the unsigned number 1000?",
+      "hints": [],
+      "solution": "$2^9 = 512$ is too few patterns and $2^{10} = 1024$ is enough, so 10 bits.",
+      "type": "numeric",
+      "answer": 10,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "A 4-bit ALU adds $1111_2 + 0001_2$. Which flags are set?",
+      "hints": [],
+      "solution": "The true sum is $10000_2$; the 4-bit result is $0000$, so zero is set, and the fifth bit is the carry. As signed numbers this was $-1 + 1 = 0$, which is correct, so there is no overflow.",
+      "type": "mcq",
+      "choices": [
+        "Zero and carry",
+        "Zero only",
+        "Carry and overflow",
+        "Negative and overflow"
+      ],
+      "answer": 0
+    }
+  ]
 }

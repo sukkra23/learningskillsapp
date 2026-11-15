@@ -1,6 +1,6 @@
 import 'fake-indexeddb/auto';
-import { describe, expect, it } from 'vitest';
-import { exportFile, importFile, loadProgress, saveProgress } from './persistence';
+import { describe, expect, it, vi } from 'vitest';
+import { exportFile, importFile, loadProgress, savePendingSync, saveProgress } from './persistence';
 import { applyDiagnostic, completeStep, dueReviews, recordAttempt, recordCheckpoint, recordTestOut, touchStreak } from './reducers';
 import { addDays, daysBetween, newCard, qualityFor, sm2 } from './sm2';
 import { XP, canAttemptTestOut, emptyProgress } from './types';
@@ -95,6 +95,18 @@ describe('persistence', () => {
     const s = completeStep(emptyProgress(), 'cs.a', 's1', D);
     await saveProgress(s);
     expect(await loadProgress()).toEqual(s);
+  });
+  it('a synchronous page-hide journal wins over the older IndexedDB copy and is then cleared', async () => {
+    const store = new Map<string, string>();
+    vi.stubGlobal('localStorage', { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => void store.set(k, v), removeItem: (k: string) => void store.delete(k) });
+    const old = completeStep(emptyProgress(), 'cs.a', 's1', D);
+    await saveProgress(old);
+    const newer = completeStep(old, 'cs.a', 's2', D);
+    savePendingSync(newer);
+    expect(await loadProgress()).toEqual(newer);
+    expect(store.size).toBe(0);
+    expect(await loadProgress()).toEqual(newer); // now from IndexedDB
+    vi.unstubAllGlobals();
   });
   it('round-trips through export and import, and rejects junk', () => {
     const s = recordCheckpoint(emptyProgress(), 'cs.a', 1, 0.8, D);

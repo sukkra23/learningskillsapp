@@ -32,9 +32,12 @@ function StepBody({ node, step, onResolved }: { node: SkillNode; step: Step; onR
   );
 }
 
+// A stable reference: a selector that returned a fresh [] each time would re-render for ever.
+const NONE: string[] = [];
+
 function Lesson({ node }: { node: SkillNode }) {
   const [params, setParams] = useSearchParams();
-  const stepsDone = useProgress((s) => s.nodes[node.id]?.stepsDone ?? []);
+  const stepsDone = useProgress((s) => s.nodes[node.id]?.stepsDone ?? NONE);
   const attempts = useProgress((s) => s.attempts);
   const completeStep = useProgress((s) => s.completeStep);
   const total = node.steps.length;

@@ -1,0 +1,366 @@
+{
+  "track": "cs",
+  "items": [
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "basic",
+      "question": {
+        "id": "cl1",
+        "difficulty": 1,
+        "prompt": "What is 1 AND 1?",
+        "hints": [],
+        "solution": "Both inputs are 1.",
+        "type": "numeric",
+        "answer": 1,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "basic",
+      "question": {
+        "id": "cl2",
+        "difficulty": 1,
+        "prompt": "Which gate outputs 1 whenever at least one of its inputs is 1?",
+        "hints": [],
+        "solution": "OR.",
+        "type": "mcq",
+        "choices": [
+          "OR",
+          "AND",
+          "NOT",
+          "NAND"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "basic",
+      "question": {
+        "id": "cl3",
+        "difficulty": 2,
+        "prompt": "What is 1 XOR 0?",
+        "hints": [],
+        "solution": "The inputs differ.",
+        "type": "numeric",
+        "answer": 1,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "advanced",
+      "question": {
+        "id": "cl4",
+        "difficulty": 3,
+        "prompt": "For which inputs does a NAND gate output 0?",
+        "hints": [],
+        "solution": "NAND is the inverse of AND.",
+        "type": "mcq",
+        "choices": [
+          "Only when both inputs are 1",
+          "Only when both inputs are 0",
+          "When the inputs are different",
+          "Never"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "advanced",
+      "question": {
+        "id": "cl5",
+        "difficulty": 3,
+        "prompt": "How many rows does the truth table of a 5-input circuit have?",
+        "hints": [],
+        "solution": "$2^5$.",
+        "type": "numeric",
+        "answer": 32,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "advanced",
+      "question": {
+        "id": "cl6",
+        "difficulty": 4,
+        "prompt": "Which expression always equals NOT (A OR B)?",
+        "hints": [],
+        "solution": "De Morgan's law.",
+        "type": "mcq",
+        "choices": [
+          "(NOT A) AND (NOT B)",
+          "(NOT A) OR (NOT B)",
+          "A NAND B",
+          "A XOR B"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.logic-gates",
+      "tier": "advanced",
+      "question": {
+        "id": "cl7",
+        "difficulty": 5,
+        "prompt": "For how many of the 8 possible input combinations is (A XOR B) AND (NOT C) equal to 1?",
+        "hints": [],
+        "solution": "A XOR B is 1 for two of the four (A, B) pairs, and C must be 0.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "basic",
+      "question": {
+        "id": "cb1",
+        "difficulty": 1,
+        "prompt": "What is $10_2$ in decimal?",
+        "hints": [],
+        "solution": "One two and no ones.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "basic",
+      "question": {
+        "id": "cb2",
+        "difficulty": 2,
+        "prompt": "What is $0111_2$ in decimal?",
+        "hints": [],
+        "solution": "$4 + 2 + 1$.",
+        "type": "numeric",
+        "answer": 7,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "basic",
+      "question": {
+        "id": "cb3",
+        "difficulty": 2,
+        "prompt": "What is 5 as a 4-bit binary number?",
+        "hints": [],
+        "solution": "$4 + 1$.",
+        "type": "mcq",
+        "choices": [
+          "$0101_2$",
+          "$0110_2$",
+          "$1001_2$",
+          "$0011_2$"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "advanced",
+      "question": {
+        "id": "cb4",
+        "difficulty": 3,
+        "prompt": "What is $1010_2 + 0011_2$, as an unsigned decimal number?",
+        "hints": [],
+        "solution": "$10 + 3$.",
+        "type": "numeric",
+        "answer": 13,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "advanced",
+      "question": {
+        "id": "cb5",
+        "difficulty": 3,
+        "prompt": "Read as a 4-bit two's complement number, what is $1111_2$?",
+        "hints": [],
+        "solution": "$-8 + 7$.",
+        "type": "numeric",
+        "answer": -1,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "advanced",
+      "question": {
+        "id": "cb6",
+        "difficulty": 4,
+        "prompt": "Read as a 4-bit two's complement number, what is $1011_2$?",
+        "hints": [],
+        "solution": "$-8 + 2 + 1$.",
+        "type": "numeric",
+        "answer": -5,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.binary-alu",
+      "tier": "advanced",
+      "question": {
+        "id": "cb7",
+        "difficulty": 5,
+        "prompt": "An 8-bit two's complement register holds 127 and 1 is added. What is the result?",
+        "hints": [],
+        "solution": "$01111111 + 1 = 10000000$, which reads as $-128$: signed overflow.",
+        "type": "mcq",
+        "choices": [
+          "-128, with the overflow flag set",
+          "128, with no flags set",
+          "0, with the carry flag set",
+          "-127, with the overflow flag set"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "basic",
+      "question": {
+        "id": "cc1",
+        "difficulty": 2,
+        "prompt": "What does the program counter hold?",
+        "hints": [],
+        "solution": "It points at the next instruction to fetch.",
+        "type": "mcq",
+        "choices": [
+          "The address of the next instruction",
+          "The result of the last addition",
+          "How long the program has been running",
+          "The number of registers"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "basic",
+      "question": {
+        "id": "cc2",
+        "difficulty": 2,
+        "prompt": "Put the three stages of the instruction cycle in order.",
+        "hints": [],
+        "solution": "Fetch, decode, execute.",
+        "type": "order",
+        "items": [
+          "Fetch",
+          "Decode",
+          "Execute"
+        ]
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "basic",
+      "question": {
+        "id": "cc3",
+        "difficulty": 3,
+        "prompt": "Which part of the CPU performs addition and subtraction?",
+        "hints": [],
+        "solution": "The ALU.",
+        "type": "mcq",
+        "choices": [
+          "The arithmetic logic unit (ALU)",
+          "The program counter",
+          "The instruction register",
+          "Main memory"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "advanced",
+      "question": {
+        "id": "cc4",
+        "difficulty": 3,
+        "prompt": "What is in R0 after this program?\n\n```\n0  LOADI R0, 6\n1  LOADI R1, 2\n2  ADD R0, R1\n3  ADD R0, R1\n4  HALT\n```\n\n",
+        "hints": [],
+        "solution": "$6 + 2 + 2$.",
+        "type": "numeric",
+        "answer": 10,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "advanced",
+      "question": {
+        "id": "cc5",
+        "difficulty": 4,
+        "prompt": "What does a conditional jump such as JNZ examine to decide whether to jump?",
+        "hints": [],
+        "solution": "Flags record facts about the last result, such as whether it was zero.",
+        "type": "mcq",
+        "choices": [
+          "A flag set by an earlier instruction",
+          "The value of the program counter",
+          "The next instruction in memory",
+          "The clock speed"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "advanced",
+      "question": {
+        "id": "cc6",
+        "difficulty": 4,
+        "prompt": "What is in R0 when this program halts?\n\n```\n0  LOADI R0, 0\n1  LOADI R1, 4\n2  LOADI R2, 1\n3  ADD R0, R1\n4  SUB R1, R2\n5  JNZ 3\n6  HALT\n```\n\n",
+        "hints": [],
+        "solution": "$4 + 3 + 2 + 1$.",
+        "type": "numeric",
+        "answer": 10,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "nodeId": "cs.cpu-cycle",
+      "tier": "advanced",
+      "question": {
+        "id": "cc7",
+        "difficulty": 5,
+        "prompt": "How many instructions does this program execute in total, including HALT?\n\n```\n0  LOADI R0, 0\n1  LOADI R1, 4\n2  LOADI R2, 1\n3  ADD R0, R1\n4  SUB R1, R2\n5  JNZ 3\n6  HALT\n```\n\n",
+        "hints": [],
+        "solution": "$3 + 4 \\times 3 + 1$.",
+        "type": "numeric",
+        "answer": 16,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    }
+  ]
+}

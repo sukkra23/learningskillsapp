@@ -3,11 +3,390 @@
   "track": "engineering",
   "title": "Thevenin and Norton equivalents",
   "summary": "Replacing any linear circuit with one source and one resistor.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "engineering.kirchhoff"
   ],
   "estimatedMinutes": 40,
   "difficulty": 3,
-  "strand": "Electrical"
+  "strand": "Electrical",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "idea",
+      "title": "Any circuit, as one source and one resistor",
+      "body": "**Thevenin's theorem:** seen from any two terminals, a circuit of sources and resistors behaves exactly like **one voltage source $V_\\text{th}$ in series with one resistor $R_\\text{th}$**.\n\nThat lets you analyse the complicated part once, then answer \"what happens with this load?\" for any load using a two-element circuit.\n\nHere a 12 V source with $6\\ \\Omega$ and $3\\ \\Omega$ feeds a $2\\ \\Omega$ load (the right-hand upright). **Select the load resistor**: the panel reports what the rest of the circuit looks like from the load's point of view.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "thevenin"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-vth-def",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "What is the Thevenin voltage $V_\\text{th}$ of a circuit?",
+        "hints": [],
+        "solution": "With the load removed no current flows through the Thevenin resistance, so nothing is dropped across it and the terminals show the full Thevenin voltage.",
+        "type": "mcq",
+        "choices": [
+          "The voltage across its terminals with nothing connected (open circuit)",
+          "The voltage of its largest source",
+          "The voltage across the load when the load is a short circuit",
+          "The sum of all the source voltages"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "find-vth",
+      "title": "Step 1: find the open-circuit voltage",
+      "body": "**Remove the load** and find the voltage that appears across the empty terminals.\n\nFor our circuit, with the load gone the $6\\ \\Omega$ and $3\\ \\Omega$ form a simple voltage divider across 12 V, and the terminals are across the $3\\ \\Omega$:\n\n$$V_\\text{th} = 12 \\times \\frac{3}{6 + 3} = 4\\ \\text{V}$$"
+    },
+    {
+      "kind": "question",
+      "id": "q-vth",
+      "question": {
+        "id": "s2",
+        "difficulty": 2,
+        "prompt": "A $24$ V source is in series with an $8\\ \\Omega$ resistor. A $4\\ \\Omega$ resistor is connected from the far end of the $8\\ \\Omega$ to ground, and the output terminals are across the $4\\ \\Omega$. What is $V_\\text{th}$?",
+        "hints": [
+          "With no load attached, the two resistors are simply in series.",
+          "The output is the share of the voltage that falls across the 4 ohm resistor."
+        ],
+        "solution": "Voltage divider: $V_\\text{th} = 24 \\times \\dfrac{4}{8 + 4} = 8$ V.",
+        "type": "numeric",
+        "answer": 8,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "find-rth",
+      "title": "Step 2: find the resistance looking in",
+      "body": "**Switch off the sources** and find the resistance between the terminals. To switch off an ideal voltage source, replace it with a wire (0 V); to switch off a current source, remove it (0 A).\n\nIn our circuit, replacing the 12 V source with a wire puts the $6\\ \\Omega$ and $3\\ \\Omega$ side by side between the terminals, in parallel:\n\n$$R_\\text{th} = \\frac{6 \\times 3}{6 + 3} = 2\\ \\Omega$$\n\nSo the whole left-hand part is equivalent to 4 V in series with $2\\ \\Omega$, which is what the circuit panel reported."
+    },
+    {
+      "kind": "question",
+      "id": "q-rth",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "For the circuit in the last question ($24$ V, $8\\ \\Omega$ in series, $4\\ \\Omega$ across the output), what is $R_\\text{th}$?",
+        "hints": [
+          "Replace the voltage source with a wire.",
+          "Looking in from the output, how are the two resistors connected?"
+        ],
+        "solution": "Replace the source with a wire. From the terminals the $8\\ \\Omega$ and $4\\ \\Omega$ are in parallel: $\\dfrac{8 \\times 4}{12} = 2.67\\ \\Omega$.",
+        "type": "numeric",
+        "answer": 2.667,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "Ω"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "use",
+      "title": "Step 3: use it",
+      "body": "Reconnect the load $R_L$ to the equivalent. Now it is a single series loop:\n\n$$I_L = \\frac{V_\\text{th}}{R_\\text{th} + R_L} \\qquad V_L = V_\\text{th}\\,\\frac{R_L}{R_\\text{th} + R_L}$$\n\nFor our circuit with the $2\\ \\Omega$ load: $I_L = \\dfrac{4}{2 + 2} = 1$ A and $V_L = 2$ V, matching the full circuit above. Change the load there and check the formula again: the equivalent stays 4 V and $2\\ \\Omega$ whatever load you attach."
+    },
+    {
+      "kind": "question",
+      "id": "q-load",
+      "question": {
+        "id": "s4",
+        "difficulty": 2,
+        "prompt": "A circuit has $V_\\text{th} = 10$ V and $R_\\text{th} = 5\\ \\Omega$. A $15\\ \\Omega$ load is connected. What current flows through the load?",
+        "hints": [],
+        "solution": "$I = \\dfrac{10}{5 + 15} = 0.5$ A.",
+        "type": "numeric",
+        "answer": 0.5,
+        "tolerance": {
+          "abs": 0.005
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "norton",
+      "title": "Norton and maximum power",
+      "body": "The same circuit can also be drawn as a **Norton equivalent**: a current source $I_N$ in parallel with the same resistance, where\n\n$$I_N = \\frac{V_\\text{th}}{R_\\text{th}}$$\n\nis the current that would flow through a short circuit across the terminals.\n\nOne famous consequence of the Thevenin picture is the **maximum power transfer** theorem: a load receives the most power when $R_L = R_\\text{th}$, and that maximum is\n\n$$P_\\text{max} = \\frac{V_\\text{th}^2}{4 R_\\text{th}}$$\n\nA smaller load draws more current but gets little voltage; a larger one gets more voltage but little current. The product peaks when they match."
+    },
+    {
+      "kind": "question",
+      "id": "q-norton",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "A circuit has $V_\\text{th} = 4$ V and $R_\\text{th} = 2\\ \\Omega$. What is its Norton current $I_N$?",
+        "hints": [],
+        "solution": "$I_N = V_\\text{th} / R_\\text{th} = 4 / 2 = 2$ A: the current through a wire placed across the terminals.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-procedure",
+      "question": {
+        "id": "s6",
+        "difficulty": 3,
+        "prompt": "Put the steps for finding and using a Thevenin equivalent in order.",
+        "hints": [],
+        "solution": "The load comes off first, because both Thevenin quantities describe the circuit without it. The open-circuit voltage needs the sources on; the resistance needs them off.",
+        "type": "order",
+        "items": [
+          "Remove the load from the terminals",
+          "Find the open-circuit voltage across the terminals",
+          "Switch off the sources (voltage sources become wires)",
+          "Find the resistance seen looking into the terminals",
+          "Draw the source and resistor in series, and reconnect the load"
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "When finding the Thevenin resistance, what replaces an ideal voltage source?",
+      "hints": [],
+      "solution": "Switching a voltage source off means setting it to 0 V, and a 0 V source is the same as a wire. (A current source set to 0 A is a gap.)",
+      "type": "mcq",
+      "choices": [
+        "A wire (short circuit)",
+        "A gap (open circuit)",
+        "A $1\\ \\Omega$ resistor",
+        "It is left unchanged"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "A $9$ V source is in series with $1\\ \\text{k}\\Omega$, followed by $2\\ \\text{k}\\Omega$ to ground. The output is taken across the $2\\ \\text{k}\\Omega$. What is $V_\\text{th}$?",
+      "hints": [],
+      "solution": "$9 \\times \\dfrac{2}{1 + 2} = 6$ V.",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "p3",
+      "difficulty": 2,
+      "prompt": "For the circuit of the previous problem, what is $R_\\text{th}$ in ohms?",
+      "hints": [
+        "Replace the source with a wire and look in from the output."
+      ],
+      "solution": "With the source replaced by a wire, $1\\ \\text{k}\\Omega$ and $2\\ \\text{k}\\Omega$ are in parallel: $\\dfrac{1000 \\times 2000}{3000} \\approx 667\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 666.7,
+      "tolerance": {
+        "abs": 2
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "A $1\\ \\text{k}\\Omega$ load is connected to that circuit ($V_\\text{th} = 6$ V, $R_\\text{th} = 667\\ \\Omega$). What current flows through the load, in **milliamperes**?",
+      "hints": [
+        "Use the equivalent: one source, two resistors in series."
+      ],
+      "solution": "$I = \\dfrac{6}{666.7 + 1000} = 0.0036$ A $= 3.6$ mA.",
+      "type": "numeric",
+      "answer": 3.6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "mA"
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "A circuit has $V_\\text{th} = 12$ V and $R_\\text{th} = 6\\ \\Omega$. What is the maximum power it can deliver to a load?",
+      "hints": [
+        "The load that takes the most power has $R_L = R_\\text{th}$."
+      ],
+      "solution": "Maximum power occurs at $R_L = R_\\text{th} = 6\\ \\Omega$: $P_\\text{max} = \\dfrac{V_\\text{th}^2}{4R_\\text{th}} = \\dfrac{144}{24} = 6$ W. (Check: $I = 12/12 = 1$ A, and $I^2 R_L = 6$ W.)",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.03
+      },
+      "unit": "W"
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "A $12$ V source is in series with $4\\ \\Omega$, leading to node A. From A, a $12\\ \\Omega$ resistor goes to ground and a $3\\ \\Omega$ resistor leads to the output terminal (the other output terminal is ground). What is $R_\\text{th}$?",
+      "hints": [
+        "Start at the output terminal and walk back into the circuit.",
+        "The 3 ohm resistor is in series with whatever lies behind it."
+      ],
+      "solution": "Replace the source with a wire. Looking in from the output you pass through $3\\ \\Omega$, then meet $4\\ \\Omega$ and $12\\ \\Omega$ in parallel: $3 + \\dfrac{4 \\times 12}{16} = 3 + 3 = 6\\ \\Omega$. (No current flows in the $3\\ \\Omega$ with the output open, so $V_\\text{th} = 12 \\times \\frac{12}{16} = 9$ V.)",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "Ω"
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 2,
+      "prompt": "How do you find $R_\\text{th}$?",
+      "hints": [],
+      "solution": "With independent sources switched off, what remains between the terminals is the Thevenin resistance.",
+      "type": "mcq",
+      "choices": [
+        "Switch off the sources and find the resistance between the terminals",
+        "Add up every resistor in the circuit",
+        "Measure the resistance of the load",
+        "Divide the source voltage by the load current"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "A $20$ V source is in series with $6\\ \\Omega$, and a $4\\ \\Omega$ resistor is connected across the output. What is $V_\\text{th}$?",
+      "hints": [],
+      "solution": "$20 \\times \\dfrac{4}{6 + 4} = 8$ V.",
+      "type": "numeric",
+      "answer": 8,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "For that circuit, what is $R_\\text{th}$?",
+      "hints": [],
+      "solution": "$\\dfrac{6 \\times 4}{10} = 2.4\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 2.4,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "A $5.6\\ \\Omega$ load is connected to that circuit ($V_\\text{th} = 8$ V, $R_\\text{th} = 2.4\\ \\Omega$). What current flows through the load?",
+      "hints": [],
+      "solution": "$\\dfrac{8}{2.4 + 5.6} = 1$ A.",
+      "type": "numeric",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "For which load resistance does a circuit deliver the most power to the load?",
+      "hints": [],
+      "solution": "Maximum power transfer happens when the load matches the Thevenin resistance. A short circuit gets current but no voltage; a huge load gets voltage but almost no current.",
+      "type": "mcq",
+      "choices": [
+        "$R_L = R_\\text{th}$",
+        "$R_L = 0$",
+        "$R_L$ as large as possible",
+        "$R_L = 2R_\\text{th}$"
+      ],
+      "answer": 0
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "An $18$ V source is in series with $6\\ \\Omega$, leading to a node. From the node, $3\\ \\Omega$ goes to ground and $2\\ \\Omega$ leads to the output terminal. What is $V_\\text{th}$?",
+      "hints": [],
+      "solution": "With the output open no current flows in the $2\\ \\Omega$, so the output equals the node voltage: $18 \\times \\dfrac{3}{9} = 6$ V.",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "For that circuit, what is $R_\\text{th}$?",
+      "hints": [],
+      "solution": "$2 + \\dfrac{6 \\times 3}{9} = 2 + 2 = 4\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "An $8\\ \\Omega$ load is connected to that circuit ($V_\\text{th} = 6$ V, $R_\\text{th} = 4\\ \\Omega$). What is the voltage across the load?",
+      "hints": [],
+      "solution": "$6 \\times \\dfrac{8}{4 + 8} = 4$ V.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "What is the Norton current of that circuit?",
+      "hints": [],
+      "solution": "$I_N = V_\\text{th}/R_\\text{th} = 6/4 = 1.5$ A.",
+      "type": "numeric",
+      "answer": 1.5,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "What is the maximum power that circuit can deliver to any load?",
+      "hints": [],
+      "solution": "$\\dfrac{V_\\text{th}^2}{4R_\\text{th}} = \\dfrac{36}{16} = 2.25$ W.",
+      "type": "numeric",
+      "answer": 2.25,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "W"
+    }
+  ]
 }

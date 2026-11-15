@@ -3,11 +3,760 @@
   "track": "cs",
   "title": "The CPU: fetch, decode, execute",
   "summary": "Registers, the program counter, and the loop every processor runs.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "cs.binary-alu"
   ],
   "estimatedMinutes": 40,
   "difficulty": 2,
-  "strand": "Hardware tour"
+  "strand": "Hardware tour",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "parts",
+      "title": "What is inside a CPU",
+      "body": "A processor is built from the pieces you have already met, plus some storage.\n\n- **Registers** (R0 to R3 here): a handful of very fast storage slots inside the CPU.\n- **Memory**: many more numbered cells, slower to reach.\n- The **ALU**, which does the arithmetic.\n- The **program counter (PC)**: the number of the next instruction to run.\n- The **instruction register (IR)**: the instruction being worked on now.\n\nThe program is just a list of simple instructions held in memory. The CPU repeats one loop for ever: **fetch** the instruction the PC points to, **decode** what it means, **execute** it.\n\nPress **Step** repeatedly and read the explanation each time. This program loads 5 and 7, adds them, and stores the result in memory cell 0.",
+      "widget": {
+        "type": "cpu-sim",
+        "props": {
+          "program": [
+            "LOADI R0, 5",
+            "LOADI R1, 7",
+            "ADD R0, R1",
+            "STORE R0, 0",
+            "HALT"
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-cycle",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "Put the stages of one instruction cycle in order.",
+        "hints": [],
+        "solution": "The CPU fetches, moves the program counter on to the next instruction, decodes, then executes. Because the counter has already moved on, the cycle simply repeats to run the next instruction.",
+        "type": "order",
+        "items": [
+          "Fetch: copy the instruction the program counter points to into the instruction register",
+          "Add 1 to the program counter",
+          "Decode: work out which operation and which registers are involved",
+          "Execute: carry out the operation"
+        ]
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-result",
+      "question": {
+        "id": "s2",
+        "difficulty": 2,
+        "prompt": "After the program above has finished, what number is in memory cell 0?",
+        "hints": [
+          "Run the program to the end and look at the data memory."
+        ],
+        "solution": "R0 holds 5, R1 holds 7. ADD R0, R1 puts 5 + 7 = 12 into R0, and STORE R0, 0 copies it to memory cell 0.",
+        "type": "numeric",
+        "answer": 12,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "jumps",
+      "title": "Jumps make loops and decisions",
+      "body": "If the program counter only ever counted upward, a program could run each instruction once and stop. A **jump** instruction writes a new value into the PC, so the next fetch comes from somewhere else.\n\nA **conditional jump** does that only if a flag is set. `JNZ 3` means \"jump to instruction 3 if the last result was **n**ot **z**ero\". That one idea gives a computer loops and if-statements.\n\nThis program adds up $n + (n-1) + \\dots + 1$, where $n$ is the number in memory cell 0 (here 3):\n\n```\n0  LOADI R0, 0\n1  LOAD R1, 0\n2  LOADI R2, 1\n3  ADD R0, R1\n4  SUB R1, R2\n5  JNZ 3\n6  STORE R0, 1\n7  HALT\n```\n\nPress **Run** and watch the PC jump back from instruction 5 to instruction 3 until R1 reaches zero.",
+      "widget": {
+        "type": "cpu-sim",
+        "props": {
+          "program": [
+            "LOADI R0, 0",
+            "LOAD R1, 0",
+            "LOADI R2, 1",
+            "ADD R0, R1",
+            "SUB R1, R2",
+            "JNZ 3",
+            "STORE R0, 1",
+            "HALT"
+          ],
+          "memory": {
+            "0": 3
+          }
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-loop",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "When that program finishes with 3 in memory cell 0, what number has it stored in memory cell 1?",
+        "hints": [
+          "Run it and read memory cell 1."
+        ],
+        "solution": "R0 accumulates $3 + 2 + 1 = 6$, and STORE R0, 1 writes it to cell 1.",
+        "type": "numeric",
+        "answer": 6,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-jnz",
+      "question": {
+        "id": "s4",
+        "difficulty": 2,
+        "prompt": "When does the instruction JNZ 3 change the program counter?",
+        "hints": [],
+        "solution": "JNZ means \"jump if not zero\". The SUB just before it sets the zero flag when R1 reaches 0; until then the flag is clear and the jump is taken.",
+        "type": "mcq",
+        "choices": [
+          "When the zero flag is clear, because the last arithmetic result was not zero",
+          "When the zero flag is set",
+          "Always",
+          "When R3 contains zero"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "code-tabs",
+      "id": "languages",
+      "title": "Every language ends up here",
+      "body": "You will rarely write instructions like `ADD R0, R1` by hand. You write in a higher-level language, and a **compiler** or **interpreter** turns it into instructions like these.\n\nHere is the same loop, adding 1 to 4, in five languages. Pick the one you know best; your choice is remembered across lessons. The **C** tab has a recorded step-through showing the variables in memory as the loop runs.",
+      "tabs": [
+        {
+          "language": "python",
+          "runnable": true,
+          "code": "total = 0\nfor i in range(1, 5):\n    total += i\nprint(total)\n",
+          "note": "Python hides the registers and memory entirely. Press Run: this executes in your browser."
+        },
+        {
+          "language": "java",
+          "code": "public class Main {\n    public static void main(String[] args) {\n        int total = 0;\n        for (int i = 1; i <= 4; i++) {\n            total += i;\n        }\n        System.out.println(total);\n    }\n}\n",
+          "note": "Java compiles to bytecode for a virtual machine, which in turn runs a fetch-decode-execute loop of its own."
+        },
+        {
+          "language": "cpp",
+          "code": "#include <iostream>\n\nint main() {\n    int total = 0;\n    for (int i = 1; i <= 4; i++) {\n        total += i;\n    }\n    std::cout << total << \"\\n\";\n    return 0;\n}\n",
+          "note": "C++ compiles straight to machine instructions. A compiler would very likely keep `total` and `i` in registers."
+        },
+        {
+          "language": "c",
+          "code": "#include <stdio.h>\n\nint main(void) {\n    int total = 0;\n    for (int i = 1; i <= 4; i++) {\n        total += i;\n    }\n    printf(\"%d\\n\", total);\n    return 0;\n}\n",
+          "note": "Step through the recording. Each pass round the loop is the same compare, add and jump that you stepped through on the toy CPU.",
+          "trace": [
+            {
+              "line": 4,
+              "note": "main starts. total is created on the stack and set to 0.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "0"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 5,
+              "note": "The loop variable i is created and set to 1. Is 1 <= 4? Yes, so enter the loop.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "0"
+                    },
+                    {
+                      "name": "i",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 6,
+              "note": "total = 0 + 1.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "1"
+                    },
+                    {
+                      "name": "i",
+                      "value": "1"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 5,
+              "note": "i becomes 2. Is 2 <= 4? Yes: jump back into the loop body.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "1"
+                    },
+                    {
+                      "name": "i",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 6,
+              "note": "total = 1 + 2.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "3"
+                    },
+                    {
+                      "name": "i",
+                      "value": "2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 5,
+              "note": "i becomes 3. Is 3 <= 4? Yes.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "3"
+                    },
+                    {
+                      "name": "i",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 6,
+              "note": "total = 3 + 3.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "6"
+                    },
+                    {
+                      "name": "i",
+                      "value": "3"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 5,
+              "note": "i becomes 4. Is 4 <= 4? Yes.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "6"
+                    },
+                    {
+                      "name": "i",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 6,
+              "note": "total = 6 + 4.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "10"
+                    },
+                    {
+                      "name": "i",
+                      "value": "4"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 5,
+              "note": "i becomes 5. Is 5 <= 4? No: the conditional jump is not taken and the loop ends.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "10"
+                    },
+                    {
+                      "name": "i",
+                      "value": "5"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "line": 8,
+              "note": "i no longer exists. printf writes the value of total.",
+              "stack": [
+                {
+                  "name": "main",
+                  "vars": [
+                    {
+                      "name": "total",
+                      "value": "10"
+                    }
+                  ]
+                }
+              ],
+              "stdout": "10\n"
+            }
+          ]
+        },
+        {
+          "language": "rust",
+          "code": "fn main() {\n    let mut total = 0;\n    for i in 1..=4 {\n        total += i;\n    }\n    println!(\"{}\", total);\n}\n",
+          "note": "Rust also compiles to machine instructions. `mut` is required because `total` changes."
+        }
+      ]
+    },
+    {
+      "kind": "question",
+      "id": "q-predict",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "This C program is like the one you just stepped through, with different numbers.",
+        "hints": [
+          "i goes up by 2 each time.",
+          "List the values of i for which the loop body runs."
+        ],
+        "solution": "i takes the values 2, 4 and 6 (after 6 it becomes 8, which fails the test). total = 2 + 4 + 6 = 12.",
+        "type": "predict-output",
+        "language": "c",
+        "code": "#include <stdio.h>\n\nint main(void) {\n    int total = 0;\n    for (int i = 2; i <= 6; i += 2) {\n        total += i;\n    }\n    printf(\"%d\\n\", total);\n    return 0;\n}\n",
+        "answer": "12"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "speed",
+      "title": "How fast, and what comes next",
+      "body": "A clock signal drives the cycle. A modern processor's clock ticks billions of times per second, and real CPUs get far more out of each tick than our toy does:\n\n- **Pipelining** overlaps the stages: while one instruction executes, the next is being decoded and a third is being fetched.\n- **Caches** keep recently used memory close to the CPU, because main memory is slow by comparison.\n- **Branch prediction** guesses which way a conditional jump will go, so the pipeline does not have to wait.\n\nThose are the next topics on the hardware tour. They are all refinements of the loop you just stepped through."
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s6",
+        "difficulty": 3,
+        "prompt": "Explain the job of the program counter, and how a jump instruction uses it.",
+        "hints": [],
+        "solution": "The program counter holds the address (number) of the next instruction to fetch. Normally it increases by one after each fetch, so instructions run in order. A jump instruction writes a new address into the program counter, so the next fetch comes from a different place in the program. Conditional jumps do this only when a flag is set, which is how loops and decisions work.",
+        "type": "explain",
+        "modelAnswer": "The program counter holds the address (number) of the next instruction to fetch. Normally it increases by one after each fetch, so instructions run in order. A jump instruction writes a new address into the program counter, so the next fetch comes from a different place in the program. Conditional jumps do this only when a flag is set, which is how loops and decisions work.",
+        "checklist": [
+          {
+            "point": "Says the PC holds the address of the next instruction",
+            "keywords": [
+              [
+                "next instruction",
+                "address",
+                "which instruction",
+                "location",
+                "points"
+              ]
+            ]
+          },
+          {
+            "point": "Says it normally counts up by one",
+            "keywords": [
+              [
+                "increase",
+                "increment",
+                "add 1",
+                "adds one",
+                "plus one",
+                "count",
+                "in order",
+                "next one"
+              ]
+            ]
+          },
+          {
+            "point": "Says a jump writes a new value into the PC",
+            "keywords": [
+              [
+                "jump"
+              ],
+              [
+                "new value",
+                "new address",
+                "change",
+                "write",
+                "set",
+                "overwrite",
+                "different"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "Which register holds the address of the next instruction to be fetched?",
+      "hints": [],
+      "solution": "The program counter (PC). The instruction register holds the instruction itself once it has been fetched.",
+      "type": "mcq",
+      "choices": [
+        "The program counter",
+        "The instruction register",
+        "R0",
+        "The zero flag"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "What is in R0 after this program runs?\n\n```\n0  LOADI R0, 9\n1  LOADI R1, 4\n2  SUB R0, R1\n3  HALT\n```\n\n",
+      "hints": [],
+      "solution": "SUB R0, R1 computes R0 - R1 = 9 - 4 = 5 and stores it in R0.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p3",
+      "difficulty": 3,
+      "prompt": "This Python program imitates the fetch part of the cycle.",
+      "hints": [
+        "print with two arguments puts a space between them."
+      ],
+      "solution": "The loop fetches `program[pc]`, prints the counter and the instruction, then adds 1 to the counter, until the counter runs off the end.",
+      "type": "predict-output",
+      "language": "python",
+      "code": "pc = 0\nprogram = [\"A\", \"B\", \"C\"]\nwhile pc < len(program):\n    print(pc, program[pc])\n    pc += 1\n",
+      "answer": "0 A\n1 B\n2 C"
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "How many instructions does the summing program execute in total when memory cell 0 contains 3? (Count every instruction that runs, including HALT.)\n\n```\n0  LOADI R0, 0\n1  LOAD R1, 0\n2  LOADI R2, 1\n3  ADD R0, R1\n4  SUB R1, R2\n5  JNZ 3\n6  STORE R0, 1\n7  HALT\n```\n\n",
+      "hints": [
+        "Split the program into set-up, loop body and ending.",
+        "The loop body runs once for each value of R1: 3, 2 and 1."
+      ],
+      "solution": "Three set-up instructions (0 to 2) run once. The loop body (3, 4, 5) runs three times: $3 \\times 3 = 9$. Then STORE and HALT: 2 more. Total $3 + 9 + 2 = 14$.",
+      "type": "numeric",
+      "answer": 14,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "Registers in this CPU are 8 bits wide. What is in R0 after this program?\n\n```\n0  LOADI R0, 200\n1  LOADI R1, 100\n2  ADD R0, R1\n3  HALT\n```\n\n",
+      "hints": [
+        "What is the largest number 8 bits can hold?",
+        "The part worth 256 is lost."
+      ],
+      "solution": "$200 + 100 = 300$, which needs 9 bits. Only the low 8 bits are kept: $300 - 256 = 44$.",
+      "type": "numeric",
+      "answer": 44,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "Write `run(program)`, a tiny interpreter for a machine with one accumulator that starts at 0. `program` is a list of strings. The instructions are: `\"ADD n\"` (add n to the accumulator), `\"SUB n\"` (subtract n), `\"JMP k\"` (continue from instruction k), `\"JNZ k\"` (jump to k only if the accumulator is not zero) and `\"HALT\"`. Start at instruction 0. Return the accumulator when `HALT` is reached or the program counter runs off the end.",
+      "hints": [
+        "Loop while pc is inside the program.",
+        "Add 1 to pc straight after fetching, before you execute.",
+        "A jump just assigns a new value to pc."
+      ],
+      "solution": "Follow the cycle literally: fetch `program[pc]`, add 1 to `pc`, decode by splitting the string, then execute. Incrementing `pc` *before* executing means a jump can simply overwrite it.",
+      "type": "code",
+      "entry": "run",
+      "variants": {
+        "python": {
+          "starter": "def run(program):\n    acc = 0\n    pc = 0\n    # fetch, decode, execute until HALT\n    return acc\n",
+          "reference": "def run(program):\n    acc = 0\n    pc = 0\n    while 0 <= pc < len(program):\n        parts = program[pc].split()\n        op = parts[0]\n        pc += 1\n        if op == \"HALT\":\n            break\n        n = int(parts[1])\n        if op == \"ADD\":\n            acc += n\n        elif op == \"SUB\":\n            acc -= n\n        elif op == \"JMP\":\n            pc = n\n        elif op == \"JNZ\":\n            if acc != 0:\n                pc = n\n    return acc\n"
+        },
+        "javascript": {
+          "starter": "function run(program) {\n  let acc = 0;\n  let pc = 0;\n  // fetch, decode, execute until HALT\n  return acc;\n}\n",
+          "reference": "function run(program) {\n  let acc = 0;\n  let pc = 0;\n  while (pc >= 0 && pc < program.length) {\n    const [op, arg] = program[pc].split(\" \");\n    pc += 1;\n    if (op === \"HALT\") break;\n    const n = Number(arg);\n    if (op === \"ADD\") acc += n;\n    else if (op === \"SUB\") acc -= n;\n    else if (op === \"JMP\") pc = n;\n    else if (op === \"JNZ\" && acc !== 0) pc = n;\n  }\n  return acc;\n}\n"
+        }
+      },
+      "tests": [
+        {
+          "args": [
+            [
+              "ADD 5",
+              "ADD 7",
+              "HALT"
+            ]
+          ],
+          "expected": 12,
+          "hidden": false
+        },
+        {
+          "args": [
+            [
+              "ADD 3",
+              "SUB 1",
+              "JNZ 1",
+              "HALT"
+            ]
+          ],
+          "expected": 0,
+          "hidden": false
+        },
+        {
+          "args": [
+            [
+              "ADD 2",
+              "JMP 3",
+              "ADD 100",
+              "ADD 1"
+            ]
+          ],
+          "expected": 3,
+          "hidden": true
+        },
+        {
+          "args": [
+            [
+              "HALT",
+              "ADD 9"
+            ]
+          ],
+          "expected": 0,
+          "hidden": true
+        },
+        {
+          "args": [
+            []
+          ],
+          "expected": 0,
+          "hidden": true
+        },
+        {
+          "args": [
+            [
+              "SUB 4",
+              "JNZ 3",
+              "ADD 50",
+              "ADD 1",
+              "HALT"
+            ]
+          ],
+          "expected": -3,
+          "hidden": true
+        },
+        {
+          "args": [
+            [
+              "ADD 1",
+              "JNZ 3",
+              "HALT",
+              "SUB 1",
+              "JNZ 0",
+              "ADD 8"
+            ]
+          ],
+          "expected": 8,
+          "hidden": true
+        }
+      ]
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 2,
+      "prompt": "What does the instruction register hold?",
+      "hints": [],
+      "solution": "Fetch copies the current instruction into the instruction register; the program counter holds the address of the next one.",
+      "type": "mcq",
+      "choices": [
+        "The instruction currently being decoded and executed",
+        "The address of the next instruction",
+        "The result of the last calculation",
+        "The number of instructions run so far"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "After this program, what is the value of the zero flag (0 or 1)?\n\n```\n0  LOADI R0, 3\n1  LOADI R1, 3\n2  SUB R0, R1\n3  HALT\n```\n\n",
+      "hints": [],
+      "solution": "$3 - 3 = 0$, so the SUB sets the zero flag to 1.",
+      "type": "numeric",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "Immediately after the fetch stage, where does the program counter point?",
+      "hints": [],
+      "solution": "The counter is incremented as part of fetching, so it is already lined up for the next cycle.",
+      "type": "mcq",
+      "choices": [
+        "At the instruction after the one just fetched",
+        "At the instruction just fetched",
+        "At instruction 0",
+        "At the last instruction in the program"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "What is in R0 after this program?\n\n```\n0  LOADI R0, 2\n1  ADD R0, R0\n2  ADD R0, R0\n3  HALT\n```\n\n",
+      "hints": [],
+      "solution": "Each ADD R0, R0 doubles R0: 2, then 4, then 8.",
+      "type": "numeric",
+      "answer": 8,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "How does a JMP instruction make the CPU continue from a different place?",
+      "hints": [],
+      "solution": "The next fetch always uses the program counter, so changing the counter changes what runs next.",
+      "type": "mcq",
+      "choices": [
+        "It writes a new value into the program counter",
+        "It rearranges the instructions in memory",
+        "It clears the instruction register",
+        "It sets the zero flag"
+      ],
+      "answer": 0
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "What is in R0 when this program halts?\n\n```\n0  LOADI R0, 0\n1  LOADI R1, 5\n2  LOADI R2, 1\n3  ADD R0, R1\n4  SUB R1, R2\n5  JNZ 3\n6  HALT\n```\n\n",
+      "hints": [],
+      "solution": "R0 accumulates $5 + 4 + 3 + 2 + 1 = 15$ before R1 reaches zero.",
+      "type": "numeric",
+      "answer": 15,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "How many instructions does that program execute in total, including HALT?",
+      "hints": [],
+      "solution": "Three set-up instructions, the three-instruction loop body five times, then HALT: $3 + 15 + 1 = 19$.",
+      "type": "numeric",
+      "answer": 19,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t3",
+      "difficulty": 3,
+      "prompt": "What is the \"stored-program\" idea?",
+      "hints": [],
+      "solution": "Because instructions live in memory like any other data, the same hardware can run any program, and a program (such as a compiler) can produce other programs.",
+      "type": "mcq",
+      "choices": [
+        "Instructions are kept in memory as numbers, just like data",
+        "Programs are stored on a hard disk rather than on paper",
+        "Each program has its own dedicated processor",
+        "The CPU stores the result of every instruction"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "Registers are 8 bits wide and hold unsigned values. What is in R0 after this program?\n\n```\n0  LOADI R0, 5\n1  LOADI R1, 10\n2  SUB R0, R1\n3  HALT\n```\n\n",
+      "hints": [],
+      "solution": "$5 - 10 = -5$. Kept in 8 bits that is $256 - 5 = 251$ (the same bit pattern as $-5$ in two's complement).",
+      "type": "numeric",
+      "answer": 251,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "Predict the output.",
+      "hints": [],
+      "solution": "x goes 1, 3, 9, 27. The test x < 20 fails at 27, so the loop stops and 27 is printed.",
+      "type": "predict-output",
+      "language": "c",
+      "code": "#include <stdio.h>\n\nint main(void) {\n    int x = 1;\n    while (x < 20) {\n        x = x * 3;\n    }\n    printf(\"%d\\n\", x);\n    return 0;\n}\n",
+      "answer": "27"
+    }
+  ]
 }

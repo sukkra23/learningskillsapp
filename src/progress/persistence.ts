@@ -5,6 +5,7 @@ const DB = 'orbit';
 const STORE = 'kv';
 const KEY = 'progress';
 const LS_FALLBACK = 'orbit-progress';
+const LS_PENDING = 'orbit-pending';
 
 let dbPromise: Promise<IDBPDatabase> | null = null;
 const db = () => (dbPromise ??= openDB(DB, 1, { upgrade(d) { d.createObjectStore(STORE); } }));
@@ -22,7 +23,27 @@ export function parseProgress(raw: unknown): { ok: true; data: ProgressData } | 
   return { ok: false, error: r.error.issues.slice(0, 3).map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') };
 }
 
+/**
+ * IndexedDB writes are asynchronous and can be cut off when a tab closes or
+ * navigates. On page hide the latest state is therefore also written
+ * synchronously to localStorage; the next load picks it up and clears it.
+ */
+export function savePendingSync(data: ProgressData): void {
+  try { localStorage.setItem(LS_PENDING, JSON.stringify(data)); } catch { /* storage unavailable */ }
+}
+function takePending(): ProgressData | null {
+  try {
+    const text = localStorage.getItem(LS_PENDING);
+    if (!text) return null;
+    localStorage.removeItem(LS_PENDING);
+    const r = parseProgress(JSON.parse(text));
+    return r.ok ? r.data : null;
+  } catch { return null; }
+}
+
 export async function loadProgress(): Promise<ProgressData> {
+  const pending = takePending();
+  if (pending) { await saveProgress(pending); return pending; }
   let raw: unknown;
   try { raw = await (await db()).get(STORE, KEY); }
   catch { try { raw = JSON.parse(localStorage.getItem(LS_FALLBACK) ?? 'null'); } catch { raw = null; } }

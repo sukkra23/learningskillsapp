@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import type { TrackId } from '../content/schema';
-import { loadProgress, saveProgress } from './persistence';
+import { loadProgress, savePendingSync, saveProgress } from './persistence';
 import * as R from './reducers';
 import { dayString } from './sm2';
 import { emptyProgress, type DiagnosticRecord, type ProgressData } from './types';
@@ -54,5 +54,5 @@ export async function initProgress(): Promise<void> {
     timer = setTimeout(() => void saveProgress(snapshot(s)), 250);
   });
   // Do not lose the last change if the tab is closed inside the debounce window.
-  window.addEventListener('pagehide', () => void saveProgress(snapshot()));
+  window.addEventListener('pagehide', () => savePendingSync(snapshot()));
 }

@@ -3,11 +3,416 @@
   "track": "engineering",
   "title": "Kirchhoff's laws",
   "summary": "Current and voltage laws, and solving any resistive circuit with nodes and loops.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [
     "engineering.ohms-law"
   ],
   "estimatedMinutes": 40,
   "difficulty": 2,
-  "strand": "Electrical"
+  "strand": "Electrical",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "kcl",
+      "title": "Kirchhoff's current law",
+      "body": "Series and parallel rules run out quickly: many circuits are neither. Two laws handle every case.\n\n**Kirchhoff's current law (KCL):** the total current flowing into any junction (a **node**) equals the total flowing out.\n\nIt is just conservation of charge: charge cannot build up at a point. In this circuit 500 mA leaves the source, reaches the top node, and splits into 300 mA and 200 mA. Change a resistor: the split changes, but the branch currents always add up to the source current.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "parallel"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-kcl",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "Currents of $3$ A and $2$ A flow **into** a node. Two wires carry current **out**; one of them carries $1$ A. What current does the other carry?",
+        "hints": [
+          "Total in equals total out."
+        ],
+        "solution": "In $= 3 + 2 = 5$ A. Out $= 1 + I$. So $I = 4$ A.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "kvl",
+      "title": "Kirchhoff's voltage law",
+      "body": "**Kirchhoff's voltage law (KVL):** going once around any closed loop, the voltage rises and drops add up to zero.\n\nIt is conservation of energy: a charge that returns to where it started has the same energy it began with. In this loop the source raises the voltage by 9 V, and the two resistors drop it by 3 V and 6 V: $+9 - 3 - 6 = 0$.\n\nSign rule when walking round a loop: crossing a resistor **in the direction of the current** is a drop of $IR$; crossing a source from $-$ to $+$ is a rise.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "series"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-kvl",
+      "question": {
+        "id": "s2",
+        "difficulty": 1,
+        "prompt": "A loop contains a $12$ V source and three resistors. The drops across two of them are $5$ V and $4$ V. What is the drop across the third?",
+        "hints": [
+          "The drops must add up to the source voltage."
+        ],
+        "solution": "$12 - 5 - 4 - V_3 = 0$, so $V_3 = 3$ V.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "nodal",
+      "title": "Nodal analysis",
+      "body": "KCL becomes a method called **nodal analysis**:\n\n1. Choose one node as **ground** (0 V).\n2. Give each remaining unknown node a voltage name, such as $V$.\n3. At each unknown node write KCL, using Ohm's law for each branch current: (voltage difference) $\\div$ (resistance).\n4. Solve the equations.\n\nIn this circuit the only unknown is the middle node $V$. Current arrives from the 10 V source through $2\\ \\Omega$ and leaves through two $4\\ \\Omega$ branches, one to ground and one towards the 6 V source:\n\n$$\\frac{10 - V}{2} = \\frac{V}{4} + \\frac{V - 6}{4}$$\n\nMultiply by 4: $20 - 2V = 2V - 6$, so $V = 6.5$ V. That is the value shown on the middle node.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "two-loop"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-order",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "Put the steps of nodal analysis in order.",
+        "hints": [],
+        "solution": "Ground first, so that every other voltage has a reference. Then name the unknowns, write one KCL equation per unknown node, solve, and finally use Ohm's law on any branch you care about.",
+        "type": "order",
+        "items": [
+          "Choose a ground node",
+          "Label the unknown node voltages",
+          "Write Kirchhoff's current law at each unknown node, using Ohm's law for each branch",
+          "Solve the equations for the node voltages",
+          "Use the node voltages to find any branch current"
+        ]
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-branch",
+      "question": {
+        "id": "s4",
+        "difficulty": 3,
+        "prompt": "In the circuit above the middle node is at $6.5$ V. What current flows down through the middle $4\\ \\Omega$ resistor to ground?",
+        "hints": [
+          "Ohm's law on that one branch: voltage difference divided by resistance."
+        ],
+        "solution": "$I = \\dfrac{6.5 - 0}{4} = 1.625$ A, shown in the circuit as 1.62 A.",
+        "type": "numeric",
+        "answer": 1.625,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-sign",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "You are writing KVL around a loop and you cross a resistor $R$ **in the same direction as the current** $I$. What do you write for that element?",
+        "hints": [],
+        "solution": "Current flows from higher voltage to lower voltage through a resistor, so moving with the current you go downhill by IR.",
+        "type": "mcq",
+        "choices": [
+          "A drop: $-IR$",
+          "A rise: $+IR$",
+          "Zero",
+          "A drop of $I/R$"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s6",
+        "difficulty": 3,
+        "prompt": "Each of Kirchhoff's two laws expresses a conservation law. Say which, and why.",
+        "hints": [],
+        "solution": "The current law is conservation of charge: charge cannot be created, destroyed or stored at a node, so the current flowing in must equal the current flowing out. The voltage law is conservation of energy: voltage is energy per unit charge, and a charge that goes round a closed loop returns to the same point with the same energy, so the gains and losses around the loop must sum to zero.",
+        "type": "explain",
+        "modelAnswer": "The current law is conservation of charge: charge cannot be created, destroyed or stored at a node, so the current flowing in must equal the current flowing out. The voltage law is conservation of energy: voltage is energy per unit charge, and a charge that goes round a closed loop returns to the same point with the same energy, so the gains and losses around the loop must sum to zero.",
+        "checklist": [
+          {
+            "point": "Links the current law to conservation of charge",
+            "keywords": [
+              [
+                "charge"
+              ]
+            ]
+          },
+          {
+            "point": "Links the voltage law to conservation of energy",
+            "keywords": [
+              [
+                "energy"
+              ]
+            ]
+          },
+          {
+            "point": "Says what goes in must come out, or that the loop sum is zero",
+            "keywords": [
+              [
+                "in must",
+                "equal",
+                "sum to zero",
+                "add up to zero",
+                "add to zero",
+                "same"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "$5$ A flows into a node. One outgoing wire carries $2$ A. What does the other outgoing wire carry?",
+      "hints": [],
+      "solution": "$5 = 2 + I$, so $I = 3$ A.",
+      "type": "numeric",
+      "answer": 3,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "A $9$ V battery drives two resistors in series. The drop across the first is $3.5$ V. What is the drop across the second?",
+      "hints": [],
+      "solution": "KVL: $9 - 3.5 - V_2 = 0$, so $V_2 = 5.5$ V.",
+      "type": "numeric",
+      "answer": 5.5,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "V"
+    },
+    {
+      "id": "p3",
+      "difficulty": 3,
+      "prompt": "A $12$ V source is connected through a $2\\ \\Omega$ resistor to a node. From that node, two separate $4\\ \\Omega$ resistors go to ground. What is the node voltage?",
+      "hints": [
+        "Current in through the 2 ohm resistor equals the sum of the currents out through the two 4 ohm resistors."
+      ],
+      "solution": "KCL at the node: $\\dfrac{12 - V}{2} = \\dfrac{V}{4} + \\dfrac{V}{4}$. Multiply by 4: $24 - 2V = 2V$, so $V = 6$ V.",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "A node is connected to a $6$ V source through $3\\ \\Omega$, to a $12$ V source through $6\\ \\Omega$, and to ground through $2\\ \\Omega$. (Both sources have their negative terminals grounded.) What is the node voltage?",
+      "hints": [
+        "Two currents flow in (one from each source) and one flows out to ground.",
+        "Multiply through by 6 to clear the fractions."
+      ],
+      "solution": "KCL: $\\dfrac{6 - V}{3} + \\dfrac{12 - V}{6} = \\dfrac{V}{2}$. Multiply by 6: $12 - 2V + 12 - V = 3V$, so $24 = 6V$ and $V = 4$ V.",
+      "type": "numeric",
+      "answer": 4,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "In the circuit of the previous problem (node at $4$ V), what current does the $12$ V source supply?",
+      "hints": [],
+      "solution": "It flows through the $6\\ \\Omega$ resistor: $I = \\dfrac{12 - 4}{6} = 1.33$ A.",
+      "type": "numeric",
+      "answer": 1.333,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "A $10$ V source connects through $1\\ \\Omega$ to node A. Node A connects to ground through $2\\ \\Omega$, and to node B through $2\\ \\Omega$. Node B connects to ground through $2\\ \\Omega$. What is the voltage at node B?",
+      "hints": [
+        "There are two unknown nodes, so you need two KCL equations.",
+        "Start with node B: it gives a simple relation between A and B."
+      ],
+      "solution": "KCL at B: $\\dfrac{A - B}{2} = \\dfrac{B}{2}$, so $B = A/2$.\n\nKCL at A: $\\dfrac{10 - A}{1} = \\dfrac{A}{2} + \\dfrac{A - B}{2} = \\dfrac{A}{2} + \\dfrac{A}{4}$, so $10 = 1.75A$ and $A = 5.714$ V.\n\nTherefore $B = 2.857$ V.",
+      "type": "numeric",
+      "answer": 2.857,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "V"
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 1,
+      "prompt": "$7$ A flows into a node and splits into two branches. One branch carries $4$ A. What does the other carry?",
+      "hints": [],
+      "solution": "$7 - 4 = 3$ A.",
+      "type": "numeric",
+      "answer": 3,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "A loop has a $24$ V source and three resistors with drops of $10$ V, $6$ V and an unknown. What is the unknown drop?",
+      "hints": [],
+      "solution": "$24 - 10 - 6 = 8$ V.",
+      "type": "numeric",
+      "answer": 8,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "V"
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "Which statement is Kirchhoff's voltage law?",
+      "hints": [],
+      "solution": "KVL is about loops and voltages. The second option is KCL and the third is Ohm's law.",
+      "type": "mcq",
+      "choices": [
+        "The voltage changes around any closed loop add up to zero",
+        "The current into a node equals the current out",
+        "Voltage equals current times resistance",
+        "Every component in a loop has the same voltage"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "A $20$ V source is connected through $5\\ \\Omega$ to a node. Two $10\\ \\Omega$ resistors go from that node to ground. What is the node voltage?",
+      "hints": [],
+      "solution": "$\\dfrac{20 - V}{5} = \\dfrac{V}{10} + \\dfrac{V}{10}$. Multiply by 10: $40 - 2V = 2V$, so $V = 10$ V.",
+      "type": "numeric",
+      "answer": 10,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "c5",
+      "difficulty": 2,
+      "prompt": "Kirchhoff's current law is a consequence of which principle?",
+      "hints": [],
+      "solution": "Charge cannot accumulate at a node, so what flows in must flow out.",
+      "type": "mcq",
+      "choices": [
+        "Conservation of charge",
+        "Conservation of energy",
+        "Conservation of momentum",
+        "Ohm's law"
+      ],
+      "answer": 0
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 4,
+      "prompt": "A $12$ V source connects through $3\\ \\Omega$ to a node. The node connects to ground through $6\\ \\Omega$, and through another $6\\ \\Omega$ to the positive terminal of a $6$ V source (negative terminal grounded). What is the node voltage?",
+      "hints": [],
+      "solution": "$\\dfrac{12 - V}{3} = \\dfrac{V}{6} + \\dfrac{V - 6}{6}$. Multiply by 6: $24 - 2V = 2V - 6$, so $V = 7.5$ V.",
+      "type": "numeric",
+      "answer": 7.5,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "In that circuit (node at $7.5$ V), what is the size of the current through the $6$ V source?",
+      "hints": [],
+      "solution": "It flows through the $6\\ \\Omega$ between the node and the source: $\\dfrac{7.5 - 6}{6} = 0.25$ A, flowing into the source's positive terminal.",
+      "type": "numeric",
+      "answer": 0.25,
+      "tolerance": {
+        "abs": 0.005
+      },
+      "unit": "A"
+    },
+    {
+      "id": "t3",
+      "difficulty": 4,
+      "prompt": "In the same circuit, how much power does the $12$ V source deliver?",
+      "hints": [],
+      "solution": "Its current is $\\dfrac{12 - 7.5}{3} = 1.5$ A, so $P = 12 \\times 1.5 = 18$ W.",
+      "type": "numeric",
+      "answer": 18,
+      "tolerance": {
+        "abs": 0.1
+      },
+      "unit": "W"
+    },
+    {
+      "id": "t4",
+      "difficulty": 3,
+      "prompt": "A circuit has $n$ nodes. How many **independent** KCL equations can you write?",
+      "hints": [],
+      "solution": "One node is chosen as ground. Its KCL equation is just the sum of all the others, so it adds no new information.",
+      "type": "mcq",
+      "choices": [
+        "$n - 1$",
+        "$n$",
+        "$n + 1$",
+        "$2n$"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t5",
+      "difficulty": 3,
+      "prompt": "A single loop contains a $12$ V battery and a $4$ V battery connected so that they **oppose** each other, together with $3\\ \\Omega$ and $5\\ \\Omega$ resistors. What current flows?",
+      "hints": [],
+      "solution": "KVL: $12 - 4 - 3I - 5I = 0$, so $I = 8/8 = 1$ A.",
+      "type": "numeric",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    }
+  ]
 }

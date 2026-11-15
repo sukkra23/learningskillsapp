@@ -1,0 +1,370 @@
+{
+  "track": "engineering",
+  "items": [
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "basic",
+      "question": {
+        "id": "eo1",
+        "difficulty": 1,
+        "prompt": "Which quantity is measured in amperes?",
+        "hints": [],
+        "solution": "Current is the rate of flow of charge, in amperes.",
+        "type": "mcq",
+        "choices": [
+          "Current",
+          "Voltage",
+          "Resistance",
+          "Power"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "basic",
+      "question": {
+        "id": "eo2",
+        "difficulty": 1,
+        "prompt": "A current of $2$ A flows through a $5\\ \\Omega$ resistor. What is the voltage across it?",
+        "hints": [],
+        "solution": "$V = IR = 10$ V.",
+        "type": "numeric",
+        "answer": 10,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "basic",
+      "question": {
+        "id": "eo3",
+        "difficulty": 2,
+        "prompt": "What is the total resistance of $3\\ \\Omega$ and $6\\ \\Omega$ in series?",
+        "hints": [],
+        "solution": "Series resistances add.",
+        "type": "numeric",
+        "answer": 9,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "Ω"
+      }
+    },
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "basic",
+      "question": {
+        "id": "eo4",
+        "difficulty": 2,
+        "prompt": "A device draws $3$ A from a $12$ V supply. How much power does it use?",
+        "hints": [],
+        "solution": "$P = VI = 36$ W.",
+        "type": "numeric",
+        "answer": 36,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "W"
+      }
+    },
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "advanced",
+      "question": {
+        "id": "eo5",
+        "difficulty": 3,
+        "prompt": "What is the combined resistance of $3\\ \\Omega$ and $6\\ \\Omega$ in parallel?",
+        "hints": [],
+        "solution": "$18/9 = 2\\ \\Omega$.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "Ω"
+      }
+    },
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "advanced",
+      "question": {
+        "id": "eo6",
+        "difficulty": 4,
+        "prompt": "An $18$ V source feeds a $3\\ \\Omega$ resistor in series with two $6\\ \\Omega$ resistors in parallel. What current does the source supply?",
+        "hints": [],
+        "solution": "Parallel pair $= 3\\ \\Omega$; total $6\\ \\Omega$; $I = 3$ A.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "nodeId": "engineering.ohms-law",
+      "tier": "advanced",
+      "question": {
+        "id": "eo7",
+        "difficulty": 5,
+        "prompt": "In that circuit ($18$ V, $3\\ \\Omega$ in series with two $6\\ \\Omega$ in parallel), how much power is dissipated in **one** of the $6\\ \\Omega$ resistors?",
+        "hints": [],
+        "solution": "Each carries half of 3 A: $P = 1.5^2 \\times 6 = 13.5$ W.",
+        "type": "numeric",
+        "answer": 13.5,
+        "tolerance": {
+          "abs": 0.1
+        },
+        "unit": "W"
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "basic",
+      "question": {
+        "id": "ek1",
+        "difficulty": 2,
+        "prompt": "$6$ A flows into a node. One outgoing branch carries $2$ A. What does the other outgoing branch carry?",
+        "hints": [],
+        "solution": "In equals out.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "basic",
+      "question": {
+        "id": "ek2",
+        "difficulty": 2,
+        "prompt": "Going once around any closed loop in a circuit, what do the voltage rises and drops add up to?",
+        "hints": [],
+        "solution": "Kirchhoff's voltage law.",
+        "type": "mcq",
+        "choices": [
+          "Zero",
+          "The source voltage",
+          "The total current",
+          "It depends on the circuit"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "basic",
+      "question": {
+        "id": "ek3",
+        "difficulty": 3,
+        "prompt": "A loop has a $15$ V source and three resistors. Two of them drop $4$ V and $5$ V. What does the third drop?",
+        "hints": [],
+        "solution": "$15 - 4 - 5 = 6$ V.",
+        "type": "numeric",
+        "answer": 6,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "advanced",
+      "question": {
+        "id": "ek4",
+        "difficulty": 3,
+        "prompt": "A $10$ V source connects through $2\\ \\Omega$ to a node, and two $4\\ \\Omega$ resistors go from the node to ground. What is the node voltage?",
+        "hints": [],
+        "solution": "$\\dfrac{10 - V}{2} = \\dfrac{V}{2}$, so $V = 5$ V.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "advanced",
+      "question": {
+        "id": "ek5",
+        "difficulty": 4,
+        "prompt": "A node connects to a $9$ V source through $3\\ \\Omega$, to a $6$ V source through $6\\ \\Omega$, and to ground through $2\\ \\Omega$. What is the node voltage?",
+        "hints": [],
+        "solution": "$\\dfrac{9 - V}{3} + \\dfrac{6 - V}{6} = \\dfrac{V}{2} \\Rightarrow 18 - 2V + 6 - V = 3V \\Rightarrow V = 4$ V.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "advanced",
+      "question": {
+        "id": "ek6",
+        "difficulty": 4,
+        "prompt": "A single loop has a $9$ V battery and a $3$ V battery opposing each other, with a total resistance of $12\\ \\Omega$. What current flows?",
+        "hints": [],
+        "solution": "$(9 - 3)/12 = 0.5$ A.",
+        "type": "numeric",
+        "answer": 0.5,
+        "tolerance": {
+          "abs": 0.005
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "nodeId": "engineering.kirchhoff",
+      "tier": "advanced",
+      "question": {
+        "id": "ek7",
+        "difficulty": 5,
+        "prompt": "A $12$ V source connects through $2\\ \\Omega$ to node A. Node A connects to ground through $4\\ \\Omega$ and to node B through $2\\ \\Omega$. Node B connects to ground through $4\\ \\Omega$. What is the voltage at node A?",
+        "hints": [],
+        "solution": "At B: $\\dfrac{A - B}{2} = \\dfrac{B}{4}$, so $B = \\tfrac23 A$. At A: $\\dfrac{12 - A}{2} = \\dfrac{A}{4} + \\dfrac{A - B}{2} = \\dfrac{5A}{12}$, giving $A = 72/11 \\approx 6.55$ V.",
+        "type": "numeric",
+        "answer": 6.545,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "basic",
+      "question": {
+        "id": "et1",
+        "difficulty": 2,
+        "prompt": "What does a Thevenin equivalent circuit consist of?",
+        "hints": [],
+        "solution": "One source, one series resistance.",
+        "type": "mcq",
+        "choices": [
+          "A voltage source in series with a resistor",
+          "A voltage source in parallel with a resistor",
+          "Two resistors in series",
+          "A current source in series with a capacitor"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "basic",
+      "question": {
+        "id": "et2",
+        "difficulty": 3,
+        "prompt": "How is the Thevenin voltage of a circuit measured?",
+        "hints": [],
+        "solution": "It is the open-circuit voltage.",
+        "type": "mcq",
+        "choices": [
+          "As the voltage across the terminals with no load connected",
+          "As the voltage across a short circuit at the terminals",
+          "As the voltage across the load",
+          "As the largest source voltage in the circuit"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "advanced",
+      "question": {
+        "id": "et3",
+        "difficulty": 3,
+        "prompt": "A $10$ V source is in series with $5\\ \\Omega$, and a second $5\\ \\Omega$ is connected across the output. What is $V_\\text{th}$?",
+        "hints": [],
+        "solution": "An equal divider gives half the source voltage.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0.02
+        },
+        "unit": "V"
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "advanced",
+      "question": {
+        "id": "et4",
+        "difficulty": 4,
+        "prompt": "For that circuit ($10$ V, $5\\ \\Omega$ in series, $5\\ \\Omega$ across the output), what is $R_\\text{th}$?",
+        "hints": [],
+        "solution": "$5 \\parallel 5 = 2.5\\ \\Omega$.",
+        "type": "numeric",
+        "answer": 2.5,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "Ω"
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "advanced",
+      "question": {
+        "id": "et5",
+        "difficulty": 4,
+        "prompt": "A circuit has $V_\\text{th} = 12$ V and $R_\\text{th} = 4\\ \\Omega$. What current flows through a $2\\ \\Omega$ load?",
+        "hints": [],
+        "solution": "$12 / 6 = 2$ A.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "advanced",
+      "question": {
+        "id": "et6",
+        "difficulty": 5,
+        "prompt": "A circuit has $V_\\text{th} = 10$ V and $R_\\text{th} = 5\\ \\Omega$. What is the maximum power it can deliver to a load?",
+        "hints": [],
+        "solution": "$100 / 20 = 5$ W.",
+        "type": "numeric",
+        "answer": 5,
+        "tolerance": {
+          "abs": 0.03
+        },
+        "unit": "W"
+      }
+    },
+    {
+      "nodeId": "engineering.thevenin",
+      "tier": "advanced",
+      "question": {
+        "id": "et7",
+        "difficulty": 5,
+        "prompt": "A $30$ V source is in series with $10\\ \\Omega$, leading to a node. From the node, $15\\ \\Omega$ goes to ground and $4\\ \\Omega$ leads to the output terminal. What is $R_\\text{th}$?",
+        "hints": [],
+        "solution": "$4 + \\dfrac{10 \\times 15}{25} = 4 + 6 = 10\\ \\Omega$.",
+        "type": "numeric",
+        "answer": 10,
+        "tolerance": {
+          "abs": 0.03
+        },
+        "unit": "Ω"
+      }
+    }
+  ]
+}

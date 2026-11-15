@@ -3,9 +3,423 @@
   "track": "engineering",
   "title": "Ohm's law and simple circuits",
   "summary": "Voltage, current, resistance and power in series and parallel circuits.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [],
   "estimatedMinutes": 35,
   "difficulty": 1,
-  "strand": "Electrical"
+  "strand": "Electrical",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "vir",
+      "title": "Voltage, current, resistance",
+      "body": "Three quantities describe a simple circuit.\n\n- **Voltage** $V$ (volts) is the push a source gives to charge, like the pressure from a pump.\n- **Current** $I$ (amperes) is how much charge flows each second, like the flow rate in a pipe.\n- **Resistance** $R$ (ohms, $\\Omega$) is how strongly a component opposes that flow, like a narrow section of pipe.\n\n**Ohm's law** ties them together: $V = IR$, or $I = V/R$.\n\nHere a 12 V source drives a 4 $\\Omega$ resistor, so $I = 12/4 = 3$ A. Select the resistor and change its value: double the resistance and the current halves.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "single"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-ohm",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "A $9$ V battery is connected across a $3\\ \\Omega$ resistor. What current flows?",
+        "hints": [
+          "Rearrange $V = IR$ to get $I$."
+        ],
+        "solution": "$I = V/R = 9/3 = 3$ A.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "series",
+      "title": "Series: one path",
+      "body": "Components in **series** sit one after another on a single path.\n\n- The **same current** flows through every one of them: there is nowhere else for the charge to go.\n- Their resistances **add**: $R_\\text{total} = R_1 + R_2$.\n- The source voltage is **shared** between them in proportion to resistance.\n\nHere $100\\ \\Omega + 200\\ \\Omega = 300\\ \\Omega$, so $I = 9/300 = 30$ mA. The table shows the 9 V split as 3 V and 6 V: the bigger resistor takes the bigger share.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "series"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-series",
+      "question": {
+        "id": "s2",
+        "difficulty": 2,
+        "prompt": "A $12$ V source is connected to a $2\\ \\Omega$ and a $4\\ \\Omega$ resistor in series. What is the current?",
+        "hints": [
+          "Add the resistances first.",
+          "Then use Ohm's law on the whole circuit."
+        ],
+        "solution": "$R_\\text{total} = 2 + 4 = 6\\ \\Omega$, so $I = 12/6 = 2$ A.",
+        "type": "numeric",
+        "answer": 2,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "A"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "parallel",
+      "title": "Parallel: several paths",
+      "body": "Components in **parallel** are connected across the same two points, giving the current a choice of paths.\n\n- Each has the **same voltage** across it.\n- The currents **add** to give the total from the source.\n- The combined resistance is **smaller** than the smallest branch:\n\n$$\\frac{1}{R_\\text{total}} = \\frac{1}{R_1} + \\frac{1}{R_2} \\qquad\\text{or}\\qquad R_\\text{total} = \\frac{R_1 R_2}{R_1 + R_2}$$\n\nHere each resistor has the full 6 V. The $20\\ \\Omega$ branch carries 300 mA and the $30\\ \\Omega$ branch 200 mA, so the source supplies 500 mA: the same as one $12\\ \\Omega$ resistor.",
+      "widget": {
+        "type": "circuit",
+        "props": {
+          "preset": "parallel"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-parallel",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "What is the combined resistance of a $6\\ \\Omega$ and a $12\\ \\Omega$ resistor in parallel?",
+        "hints": [
+          "Use product over sum: $\\dfrac{R_1 R_2}{R_1 + R_2}$.",
+          "The answer must be less than 6."
+        ],
+        "solution": "$R = \\dfrac{6 \\times 12}{6 + 12} = \\dfrac{72}{18} = 4\\ \\Omega$. As a check, it is smaller than either resistor.",
+        "type": "numeric",
+        "answer": 4,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "Ω"
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "power",
+      "title": "Power",
+      "body": "A resistor turns electrical energy into heat. The rate is the **power**, in watts:\n\n$$P = VI$$\n\nSubstituting Ohm's law gives two more forms that are often handier:\n\n$$P = I^2 R \\qquad P = \\frac{V^2}{R}$$\n\nIn any circuit the power delivered by the sources equals the power dissipated in the resistors. Look back at the tables in the circuits above: the \"out\" and \"in\" columns always balance."
+    },
+    {
+      "kind": "question",
+      "id": "q-power",
+      "question": {
+        "id": "s4",
+        "difficulty": 2,
+        "prompt": "A $12\\ \\Omega$ resistor has $6$ V across it. How much power does it dissipate?",
+        "hints": [
+          "You know $V$ and $R$, so use $P = V^2/R$."
+        ],
+        "solution": "$P = V^2 / R = 36 / 12 = 3$ W.",
+        "type": "numeric",
+        "answer": 3,
+        "tolerance": {
+          "abs": 0.01
+        },
+        "unit": "W"
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-more",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "A battery powers one resistor. A second resistor is then connected in **parallel** with the first. What happens to the total current drawn from the battery?",
+        "hints": [
+          "Does adding a parallel path raise or lower the total resistance?"
+        ],
+        "solution": "A parallel branch gives the charge an extra path, so the combined resistance goes down and the battery supplies more current. The first resistor still has the full battery voltage and carries the same current as before; the new branch adds to it.",
+        "type": "mcq",
+        "choices": [
+          "It increases",
+          "It decreases",
+          "It stays the same",
+          "It drops to zero"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s6",
+        "difficulty": 2,
+        "prompt": "Explain why the current is the same at every point in a series circuit.",
+        "hints": [],
+        "solution": "There is only one path, and charge is conserved: it cannot pile up or disappear anywhere in the loop. So the amount of charge passing each point every second, which is the current, must be the same all the way round. The resistors use up voltage (energy per charge), not current.",
+        "type": "explain",
+        "modelAnswer": "There is only one path, and charge is conserved: it cannot pile up or disappear anywhere in the loop. So the amount of charge passing each point every second, which is the current, must be the same all the way round. The resistors use up voltage (energy per charge), not current.",
+        "checklist": [
+          {
+            "point": "Says there is only one path",
+            "keywords": [
+              [
+                "one path",
+                "single path",
+                "only path",
+                "nowhere else",
+                "single loop",
+                "one loop"
+              ]
+            ]
+          },
+          {
+            "point": "Says charge is conserved (does not build up or vanish)",
+            "keywords": [
+              [
+                "conserved",
+                "conservation",
+                "pile up",
+                "build up",
+                "accumulate",
+                "disappear",
+                "used up",
+                "lost"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "A resistor carries $2$ A when $10$ V is applied across it. What is its resistance?",
+      "hints": [],
+      "solution": "$R = V/I = 10/2 = 5\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "Resistors of $10\\ \\Omega$, $20\\ \\Omega$ and $30\\ \\Omega$ are connected in series across a $12$ V source. What is the current?",
+      "hints": [
+        "Series resistances add."
+      ],
+      "solution": "$R_\\text{total} = 60\\ \\Omega$, so $I = 12/60 = 0.2$ A.",
+      "type": "numeric",
+      "answer": 0.2,
+      "tolerance": {
+        "abs": 0.002
+      },
+      "unit": "A"
+    },
+    {
+      "id": "p3",
+      "difficulty": 2,
+      "prompt": "In the circuit of the previous problem ($10$, $20$ and $30\\ \\Omega$ in series on $12$ V), what is the voltage across the $30\\ \\Omega$ resistor?",
+      "hints": [
+        "The current is the same 0.2 A everywhere in the loop."
+      ],
+      "solution": "The same $0.2$ A flows through it: $V = IR = 0.2 \\times 30 = 6$ V. It has half the total resistance, so it takes half the voltage.",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "What is the combined resistance of $6\\ \\Omega$ and $3\\ \\Omega$ in parallel?",
+      "hints": [],
+      "solution": "$\\dfrac{6 \\times 3}{6 + 3} = \\dfrac{18}{9} = 2\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "A $12$ V source is connected to a $4\\ \\Omega$ resistor in series with a parallel pair of $6\\ \\Omega$ and $3\\ \\Omega$. What current does the source supply?",
+      "hints": [
+        "Reduce the parallel pair to a single resistor first.",
+        "Then add the series resistor."
+      ],
+      "solution": "The parallel pair is $2\\ \\Omega$ (previous problem). In series with $4\\ \\Omega$ that makes $6\\ \\Omega$. So $I = 12/6 = 2$ A.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "In the circuit of the previous problem, how much power is dissipated in the $6\\ \\Omega$ resistor?",
+      "hints": [
+        "First find the voltage across the parallel pair.",
+        "Both parallel resistors have that same voltage; use $P = V^2/R$."
+      ],
+      "solution": "The source current of 2 A flows through the $2\\ \\Omega$ parallel combination, so the voltage across the pair is $2 \\times 2 = 4$ V. For the $6\\ \\Omega$ resistor: $P = V^2/R = 16/6 \\approx 2.67$ W.",
+      "type": "numeric",
+      "answer": 2.667,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "W"
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 1,
+      "prompt": "A current of $0.5$ A flows through a $40\\ \\Omega$ resistor. What is the voltage across it?",
+      "hints": [],
+      "solution": "$V = IR = 0.5 \\times 40 = 20$ V.",
+      "type": "numeric",
+      "answer": 20,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "V"
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "A $24$ V source drives $4\\ \\Omega$ and $8\\ \\Omega$ in series. What is the current?",
+      "hints": [],
+      "solution": "$24 / (4 + 8) = 2$ A.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "What is the combined resistance of two $10\\ \\Omega$ resistors in parallel?",
+      "hints": [],
+      "solution": "Two equal resistors in parallel give half of one: $5\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 5,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "c4",
+      "difficulty": 2,
+      "prompt": "In a series circuit, which quantity is the same for every component?",
+      "hints": [],
+      "solution": "There is a single path, so the same current passes through each component. Voltage and power are shared out according to resistance.",
+      "type": "mcq",
+      "choices": [
+        "Current",
+        "Voltage",
+        "Power",
+        "Resistance"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "A current of $2$ A flows through a $5\\ \\Omega$ resistor. How much power does it dissipate?",
+      "hints": [],
+      "solution": "$P = I^2 R = 4 \\times 5 = 20$ W.",
+      "type": "numeric",
+      "answer": 20,
+      "tolerance": {
+        "abs": 0.05
+      },
+      "unit": "W"
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "A lamp is rated $60$ W at $120$ V. What is its resistance when operating?",
+      "hints": [],
+      "solution": "$R = V^2 / P = 14400 / 60 = 240\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 240,
+      "tolerance": {
+        "abs": 1
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "t2",
+      "difficulty": 3,
+      "prompt": "What is the combined resistance of $12\\ \\Omega$, $6\\ \\Omega$ and $4\\ \\Omega$ all in parallel?",
+      "hints": [],
+      "solution": "$\\dfrac1R = \\dfrac1{12} + \\dfrac16 + \\dfrac14 = \\dfrac{1 + 2 + 3}{12} = \\dfrac12$, so $R = 2\\ \\Omega$.",
+      "type": "numeric",
+      "answer": 2,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "Ω"
+    },
+    {
+      "id": "t3",
+      "difficulty": 3,
+      "prompt": "A $9$ V source is connected to $1\\ \\text{k}\\Omega$ and $2\\ \\text{k}\\Omega$ in series. What is the voltage across the $2\\ \\text{k}\\Omega$ resistor?",
+      "hints": [],
+      "solution": "It has two thirds of the total resistance, so it takes two thirds of the voltage: $9 \\times \\dfrac{2}{3} = 6$ V.",
+      "type": "numeric",
+      "answer": 6,
+      "tolerance": {
+        "abs": 0.02
+      },
+      "unit": "V"
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "A $10$ V source feeds a $2\\ \\Omega$ resistor in series with a parallel pair of $3\\ \\Omega$ and $6\\ \\Omega$. What current flows through the $3\\ \\Omega$ resistor?",
+      "hints": [],
+      "solution": "Parallel pair: $\\dfrac{3 \\times 6}{9} = 2\\ \\Omega$. Total $4\\ \\Omega$, so the source current is $2.5$ A. Voltage across the pair: $2.5 \\times 2 = 5$ V. Current in the $3\\ \\Omega$: $5/3 \\approx 1.67$ A.",
+      "type": "numeric",
+      "answer": 1.667,
+      "tolerance": {
+        "abs": 0.01
+      },
+      "unit": "A"
+    },
+    {
+      "id": "t5",
+      "difficulty": 4,
+      "prompt": "One bulb connected to a battery dissipates power $P$. Two identical bulbs are then connected **in series** across the same battery. Treating each bulb as a fixed resistance, how much power does each one dissipate?",
+      "hints": [],
+      "solution": "Each bulb now has half the battery voltage across it, and $P = V^2/R$, so each dissipates $(1/2)^2 = 1/4$ of the original power.",
+      "type": "mcq",
+      "choices": [
+        "$P/4$",
+        "$P/2$",
+        "$P$",
+        "$2P$"
+      ],
+      "answer": 0
+    }
+  ]
 }

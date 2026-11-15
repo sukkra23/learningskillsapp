@@ -8,7 +8,7 @@ import { Bookmarks } from '../pages/Bookmarks';
 import { Dashboard } from '../pages/Dashboard';
 import { DiagnosticPage } from '../pages/DiagnosticPage';
 import { NodePage } from '../pages/NodePage';
-import { NotFound } from '../pages/NotFound';
+import { NotFound, RouteError } from '../pages/NotFound';
 import { SearchPage } from '../pages/SearchPage';
 import { Settings } from '../pages/Settings';
 import { TrackPage } from '../pages/TrackPage';
@@ -18,15 +18,14 @@ import { Layout } from './Layout';
 export const routes = [
   {
     element: <Layout />,
-    errorElement: <Layout />,
     children: [
-      { path: '/', element: <Dashboard /> },
+      { path: '/', element: <Dashboard />, errorElement: <RouteError /> },
       { path: '/track/:track', element: <TrackPage /> },
       { path: '/node/:nodeId', element: <NodePage /> },
-      { path: '/learn/:nodeId', loader: guardLearn, element: <LessonPage />, errorElement: <NotFound /> },
-      { path: '/learn/:nodeId/problems', loader: guardLearn, element: <ProblemsPage />, errorElement: <NotFound /> },
-      { path: '/learn/:nodeId/checkpoint', loader: guardLearn, element: <CheckpointPage />, errorElement: <NotFound /> },
-      { path: '/node/:nodeId/test-out', loader: guardTestOut, element: <TestOutPage />, errorElement: <NotFound /> },
+      { path: '/learn/:nodeId', loader: guardLearn, element: <LessonPage />, errorElement: <RouteError /> },
+      { path: '/learn/:nodeId/problems', loader: guardLearn, element: <ProblemsPage />, errorElement: <RouteError /> },
+      { path: '/learn/:nodeId/checkpoint', loader: guardLearn, element: <CheckpointPage />, errorElement: <RouteError /> },
+      { path: '/node/:nodeId/test-out', loader: guardTestOut, element: <TestOutPage />, errorElement: <RouteError /> },
       { path: '/diagnostic/:track', element: <DiagnosticPage /> },
       { path: '/review', element: <ReviewPage /> },
       { path: '/lab', element: <LabPage /> },

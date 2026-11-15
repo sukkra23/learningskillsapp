@@ -3,9 +3,549 @@
   "track": "cs",
   "title": "Transistors and logic gates",
   "summary": "How switches made of silicon combine into AND, OR, NOT and every other gate.",
-  "status": "stub",
+  "status": "ready",
   "prerequisites": [],
   "estimatedMinutes": 35,
   "difficulty": 1,
-  "strand": "Hardware tour"
+  "strand": "Hardware tour",
+  "steps": [
+    {
+      "kind": "explain",
+      "id": "switch",
+      "title": "A computer is made of switches",
+      "body": "Everything a computer does comes down to billions of tiny switches called **transistors**. A transistor is a switch with no moving parts: a voltage on one terminal decides whether current can flow between the other two. On is **1**, off is **0**.\n\nOne switch is not much use. Two switches wired together can make a decision. Close and open switches A and B, and try both wirings.",
+      "widget": {
+        "type": "logic-gates",
+        "props": {
+          "mode": "transistor"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-series",
+      "question": {
+        "id": "s1",
+        "difficulty": 1,
+        "prompt": "With the two switches in **series**, when does the lamp light?",
+        "hints": [
+          "Try each of the four combinations in the series wiring."
+        ],
+        "solution": "In series the current has to pass through both switches, so both must be closed. That is the logical AND. In parallel, either switch gives the current a path: logical OR.",
+        "type": "mcq",
+        "choices": [
+          "Only when A and B are both closed",
+          "When A or B (or both) is closed",
+          "Only when exactly one is closed",
+          "Whenever A is closed"
+        ],
+        "answer": 0
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "gates",
+      "title": "AND, OR, NOT",
+      "body": "Circuits like those are packaged as **logic gates**: components with inputs and one output, all either 0 or 1.\n\n- **AND** outputs 1 only when both inputs are 1.\n- **OR** outputs 1 when at least one input is 1.\n- **NOT** has one input and flips it.\n\nA **truth table** lists the output for every possible input. Toggle the inputs and watch the highlighted row follow you.",
+      "widget": {
+        "type": "logic-gates",
+        "props": {
+          "mode": "gate",
+          "gates": [
+            "AND",
+            "OR",
+            "NOT"
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-match",
+      "question": {
+        "id": "s2",
+        "difficulty": 1,
+        "prompt": "Match each gate to what it does.",
+        "hints": [],
+        "solution": "AND needs both, OR needs at least one, NOT inverts, and XOR (\"exclusive or\") is 1 when exactly one input is 1.",
+        "type": "match",
+        "pairs": [
+          [
+            "AND",
+            "Outputs 1 only when both inputs are 1"
+          ],
+          [
+            "OR",
+            "Outputs 1 when at least one input is 1"
+          ],
+          [
+            "NOT",
+            "Outputs the opposite of its single input"
+          ],
+          [
+            "XOR",
+            "Outputs 1 when the two inputs are different"
+          ]
+        ]
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "more-gates",
+      "title": "NAND, NOR, XOR",
+      "body": "Three more gates complete the standard set.\n\n- **NAND** is AND followed by NOT: it outputs 0 only when both inputs are 1.\n- **NOR** is OR followed by NOT: it outputs 1 only when both inputs are 0.\n- **XOR** outputs 1 when the inputs differ.\n\nThe small circle on a gate's output means \"then invert\". NAND matters most in practice: it takes the fewest transistors to build, and **every other gate can be built from NAND gates alone**, which is why it is called *universal*.",
+      "widget": {
+        "type": "logic-gates",
+        "props": {
+          "mode": "gate",
+          "gates": [
+            "NAND",
+            "NOR",
+            "XOR"
+          ]
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-nand",
+      "question": {
+        "id": "s3",
+        "difficulty": 2,
+        "prompt": "What is the output of a NAND gate when both inputs are 1?",
+        "hints": [
+          "NAND is AND followed by NOT."
+        ],
+        "solution": "AND of 1 and 1 is 1; NAND inverts that, giving 0. This is the only input combination for which NAND outputs 0.",
+        "type": "numeric",
+        "answer": 0,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "explain",
+      "id": "adder",
+      "title": "Gates that add",
+      "body": "Connect gates together and they start to compute. Adding two one-bit numbers has four cases:\n\n$0 + 0 = 0 \\qquad 0 + 1 = 1 \\qquad 1 + 0 = 1 \\qquad 1 + 1 = 10_2$ (two, written in binary)\n\nThe right-hand digit (the **sum**) is 1 when the inputs differ: that is XOR. The left-hand digit (the **carry**) is 1 only when both inputs are 1: that is AND. An XOR and an AND side by side make a **half adder**, the first building block of arithmetic.",
+      "widget": {
+        "type": "logic-gates",
+        "props": {
+          "mode": "half-adder"
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-rows",
+      "question": {
+        "id": "s4",
+        "difficulty": 2,
+        "prompt": "A truth table needs one row for every combination of inputs. How many rows does a circuit with 3 inputs need?",
+        "hints": [
+          "One input has 2 rows; two inputs have 4."
+        ],
+        "solution": "Each input doubles the number of combinations: $2 \\times 2 \\times 2 = 2^3 = 8$.",
+        "type": "numeric",
+        "answer": 8,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-eval",
+      "question": {
+        "id": "s5",
+        "difficulty": 3,
+        "prompt": "Let $A = 1$ and $B = 0$. What is the value of (A AND B) OR (NOT B)?",
+        "hints": [
+          "Work out each bracket separately first."
+        ],
+        "solution": "A AND B = 1 AND 0 = 0. NOT B = NOT 0 = 1. Then 0 OR 1 = 1.",
+        "type": "numeric",
+        "answer": 1,
+        "tolerance": {
+          "abs": 0
+        }
+      }
+    },
+    {
+      "kind": "question",
+      "id": "q-explain",
+      "question": {
+        "id": "s6",
+        "difficulty": 3,
+        "prompt": "NAND is called a \"universal\" gate. Explain what that means.",
+        "hints": [],
+        "solution": "Universal means that any logic function can be built using only NAND gates. For example, a NAND with both inputs tied together is a NOT; a NAND followed by that NOT is an AND; and OR can be made by inverting both inputs before a NAND. Since AND, OR and NOT are enough to build any circuit, so is NAND on its own.",
+        "type": "explain",
+        "modelAnswer": "Universal means that any logic function can be built using only NAND gates. For example, a NAND with both inputs tied together is a NOT; a NAND followed by that NOT is an AND; and OR can be made by inverting both inputs before a NAND. Since AND, OR and NOT are enough to build any circuit, so is NAND on its own.",
+        "checklist": [
+          {
+            "point": "Says any circuit or logic function can be built from NAND alone",
+            "keywords": [
+              [
+                "any",
+                "every",
+                "all"
+              ],
+              [
+                "only",
+                "alone",
+                "just",
+                "nothing but"
+              ]
+            ]
+          },
+          {
+            "point": "Gives an example, such as making NOT, AND or OR from NAND",
+            "keywords": [
+              [
+                "not",
+                "and",
+                "or",
+                "inverter"
+              ],
+              [
+                "tied",
+                "together",
+                "both inputs",
+                "followed",
+                "from nand",
+                "using nand",
+                "built",
+                "make",
+                "made"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "problems": [
+    {
+      "id": "p1",
+      "difficulty": 1,
+      "prompt": "What is 0 OR 0?",
+      "hints": [],
+      "solution": "OR outputs 1 only if at least one input is 1. Neither is, so the output is 0.",
+      "type": "numeric",
+      "answer": 0,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p2",
+      "difficulty": 2,
+      "prompt": "What is 1 XOR 1?",
+      "hints": [],
+      "solution": "XOR outputs 1 when the inputs differ. They are the same, so the output is 0.",
+      "type": "numeric",
+      "answer": 0,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p3",
+      "difficulty": 2,
+      "prompt": "Which single gate computes NOT (A AND B)?",
+      "hints": [],
+      "solution": "NAND is defined as AND followed by NOT.",
+      "type": "mcq",
+      "choices": [
+        "NAND",
+        "NOR",
+        "XOR",
+        "OR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "p4",
+      "difficulty": 3,
+      "prompt": "Which expression always has the same value as NOT (A OR B)?",
+      "hints": [
+        "Try all four input combinations on each option."
+      ],
+      "solution": "This is one of De Morgan's laws. A OR B is false only when A and B are both false, which is exactly when (NOT A) AND (NOT B) is true. Check it with A = 1, B = 0: both sides are 0.",
+      "type": "mcq",
+      "choices": [
+        "(NOT A) AND (NOT B)",
+        "(NOT A) OR (NOT B)",
+        "A AND B",
+        "A XOR B"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "p5",
+      "difficulty": 4,
+      "prompt": "Out of the four possible input combinations for A and B, for how many does A XOR B give the same output as A OR B?",
+      "hints": [
+        "Write out both truth tables side by side."
+      ],
+      "solution": "They agree for (0,0), (0,1) and (1,0). They differ only for (1,1), where XOR gives 0 and OR gives 1.",
+      "type": "numeric",
+      "answer": 3,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "p6",
+      "difficulty": 5,
+      "prompt": "How can you make a NOT gate using a single NAND gate?",
+      "hints": [],
+      "solution": "With both inputs equal to A, the gate computes NOT (A AND A) = NOT A. (Tying one input permanently to 1 also works; tying it to 0 gives a constant 1.)",
+      "type": "mcq",
+      "choices": [
+        "Connect the one input signal to both NAND inputs",
+        "Connect one NAND input permanently to 0",
+        "Feed the NAND output back to one input",
+        "It cannot be done with one NAND gate"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "p7",
+      "difficulty": 5,
+      "prompt": "Write a function `majority(a, b, c)` that takes three bits (each 0 or 1) and returns 1 if at least two of them are 1, otherwise 0. This is the \"carry out\" of a full adder.",
+      "hints": [
+        "Which pairs of inputs could both be 1?",
+        "Combine the three pair tests with OR."
+      ],
+      "solution": "At least two inputs are 1 exactly when some pair is both 1: `(a AND b) OR (a AND c) OR (b AND c)`. Adding the bits and testing `a + b + c >= 2` works too.",
+      "type": "code",
+      "entry": "majority",
+      "variants": {
+        "python": {
+          "starter": "def majority(a, b, c):\n    # return 1 if at least two inputs are 1\n    pass\n",
+          "reference": "def majority(a, b, c):\n    return (a & b) | (a & c) | (b & c)\n"
+        },
+        "javascript": {
+          "starter": "function majority(a, b, c) {\n  // return 1 if at least two inputs are 1\n}\n",
+          "reference": "function majority(a, b, c) {\n  return (a & b) | (a & c) | (b & c);\n}\n"
+        }
+      },
+      "tests": [
+        {
+          "args": [
+            0,
+            0,
+            0
+          ],
+          "expected": 0,
+          "hidden": false
+        },
+        {
+          "args": [
+            1,
+            1,
+            0
+          ],
+          "expected": 1,
+          "hidden": false
+        },
+        {
+          "args": [
+            1,
+            0,
+            1
+          ],
+          "expected": 1,
+          "hidden": true
+        },
+        {
+          "args": [
+            0,
+            1,
+            1
+          ],
+          "expected": 1,
+          "hidden": true
+        },
+        {
+          "args": [
+            1,
+            1,
+            1
+          ],
+          "expected": 1,
+          "hidden": true
+        },
+        {
+          "args": [
+            1,
+            0,
+            0
+          ],
+          "expected": 0,
+          "hidden": true
+        },
+        {
+          "args": [
+            0,
+            1,
+            0
+          ],
+          "expected": 0,
+          "hidden": true
+        },
+        {
+          "args": [
+            0,
+            0,
+            1
+          ],
+          "expected": 0,
+          "hidden": true
+        }
+      ]
+    }
+  ],
+  "checkpoint": [
+    {
+      "id": "c1",
+      "difficulty": 1,
+      "prompt": "What is 1 AND 0?",
+      "hints": [],
+      "solution": "AND needs both inputs to be 1.",
+      "type": "numeric",
+      "answer": 0,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c2",
+      "difficulty": 2,
+      "prompt": "Which gate outputs 1 only when its two inputs are different?",
+      "hints": [],
+      "solution": "XOR, \"exclusive or\".",
+      "type": "mcq",
+      "choices": [
+        "XOR",
+        "AND",
+        "OR",
+        "NOR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "difficulty": 2,
+      "prompt": "How many rows are in the truth table of a circuit with 4 inputs?",
+      "hints": [],
+      "solution": "$2^4 = 16$.",
+      "type": "numeric",
+      "answer": 16,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "c4",
+      "difficulty": 3,
+      "prompt": "In a half adder, which gates produce the sum bit and the carry bit?",
+      "hints": [],
+      "solution": "The sum is 1 when the inputs differ (XOR); the carry is 1 when both are 1 (AND).",
+      "type": "mcq",
+      "choices": [
+        "Sum: XOR, carry: AND",
+        "Sum: AND, carry: XOR",
+        "Sum: OR, carry: AND",
+        "Sum: XOR, carry: OR"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c5",
+      "difficulty": 3,
+      "prompt": "Let $A = 1$, $B = 1$, $C = 0$. What is (A AND B) XOR C?",
+      "hints": [],
+      "solution": "A AND B = 1. Then 1 XOR 0 = 1.",
+      "type": "numeric",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0
+      }
+    }
+  ],
+  "testOut": [
+    {
+      "id": "t1",
+      "difficulty": 3,
+      "prompt": "Which expression always equals NOT (A AND B)?",
+      "hints": [],
+      "solution": "De Morgan's law: A AND B fails as soon as either input is 0.",
+      "type": "mcq",
+      "choices": [
+        "(NOT A) OR (NOT B)",
+        "(NOT A) AND (NOT B)",
+        "A OR B",
+        "A XOR B"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t2",
+      "difficulty": 4,
+      "prompt": "How many different two-input, one-output logic functions exist in total (counting every possible truth table)?",
+      "hints": [],
+      "solution": "The truth table has 4 rows and each row's output can be 0 or 1 independently: $2^4 = 16$ different tables.",
+      "type": "numeric",
+      "answer": 16,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t3",
+      "difficulty": 3,
+      "prompt": "Let $A = 0$, $B = 1$, $C = 1$. What is NOT (A OR B) OR (B AND C)?",
+      "hints": [],
+      "solution": "A OR B = 1, so NOT (A OR B) = 0. B AND C = 1. Then 0 OR 1 = 1.",
+      "type": "numeric",
+      "answer": 1,
+      "tolerance": {
+        "abs": 0
+      }
+    },
+    {
+      "id": "t4",
+      "difficulty": 4,
+      "prompt": "What is the smallest number of NAND gates needed to build an AND gate?",
+      "hints": [],
+      "solution": "One NAND computes NOT (A AND B); a second NAND with its inputs tied together inverts that back to A AND B.",
+      "type": "mcq",
+      "choices": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "t5",
+      "difficulty": 3,
+      "prompt": "A full adder receives A = 1, B = 1 and carry-in = 1. What are its outputs?",
+      "hints": [],
+      "solution": "$1 + 1 + 1 = 3 = 11_2$: sum bit 1, carry bit 1.",
+      "type": "mcq",
+      "choices": [
+        "Sum 1, carry 1",
+        "Sum 0, carry 1",
+        "Sum 1, carry 0",
+        "Sum 0, carry 0"
+      ],
+      "answer": 0
+    }
+  ]
 }
