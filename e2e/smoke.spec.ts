@@ -7,7 +7,7 @@ const node = (id: string) => JSON.parse(fs.readFileSync(`content/${id.replace('.
 /** Answers the question on screen using the content file, correctly or (for wrong=true) incorrectly. */
 async function answer(page: Page, q: Q, wrong = false) {
   const form = page.getByRole('form', { name: 'Question' });
-  if (q.type === 'mcq') await form.getByRole('radio').nth(wrong ? ((q.answer as number) + 1) % q.choices!.length : (q.answer as number)).check();
+  if (q.type === 'mcq') await form.locator(`input[type=radio][value="${wrong ? ((q.answer as number) + 1) % q.choices!.length : (q.answer as number)}"]`).check();
   else if (q.type === 'numeric') await form.getByRole('textbox').first().fill(String(wrong ? (q.answer as number) + 1000 : q.answer));
   else if (q.type === 'expression') await form.getByRole('textbox').first().fill(wrong ? '12345' : String(q.answer));
   else throw new Error(`no e2e handler for ${q.type}`);
@@ -77,10 +77,10 @@ test('lesson: steps, a question gate, hints, and progress that survives a reload
   await expect(page.getByRole('button', { name: /Continue/ })).toBeDisabled();
   await page.getByRole('button', { name: /^Hint/ }).click();
   await expect(page.getByRole('list', { name: 'Hints' })).toContainText('slope');
-  await page.getByRole('radio').nth(1).check();
+  await page.locator('input[type=radio][value="1"]').check();
   await page.getByRole('button', { name: 'Check' }).click();
   await expect(page.getByText('Not quite')).toBeVisible();
-  await page.getByRole('radio').nth(0).check();
+  await page.locator('input[type=radio][value="0"]').check();
   await page.getByRole('button', { name: 'Check' }).click();
   await expect(page.getByText('Correct.')).toBeVisible();
   await expect(page.getByRole('region', { name: 'Worked solution' })).toBeVisible();

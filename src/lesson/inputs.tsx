@@ -43,9 +43,9 @@ export function QuestionInput({ q, seed, value, onChange, disabled, reveal = fal
       return (
         <fieldset className="space-y-2" disabled={disabled}>
           <legend className="sr-only">Choose one answer</legend>
-          {q.choices.map((c, i) => (
+          {seededOrder(q.choices.length, seed + ':c').map((i) => [q.choices[i], i] as const).map(([c, i]) => (
             <label key={i} className={choiceClass(sel === i, reveal ? (i === q.answer ? 'right' : sel === i ? 'wrong' : 'none') : 'none')}>
-              <input type="radio" name={seed} className="mt-1 accent-[rgb(var(--accent))]" checked={sel === i} onChange={() => onChange({ type: 'mcq', choice: i })} />
+              <input type="radio" name={seed} value={i} className="mt-1 accent-[rgb(var(--accent))]" checked={sel === i} onChange={() => onChange({ type: 'mcq', choice: i })} />
               <Markdown inline>{c}</Markdown>
               {reveal && i === q.answer && <span className="ml-auto text-sm font-semibold text-success">Correct answer</span>}
             </label>
@@ -58,9 +58,9 @@ export function QuestionInput({ q, seed, value, onChange, disabled, reveal = fal
       return (
         <fieldset className="space-y-2" disabled={disabled}>
           <legend className="mb-1 text-sm text-muted">Select all that apply.</legend>
-          {q.choices.map((c, i) => (
+          {seededOrder(q.choices.length, seed + ':c').map((i) => [q.choices[i], i] as const).map(([c, i]) => (
             <label key={i} className={choiceClass(sel.includes(i), reveal ? (q.answers.includes(i) ? 'right' : sel.includes(i) ? 'wrong' : 'none') : 'none')}>
-              <input type="checkbox" className="mt-1 accent-[rgb(var(--accent))]" checked={sel.includes(i)}
+              <input type="checkbox" value={i} className="mt-1 accent-[rgb(var(--accent))]" checked={sel.includes(i)}
                 onChange={() => onChange({ type: 'multi', choices: sel.includes(i) ? sel.filter((x) => x !== i) : [...sel, i] })} />
               <Markdown inline>{c}</Markdown>
               {reveal && q.answers.includes(i) && <span className="ml-auto text-sm font-semibold text-success">Correct</span>}
@@ -119,6 +119,9 @@ export function QuestionInput({ q, seed, value, onChange, disabled, reveal = fal
     default: return null;
   }
 }
+
+// Choices are shown in a per-question shuffled order (fixed by the question key), so the
+// position of the right answer in the content file gives nothing away.
 
 /** Reorderable list: drag with a pointer, or use the up/down buttons from the keyboard. */
 function OrderInput({ q, value, onChange, disabled }: { q: Extract<Question, { type: 'order' }>; value: number[]; onChange(o: number[]): void; disabled: boolean }) {

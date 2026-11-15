@@ -46,13 +46,18 @@ export function snapshot(s: ProgressState = useProgress.getState()): ProgressDat
 export const progressLookup = (s: ProgressData = useProgress.getState()) => (id: string) => s.nodes[id];
 
 let timer: ReturnType<typeof setTimeout> | undefined;
+/** True while this tab holds changes that have not yet reached IndexedDB. */
+let dirty = false;
+
 /** Loads stored progress, then saves (debounced) on every change. Call once before rendering. */
 export async function initProgress(): Promise<void> {
   useProgress.setState(await loadProgress());
   useProgress.subscribe((s) => {
+    dirty = true;
     clearTimeout(timer);
-    timer = setTimeout(() => void saveProgress(snapshot(s)), 250);
+    timer = setTimeout(() => { dirty = false; void saveProgress(snapshot(s)); }, 250);
   });
-  // Do not lose the last change if the tab is closed inside the debounce window.
-  window.addEventListener('pagehide', () => savePendingSync(snapshot()));
+  // Closing or leaving the tab inside the debounce window must not lose the last change.
+  // Only a tab with unsaved changes writes, so an idle tab can never overwrite newer progress from another tab.
+  window.addEventListener('pagehide', () => { if (dirty) savePendingSync(snapshot()); });
 }

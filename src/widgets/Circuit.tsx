@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { solveCircuit, thevenin, type Component } from './sim/circuit';
 import { v } from './ui';
 
@@ -82,7 +82,8 @@ export default function Circuit({ preset, editable }: { preset: keyof typeof PRE
           const active = sel === id;
           const stroke = active ? v('accent') : v('fg');
           return (
-            <g key={id} role="button" tabIndex={editable ? 0 : -1} aria-label={describe(id)} aria-pressed={active} className={editable ? 'cursor-pointer' : ''}
+            <Fragment key={id}>
+            <g role="button" tabIndex={editable ? 0 : -1} aria-label={describe(id)} aria-pressed={active} className={editable ? 'cursor-pointer' : ''}
               onClick={() => editable && setSel(active ? null : id)} onKeyDown={(ev) => { if (editable && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); setSel(active ? null : id); } }}>
               <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="transparent" strokeWidth={34} />
               {e.kind === 'none'
@@ -90,10 +91,15 @@ export default function Circuit({ preset, editable }: { preset: keyof typeof PRE
                 : <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={stroke} strokeWidth={active ? 3.5 : 2.5} />}
               {e.kind === 'R' && (<>
                 <rect x={mx - (vert ? 11 : 30)} y={my - (vert ? 30 : 11)} width={vert ? 22 : 60} height={vert ? 60 : 22} rx={4} fill={v('surface')} stroke={stroke} strokeWidth={2.5} />
-                <text x={vert ? mx + 18 : mx} y={vert ? my - 6 : my - 18} textAnchor={vert ? 'start' : 'middle'} fontSize="13" fontWeight="600" fill={v('fg')}>{si(e.value, 'Ω')}</text>
               </>)}
               {e.kind === 'V' && (<>
                 <circle cx={mx} cy={my} r={19} fill={v('surface')} stroke={stroke} strokeWidth={2.5} />
+              </>)}
+            </g>
+            {/* Labels sit outside the button so its accessible name is the description alone. */}
+            <g aria-hidden="true" pointerEvents="none">
+              {e.kind === 'R' && <text x={vert ? mx + 18 : mx} y={vert ? my - 6 : my - 18} textAnchor={vert ? 'start' : 'middle'} fontSize="13" fontWeight="600" fill={v('fg')}>{si(e.value, 'Ω')}</text>}
+              {e.kind === 'V' && (<>
                 <text x={vert ? mx : mx + (e.flip ? 9 : -9)} y={vert ? my + (e.flip ? 13 : -4) : my + 5} textAnchor="middle" fontSize="15" fontWeight="700" fill={v('fg')}>+</text>
                 <text x={vert ? mx : mx + (e.flip ? -9 : 9)} y={vert ? my + (e.flip ? -4 : 14) : my + 5} textAnchor="middle" fontSize="15" fontWeight="700" fill={v('fg')}>{'−'}</text>
                 <text x={vert ? mx + 26 : mx} y={vert ? my - 6 : my - 26} textAnchor={vert ? 'start' : 'middle'} fontSize="13" fontWeight="600" fill={v('fg')}>{si(e.value, 'V')}</text>
@@ -104,6 +110,7 @@ export default function Circuit({ preset, editable }: { preset: keyof typeof PRE
                 </text>
               )}
             </g>
+            </Fragment>
           );
         })}
         {Array.from({ length: COLS }, (_, c) => ['t', 'b'].map((r) => {
@@ -148,6 +155,7 @@ export default function Circuit({ preset, editable }: { preset: keyof typeof PRE
         </div>
       )}
       {sol && (
+        <div className="overflow-x-auto">
         <table className="w-full border-collapse text-left text-sm">
           <caption className="sr-only">Voltage, current and power for each component</caption>
           <thead><tr className="text-muted">{['Component', 'Value', 'Voltage', 'Current', 'Power'].map((h) => <th key={h} scope="col" className="border-b border-border px-2 py-1 font-medium">{h}</th>)}</tr></thead>
@@ -163,6 +171,7 @@ export default function Circuit({ preset, editable }: { preset: keyof typeof PRE
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </div>
   );

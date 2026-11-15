@@ -21,7 +21,8 @@ export function QuizRunner({ questions, keyPrefix, reveal, onFinish, children }:
   const [finished, setFinished] = useState<QuizResult | null>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const answered = results.length > i;
-  useEffect(() => { heading.current?.focus(); }, [i, finished]);
+  const first = useRef(true);
+  useEffect(() => { if (first.current) first.current = false; else heading.current?.focus(); }, [i, finished]);
 
   const next = () => {
     if (i + 1 < questions.length) { setI(i + 1); return; }

@@ -20,7 +20,12 @@ function StepBody({ node, step, onResolved }: { node: SkillNode; step: Step; onR
   const record = useProgress((s) => s.recordAttempt);
   if (step.kind === 'question') {
     const key = qid(node.id, step.question.id);
-    return <QuestionCard question={step.question} qkey={key} mode="practice" onResolved={(r) => { record(key, r); onResolved(r.correct); }} />;
+    return (
+      <div className="space-y-3">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">Check your understanding</h2>
+        <QuestionCard question={step.question} qkey={key} mode="practice" onResolved={(r) => { record(key, r); onResolved(r.correct); }} />
+      </div>
+    );
   }
   return (
     <div className="space-y-4">
@@ -47,7 +52,9 @@ function Lesson({ node }: { node: SkillNode }) {
   const index = raw === 'done' ? total : Math.min(total - 1, Math.max(0, raw === null ? resume : (parseInt(raw, 10) || 1) - 1));
   const [resolvedNow, setResolvedNow] = useState<Record<string, boolean>>({});
   const top = useRef<HTMLDivElement>(null);
-  useEffect(() => { top.current?.focus(); }, [index]);
+  // Move focus to the new step when the learner navigates, but not on first load (that would skip the skip link).
+  const first = useRef(true);
+  useEffect(() => { if (first.current) first.current = false; else top.current?.focus(); }, [index]);
 
   const go = (i: number) => setParams({ step: i >= total ? 'done' : String(i + 1) });
 
