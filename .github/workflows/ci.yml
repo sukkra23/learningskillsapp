@@ -15,4 +15,5 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: npx playwright install --with-deps chromium
+        # compilers for tests/compiled.test.ts are preinstalled on ubuntu-latest (gcc, g++, rustc, javac)
       - run: npm run test:e2e

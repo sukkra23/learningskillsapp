@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import { widgetSchemas } from './schemas';
+import { EXAMPLES } from './MemoryTrace';
 import { steps } from './SortVisualizer';
 import { fmt } from './ui';
 
@@ -15,6 +16,26 @@ describe('widget registry', () => {
       if (['function-plot', 'cpu-sim'].includes(type)) expect(schema.safeParse({}).success, type).toBe(false);
       else expect(schema.safeParse({}).success, type).toBe(true);
     }
+  });
+});
+
+describe('recorded memory traces', () => {
+  it.each(Object.entries(EXAMPLES))('%s is internally consistent', (_k, ex) => {
+    const lines = ex.code.split('\n').length;
+    let out = '';
+    for (const f of ex.trace) {
+      expect(f.line).toBeLessThanOrEqual(lines);
+      expect(f.stdout.startsWith(out)).toBe(true); // output only ever grows
+      out = f.stdout;
+      const anchors = new Set([...f.heap.map((h) => h.id), ...f.stack.flatMap((s) => s.vars.map((v) => `${s.name}.${v.name}`))]);
+      for (const s of f.stack) for (const v of s.vars) if (v.target) expect(anchors.has(v.target), `${v.name} -> ${v.target}`).toBe(true);
+    }
+  });
+  it('ends with the output the real programs print', () => {
+    const last = (k: string) => EXAMPLES[k].trace[EXAMPLES[k].trace.length - 1].stdout;
+    expect(last('c-pointers')).toBe('7 8\n');
+    expect(last('rust-ownership')).toBe('hi 2\n');
+    expect(last('cpp-new-delete')).toBe('11 22\n');
   });
 });
 

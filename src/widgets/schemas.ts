@@ -36,6 +36,7 @@ export const widgetSchemas: Record<string, ZodTypeAny> = {
     target: z.number().optional(),
   }).strict(),
   backprop: z.object({}).strict(),
+  'memory-trace': z.object({ example: z.enum(['c-pointers', 'rust-ownership', 'cpp-new-delete']).default('c-pointers') }).strict(),
   circuit: z.object({
     preset: z.enum(['empty', 'single', 'series', 'parallel', 'divider', 'two-loop', 'thevenin']).default('series'),
     editable: z.boolean().default(true),

@@ -4,7 +4,8 @@ Orbit is a self-paced, offline-first learning site covering computer science, en
 mathematics, and physics. Lessons are short interactive steps; every answer is graded
 deterministically in the browser. There is no backend and no AI at runtime.
 
-Status: **proposal, awaiting approval.** Nothing below is built yet.
+Status: **built.** Sections 1 to 13 are the approved design. Section 14 lists where the
+implementation differs from it.
 
 ---
 
@@ -412,3 +413,20 @@ set, and 10+ questions. Each track: a diagnostic bank of 20+ items.
 6. Polish, accessibility, README, tests.
 
 After each phase: tests run, a summary of what works, and local run instructions.
+
+## 14. As built: differences from the proposal
+
+| Area | Proposal | What was built, and why |
+|------|----------|-------------------------|
+| Numeric units (5.2) | Unit entered separately and converted | The unit is a label beside the answer box, and the prompt states the unit expected. Unit conversion added grading rules without teaching anything in the seed content. |
+| Question minimums (3.1) | 10 questions per ready node | Also at least 4 checkpoint and 4 test-out questions, at least 3 steps, and one interactive step. |
+| Expression questions (3.3) | `answer`, `variables`, `domain` | Added `form: "expanded"`, which rejects answers containing brackets. Without it, "multiply out (x+3)(x-2)" could be answered by typing the prompt back. |
+| Coding questions (3.3) | One `language`, `starter`, `reference` | `entry` plus `variants.python` / `variants.javascript`, so one problem offers a language selector with shared tests. |
+| Choice order | Not specified | Multiple-choice options are displayed in a per-question shuffled order, fixed by the question key. |
+| Persistence (3.5) | Debounced IndexedDB writes | Also a synchronous copy to `localStorage` on page hide, written only by a tab with unsaved changes and consumed on the next load. An asynchronous write can be cut off when a tab closes. |
+| Trace-only languages (7) | Author checks traces with a compiler | `tests/compiled.test.ts` compiles and runs every C, C++, Java and Rust program in the content and compares the output, skipping languages whose toolchain is missing. |
+| Widgets (8) | Cache simulator, Riemann sums, linear-transformation grid, number line, vector field | Not built: they belong to stub topics. Added instead: motion graphs, collision lab, energy bowl, 3D vectors, and a memory/ownership trace viewer. All 19 widgets are on a Lab page at `/lab`. |
+| Circuit canvas (8) | Free-form canvas with a digital logic mode | A fixed ladder of ten branches, each of which can hold a wire, resistor or source. It covers every circuit in the seed lessons; digital logic has its own widget. |
+| CI (2) | Lint step | No linter is configured. CI runs validate, typecheck, unit tests, build and browser tests. |
+| Routes (11) | As listed | Added `/lab/:widget`. |
+| Seed content (12) | About 98 stubs | 112 nodes: 12 ready, 100 stubs. |

@@ -6,6 +6,7 @@ register('alu', 'ALU', 'Computer science', 'Flip bits and choose an operation; s
 register('cpu-sim', 'CPU stepper', 'Computer science', 'Step a tiny CPU through fetch, decode and execute.', () => import('./CpuSim'));
 register('sort-visualizer', 'Sorting and searching', 'Computer science', 'Step through sorting algorithms and binary search.', () => import('./SortVisualizer'));
 register('backprop', 'Backpropagation', 'Computer science', 'Follow gradients through a small neural network.', () => import('./Backprop'));
+register('memory-trace', 'Memory, pointers and ownership', 'Computer science', 'Step through C pointers, C++ new and delete, and Rust ownership.', () => import('./MemoryTrace'));
 register('circuit', 'Circuit builder', 'Engineering', 'Place sources and resistors on a ladder; voltages and currents solve live.', () => import('./Circuit'));
 register('truss', 'Truss solver', 'Engineering', 'Load a truss and see which members are in tension or compression.', () => import('./Truss'));
 register('force-diagram', 'Free-body diagram builder', 'Engineering', 'Add forces to a block and read off the net force and acceleration.', () => import('./ForceDiagram'));
