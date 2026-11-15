@@ -1,4 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
+import { CheckpointPage, TestOutPage } from '../pages/CheckpointPage';
+import { LessonPage } from '../pages/LessonPage';
+import { ProblemsPage } from '../pages/ProblemsPage';
+import { ReviewPage } from '../pages/ReviewPage';
 import { Bookmarks } from '../pages/Bookmarks';
 import { Dashboard } from '../pages/Dashboard';
 import { NodePage } from '../pages/NodePage';
@@ -18,12 +22,12 @@ export const routes = [
       { path: '/', element: <Dashboard /> },
       { path: '/track/:track', element: <TrackPage /> },
       { path: '/node/:nodeId', element: <NodePage /> },
-      { path: '/learn/:nodeId', loader: guardLearn, element: <Soon what="Lesson" />, errorElement: <NotFound /> },
-      { path: '/learn/:nodeId/problems', loader: guardLearn, element: <Soon what="Problem set" />, errorElement: <NotFound /> },
-      { path: '/learn/:nodeId/checkpoint', loader: guardLearn, element: <Soon what="Checkpoint" />, errorElement: <NotFound /> },
-      { path: '/node/:nodeId/test-out', loader: guardTestOut, element: <Soon what="Test out" />, errorElement: <NotFound /> },
+      { path: '/learn/:nodeId', loader: guardLearn, element: <LessonPage />, errorElement: <NotFound /> },
+      { path: '/learn/:nodeId/problems', loader: guardLearn, element: <ProblemsPage />, errorElement: <NotFound /> },
+      { path: '/learn/:nodeId/checkpoint', loader: guardLearn, element: <CheckpointPage />, errorElement: <NotFound /> },
+      { path: '/node/:nodeId/test-out', loader: guardTestOut, element: <TestOutPage />, errorElement: <NotFound /> },
       { path: '/diagnostic/:track', element: <Soon what="Placement test" /> },
-      { path: '/review', element: <Soon what="Review" /> },
+      { path: '/review', element: <ReviewPage /> },
       { path: '/lab', element: <Soon what="Lab" /> },
       { path: '/search', element: <SearchPage /> },
       { path: '/bookmarks', element: <Bookmarks /> },
