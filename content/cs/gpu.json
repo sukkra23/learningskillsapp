@@ -1,0 +1,13 @@
+{
+  "id": "cs.gpu",
+  "track": "cs",
+  "title": "GPUs and the graphics pipeline",
+  "summary": "SIMD and SIMT execution, rasterization stages, and shaders.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.pipelines"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Hardware tour"
+}

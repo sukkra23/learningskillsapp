@@ -1,0 +1,13 @@
+{
+  "id": "cs.shading",
+  "track": "cs",
+  "title": "Shading",
+  "summary": "Lambert, Phong and physically based lighting models.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.rasterization"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 4,
+  "strand": "Rendering"
+}

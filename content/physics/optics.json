@@ -1,0 +1,14 @@
+{
+  "id": "physics.optics",
+  "track": "physics",
+  "title": "Optics",
+  "summary": "Reflection, refraction, lenses, diffraction and polarisation.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.oscillations-waves",
+    "physics.electromagnetism"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Electromagnetism"
+}

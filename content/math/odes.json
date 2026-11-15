@@ -1,0 +1,13 @@
+{
+  "id": "math.odes",
+  "track": "math",
+  "title": "Ordinary differential equations",
+  "summary": "First- and second-order equations and systems.",
+  "status": "stub",
+  "prerequisites": [
+    "math.integrals"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Linear algebra and differential equations"
+}

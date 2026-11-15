@@ -1,0 +1,13 @@
+{
+  "id": "engineering.power-systems",
+  "track": "engineering",
+  "title": "Power systems",
+  "summary": "Three-phase power, transformers and the grid.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.ac-circuits"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 4,
+  "strand": "Electrical"
+}

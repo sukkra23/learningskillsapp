@@ -1,0 +1,13 @@
+{
+  "id": "engineering.strength-of-materials",
+  "track": "engineering",
+  "title": "Strength of materials",
+  "summary": "Stress, strain, bending and torsion.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.statics"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Mechanical"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cs.dynamic-programming",
+  "track": "cs",
+  "title": "Dynamic programming",
+  "summary": "Overlapping subproblems, memoisation and tabulation.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.recursion",
+    "cs.hash-tables"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Data structures and algorithms"
+}

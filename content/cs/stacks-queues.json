@@ -1,0 +1,13 @@
+{
+  "id": "cs.stacks-queues",
+  "track": "cs",
+  "title": "Stacks and queues",
+  "summary": "LIFO and FIFO structures and where they show up.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.arrays-lists"
+  ],
+  "estimatedMinutes": 30,
+  "difficulty": 2,
+  "strand": "Data structures and algorithms"
+}

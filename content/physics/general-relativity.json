@@ -1,0 +1,15 @@
+{
+  "id": "physics.general-relativity",
+  "track": "physics",
+  "title": "General relativity",
+  "summary": "Curved spacetime, geodesics and black holes.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.special-relativity",
+    "physics.gravitation",
+    "physics.lagrangian-hamiltonian"
+  ],
+  "estimatedMinutes": 60,
+  "difficulty": 5,
+  "strand": "Analytical mechanics and relativity"
+}

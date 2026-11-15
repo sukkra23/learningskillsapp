@@ -1,0 +1,13 @@
+{
+  "id": "cs.cpu-cycle",
+  "track": "cs",
+  "title": "The CPU: fetch, decode, execute",
+  "summary": "Registers, the program counter, and the loop every processor runs.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.binary-alu"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Hardware tour"
+}

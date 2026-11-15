@@ -1,0 +1,13 @@
+{
+  "id": "physics.thermodynamics",
+  "track": "physics",
+  "title": "Thermodynamics",
+  "summary": "Temperature, heat, entropy and the laws that govern them.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.energy-momentum"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Waves, fluids and heat"
+}

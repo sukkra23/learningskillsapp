@@ -1,0 +1,14 @@
+{
+  "id": "cs.arrays-lists",
+  "track": "cs",
+  "title": "Arrays and linked lists",
+  "summary": "Contiguous versus linked storage and what each is good at.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.complexity",
+    "cs.pointers-memory"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 2,
+  "strand": "Data structures and algorithms"
+}

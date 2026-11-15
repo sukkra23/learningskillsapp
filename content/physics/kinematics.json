@@ -1,0 +1,11 @@
+{
+  "id": "physics.kinematics",
+  "track": "physics",
+  "title": "Kinematics",
+  "summary": "Position, velocity and acceleration in one and two dimensions.",
+  "status": "stub",
+  "prerequisites": [],
+  "estimatedMinutes": 40,
+  "difficulty": 1,
+  "strand": "Classical mechanics"
+}

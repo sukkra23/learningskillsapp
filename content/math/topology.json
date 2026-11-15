@@ -1,0 +1,13 @@
+{
+  "id": "math.topology",
+  "track": "math",
+  "title": "Topology basics",
+  "summary": "Open sets, continuity, compactness and connectedness.",
+  "status": "stub",
+  "prerequisites": [
+    "math.real-analysis"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Proof and structure"
+}

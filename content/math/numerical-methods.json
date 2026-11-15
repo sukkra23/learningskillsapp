@@ -1,0 +1,14 @@
+{
+  "id": "math.numerical-methods",
+  "track": "math",
+  "title": "Numerical methods",
+  "summary": "Root finding, interpolation, numerical integration and error.",
+  "status": "stub",
+  "prerequisites": [
+    "math.integrals",
+    "math.linear-algebra"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Applied"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "engineering.fluid-mechanics",
+  "track": "engineering",
+  "title": "Fluid mechanics",
+  "summary": "Bernoulli, viscosity, pipe flow and drag.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.dynamics",
+    "physics.fluids"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Mechanical"
+}

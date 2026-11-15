@@ -1,0 +1,14 @@
+{
+  "id": "physics.electromagnetism",
+  "track": "physics",
+  "title": "Electricity and magnetism",
+  "summary": "Charge, fields, potential, current and magnetic force.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.energy-momentum",
+    "math.multivariable-calculus"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 4,
+  "strand": "Electromagnetism"
+}

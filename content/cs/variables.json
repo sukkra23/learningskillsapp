@@ -1,0 +1,11 @@
+{
+  "id": "cs.variables",
+  "track": "cs",
+  "title": "Variables, types and expressions",
+  "summary": "Storing and combining values in Python, Java, C++, C and Rust.",
+  "status": "stub",
+  "prerequisites": [],
+  "estimatedMinutes": 30,
+  "difficulty": 1,
+  "strand": "Programming"
+}

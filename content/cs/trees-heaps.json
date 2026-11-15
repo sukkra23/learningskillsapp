@@ -1,0 +1,14 @@
+{
+  "id": "cs.trees-heaps",
+  "track": "cs",
+  "title": "Trees and heaps",
+  "summary": "Binary search trees, balancing, and priority queues.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.recursion",
+    "cs.arrays-lists"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Data structures and algorithms"
+}

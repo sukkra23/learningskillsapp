@@ -1,0 +1,13 @@
+{
+  "id": "math.logic-proofs",
+  "track": "math",
+  "title": "Logic and proofs",
+  "summary": "Statements, quantifiers, and how to write a proof.",
+  "status": "stub",
+  "prerequisites": [
+    "math.algebra"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Proof and structure"
+}

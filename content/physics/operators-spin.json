@@ -1,0 +1,13 @@
+{
+  "id": "physics.operators-spin",
+  "track": "physics",
+  "title": "Operators and spin",
+  "summary": "Observables, commutators, and two-state systems.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.schrodinger"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Quantum mechanics"
+}

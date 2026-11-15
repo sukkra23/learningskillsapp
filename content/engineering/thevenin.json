@@ -1,0 +1,13 @@
+{
+  "id": "engineering.thevenin",
+  "track": "engineering",
+  "title": "Thevenin and Norton equivalents",
+  "summary": "Replacing any linear circuit with one source and one resistor.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.kirchhoff"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Electrical"
+}

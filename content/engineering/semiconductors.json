@@ -1,0 +1,13 @@
+{
+  "id": "engineering.semiconductors",
+  "track": "engineering",
+  "title": "Semiconductors",
+  "summary": "Doping, diodes and transistors as circuit elements.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.kirchhoff"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Electrical"
+}

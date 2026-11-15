@@ -1,0 +1,13 @@
+{
+  "id": "engineering.hdl",
+  "track": "engineering",
+  "title": "Hardware description languages",
+  "summary": "Describing hardware in Verilog-style code, and how it differs from software.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.fsm"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Computer engineering"
+}

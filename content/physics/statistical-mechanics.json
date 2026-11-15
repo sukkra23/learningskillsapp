@@ -1,0 +1,14 @@
+{
+  "id": "physics.statistical-mechanics",
+  "track": "physics",
+  "title": "Statistical mechanics",
+  "summary": "Microstates, the Boltzmann distribution and where entropy comes from.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.thermodynamics",
+    "math.probability"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Waves, fluids and heat"
+}

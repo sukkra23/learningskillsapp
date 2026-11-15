@@ -1,0 +1,14 @@
+{
+  "id": "engineering.embedded-systems",
+  "track": "engineering",
+  "title": "Embedded systems",
+  "summary": "Real-time constraints, buses, and firmware structure.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.microcontrollers",
+    "cs.pointers-memory"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Computer engineering"
+}

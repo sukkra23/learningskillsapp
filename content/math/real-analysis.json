@@ -1,0 +1,14 @@
+{
+  "id": "math.real-analysis",
+  "track": "math",
+  "title": "Real analysis",
+  "summary": "Sequences, limits and continuity done rigorously.",
+  "status": "stub",
+  "prerequisites": [
+    "math.logic-proofs",
+    "math.integrals"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Proof and structure"
+}

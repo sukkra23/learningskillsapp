@@ -1,0 +1,13 @@
+{
+  "id": "engineering.fourier-laplace",
+  "track": "engineering",
+  "title": "Fourier and Laplace transforms",
+  "summary": "Moving between the time and frequency domains.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.signals-systems"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Electrical"
+}

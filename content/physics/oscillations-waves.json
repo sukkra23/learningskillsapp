@@ -1,0 +1,13 @@
+{
+  "id": "physics.oscillations-waves",
+  "track": "physics",
+  "title": "Oscillations and waves",
+  "summary": "Simple harmonic motion, superposition and interference.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.energy-momentum"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Waves, fluids and heat"
+}

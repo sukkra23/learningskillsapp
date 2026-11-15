@@ -1,0 +1,14 @@
+{
+  "id": "engineering.computer-architecture",
+  "track": "engineering",
+  "title": "Computer architecture",
+  "summary": "Designing a datapath and control unit.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.hdl",
+    "cs.cpu-cycle"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Computer engineering"
+}

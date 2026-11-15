@@ -1,0 +1,14 @@
+{
+  "id": "physics.chaos",
+  "track": "physics",
+  "title": "Nonlinear dynamics and chaos",
+  "summary": "A capstone: the double pendulum, strange attractors and the limits of prediction.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.lagrangian-hamiltonian",
+    "math.dynamical-systems"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Analytical mechanics and relativity"
+}

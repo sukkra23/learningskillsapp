@@ -1,0 +1,13 @@
+{
+  "id": "cs.recursion",
+  "track": "cs",
+  "title": "Recursion",
+  "summary": "Functions that call themselves, base cases, and the call stack.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.functions"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 2,
+  "strand": "Data structures and algorithms"
+}

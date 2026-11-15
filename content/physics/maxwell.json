@@ -1,0 +1,13 @@
+{
+  "id": "physics.maxwell",
+  "track": "physics",
+  "title": "Maxwell's equations",
+  "summary": "The four equations and the electromagnetic waves they predict.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.electromagnetism"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Electromagnetism"
+}

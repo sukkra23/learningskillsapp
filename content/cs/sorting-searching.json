@@ -1,0 +1,14 @@
+{
+  "id": "cs.sorting-searching",
+  "track": "cs",
+  "title": "Sorting and searching",
+  "summary": "Binary search, merge sort, quicksort, and why n log n is the limit.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.complexity",
+    "cs.recursion"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Data structures and algorithms"
+}

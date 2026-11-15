@@ -1,0 +1,13 @@
+{
+  "id": "cs.binary-alu",
+  "track": "cs",
+  "title": "Binary arithmetic and the ALU",
+  "summary": "Binary numbers, two's complement, adders, and the unit that does a CPU's arithmetic.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.logic-gates"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Hardware tour"
+}

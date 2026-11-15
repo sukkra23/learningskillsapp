@@ -1,0 +1,14 @@
+{
+  "id": "cs.graphs",
+  "track": "cs",
+  "title": "Graphs",
+  "summary": "Representations, breadth-first and depth-first search.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.trees-heaps",
+    "cs.stacks-queues"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Data structures and algorithms"
+}

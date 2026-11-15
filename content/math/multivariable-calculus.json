@@ -1,0 +1,14 @@
+{
+  "id": "math.multivariable-calculus",
+  "track": "math",
+  "title": "Multivariable and vector calculus",
+  "summary": "Partial derivatives, gradients, multiple integrals, div, grad and curl.",
+  "status": "stub",
+  "prerequisites": [
+    "math.integrals",
+    "math.linear-algebra"
+  ],
+  "estimatedMinutes": 60,
+  "difficulty": 4,
+  "strand": "Calculus"
+}

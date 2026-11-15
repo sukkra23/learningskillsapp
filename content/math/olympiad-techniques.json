@@ -1,0 +1,15 @@
+{
+  "id": "math.olympiad-techniques",
+  "track": "math",
+  "title": "Olympiad techniques",
+  "summary": "Pigeonhole, extremal arguments, induction and inequalities.",
+  "status": "stub",
+  "prerequisites": [
+    "math.problem-solving",
+    "math.number-theory",
+    "math.logic-proofs"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Problem solving"
+}

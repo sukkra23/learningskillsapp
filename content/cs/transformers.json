@@ -1,0 +1,13 @@
+{
+  "id": "cs.transformers",
+  "track": "cs",
+  "title": "Transformers",
+  "summary": "Attention, embeddings, and the architecture behind language models.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.neural-networks"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "AI and machine learning"
+}

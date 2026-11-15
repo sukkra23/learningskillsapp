@@ -1,0 +1,13 @@
+{
+  "id": "math.number-theory",
+  "track": "math",
+  "title": "Number theory",
+  "summary": "Divisibility, primes, and modular arithmetic.",
+  "status": "stub",
+  "prerequisites": [
+    "math.discrete-math"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Probability and discrete math"
+}

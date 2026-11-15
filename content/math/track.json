@@ -1,0 +1,15 @@
+{
+  "id": "math",
+  "title": "Mathematics",
+  "tagline": "Pure and applied, from algebra to chaos",
+  "description": "Build from algebra and functions through calculus and linear algebra to analysis, abstract algebra and dynamical systems, with a problem-solving strand alongside.",
+  "strands": [
+    "Foundations",
+    "Calculus",
+    "Linear algebra and differential equations",
+    "Probability and discrete math",
+    "Proof and structure",
+    "Applied",
+    "Problem solving"
+  ]
+}

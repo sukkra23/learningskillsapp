@@ -1,0 +1,14 @@
+{
+  "id": "cs.compilers",
+  "track": "cs",
+  "title": "Compilers and interpreters",
+  "summary": "Lexing, parsing, code generation, and how source text becomes machine instructions.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.cpu-cycle",
+    "cs.functions"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Hardware tour"
+}

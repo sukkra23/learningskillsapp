@@ -1,0 +1,13 @@
+{
+  "id": "math.discrete-math",
+  "track": "math",
+  "title": "Discrete math and combinatorics",
+  "summary": "Counting, sets, graphs and recurrences.",
+  "status": "stub",
+  "prerequisites": [
+    "math.algebra"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Probability and discrete math"
+}

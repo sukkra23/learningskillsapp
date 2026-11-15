@@ -1,0 +1,13 @@
+{
+  "id": "engineering.statics",
+  "track": "engineering",
+  "title": "Statics",
+  "summary": "Forces and moments in equilibrium, trusses and free-body diagrams.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.newtons-laws"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Mechanical"
+}

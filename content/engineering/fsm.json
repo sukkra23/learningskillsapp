@@ -1,0 +1,13 @@
+{
+  "id": "engineering.fsm",
+  "track": "engineering",
+  "title": "Finite state machines",
+  "summary": "Flip-flops, sequential logic, and Moore and Mealy machines.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.digital-logic"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Computer engineering"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "engineering.op-amps",
+  "track": "engineering",
+  "title": "Operational amplifiers",
+  "summary": "Ideal op-amp rules and the standard amplifier circuits.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.semiconductors",
+    "engineering.thevenin"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 4,
+  "strand": "Electrical"
+}

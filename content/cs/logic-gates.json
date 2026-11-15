@@ -1,0 +1,11 @@
+{
+  "id": "cs.logic-gates",
+  "track": "cs",
+  "title": "Transistors and logic gates",
+  "summary": "How switches made of silicon combine into AND, OR, NOT and every other gate.",
+  "status": "stub",
+  "prerequisites": [],
+  "estimatedMinutes": 35,
+  "difficulty": 1,
+  "strand": "Hardware tour"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "physics.lagrangian-hamiltonian",
+  "track": "physics",
+  "title": "Lagrangian and Hamiltonian mechanics",
+  "summary": "Mechanics from the principle of least action.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.rotation",
+    "physics.oscillations-waves",
+    "math.multivariable-calculus"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 4,
+  "strand": "Analytical mechanics and relativity"
+}

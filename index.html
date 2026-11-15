@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Orbit: self-paced interactive lessons in computer science, engineering, mathematics, and physics." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Orbit</title>
+    <script>
+      // Runs before first paint so the correct theme is applied without a flash.
+      (function () {
+        var choice = 'system';
+        try { choice = localStorage.getItem('orbit-theme') || 'system'; } catch (e) {}
+        var dark = choice === 'dark' ||
+          (choice !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

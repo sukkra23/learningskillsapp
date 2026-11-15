@@ -1,0 +1,14 @@
+{
+  "id": "engineering.microcontrollers",
+  "track": "engineering",
+  "title": "Microcontrollers",
+  "summary": "GPIO, timers, interrupts and ADCs.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.digital-logic",
+    "engineering.ohms-law"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Computer engineering"
+}

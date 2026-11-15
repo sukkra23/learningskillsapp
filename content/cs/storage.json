@@ -1,0 +1,13 @@
+{
+  "id": "cs.storage",
+  "track": "cs",
+  "title": "Storage",
+  "summary": "Spinning disks, SSDs and file systems.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.memory-hierarchy"
+  ],
+  "estimatedMinutes": 30,
+  "difficulty": 3,
+  "strand": "Hardware tour"
+}

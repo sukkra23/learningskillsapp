@@ -1,0 +1,13 @@
+{
+  "id": "cs.virtual-memory",
+  "track": "cs",
+  "title": "Virtual memory and paging",
+  "summary": "Page tables, the TLB, and how every process gets its own address space.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.memory-hierarchy"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 4,
+  "strand": "Hardware tour"
+}

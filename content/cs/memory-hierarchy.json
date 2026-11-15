@@ -1,0 +1,13 @@
+{
+  "id": "cs.memory-hierarchy",
+  "track": "cs",
+  "title": "The memory hierarchy",
+  "summary": "Registers, cache, RAM and disk: the speed versus size trade-off at every level.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.caches"
+  ],
+  "estimatedMinutes": 30,
+  "difficulty": 3,
+  "strand": "Hardware tour"
+}

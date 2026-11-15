@@ -1,0 +1,13 @@
+{
+  "id": "physics.energy-momentum",
+  "track": "physics",
+  "title": "Energy and momentum",
+  "summary": "Work, conservation of energy, and collisions.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.newtons-laws"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 2,
+  "strand": "Classical mechanics"
+}

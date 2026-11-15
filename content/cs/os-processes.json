@@ -1,0 +1,13 @@
+{
+  "id": "cs.os-processes",
+  "track": "cs",
+  "title": "Processes, threads and syscalls",
+  "summary": "What an operating system is and how programs ask it for help.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.virtual-memory"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Hardware tour"
+}

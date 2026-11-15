@@ -1,0 +1,13 @@
+{
+  "id": "engineering.electromagnetics",
+  "track": "engineering",
+  "title": "Engineering electromagnetics",
+  "summary": "Transmission lines, waveguides and antennas.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.maxwell"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Electrical"
+}

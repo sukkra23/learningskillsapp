@@ -1,0 +1,14 @@
+{
+  "id": "math.complex-analysis",
+  "track": "math",
+  "title": "Complex analysis",
+  "summary": "Analytic functions, contour integrals and residues.",
+  "status": "stub",
+  "prerequisites": [
+    "math.multivariable-calculus",
+    "math.real-analysis"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Applied"
+}

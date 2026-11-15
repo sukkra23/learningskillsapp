@@ -1,0 +1,13 @@
+{
+  "id": "cs.caches",
+  "track": "cs",
+  "title": "CPU caches",
+  "summary": "Why memory is slow, how L1 to L3 caches hide it, and what a cache miss costs.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.cpu-cycle"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 3,
+  "strand": "Hardware tour"
+}

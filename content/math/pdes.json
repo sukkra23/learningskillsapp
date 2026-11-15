@@ -1,0 +1,14 @@
+{
+  "id": "math.pdes",
+  "track": "math",
+  "title": "Partial differential equations",
+  "summary": "The heat, wave and Laplace equations.",
+  "status": "stub",
+  "prerequisites": [
+    "math.odes",
+    "math.multivariable-calculus"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Linear algebra and differential equations"
+}

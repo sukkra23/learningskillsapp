@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colour tokens as RGB triplets. tests/contrast.test.ts parses this file and
+   checks WCAG AA contrast for both themes, so keep the two blocks in this form. */
+:root {
+  --bg: 246 247 251;
+  --surface: 255 255 255;
+  --surface2: 236 239 247;
+  --fg: 20 24 43;
+  --muted: 75 83 104;
+  --border: 205 210 226;
+  --border-strong: 110 118 145;
+  --accent: 67 56 202;
+  --accent-fg: 255 255 255;
+  --accent-soft: 228 230 252;
+  --success: 15 110 58;
+  --danger: 170 32 22;
+  --warn: 125 80 0;
+  --cs: 29 78 216;
+  --engineering: 180 60 10;
+  --math: 126 34 180;
+  --physics: 10 110 100;
+}
+[data-theme='dark'] {
+  --bg: 13 16 32;
+  --surface: 22 26 46;
+  --surface2: 33 38 66;
+  --fg: 232 234 244;
+  --muted: 168 175 200;
+  --border: 48 54 88;
+  --border-strong: 120 128 165;
+  --accent: 165 180 252;
+  --accent-fg: 13 16 32;
+  --accent-soft: 40 44 92;
+  --success: 74 222 128;
+  --danger: 252 129 129;
+  --warn: 251 191 36;
+  --cs: 125 170 255;
+  --engineering: 253 160 100;
+  --math: 216 160 255;
+  --physics: 80 220 200;
+}
+
+@layer base {
+  body { @apply bg-bg text-fg antialiased; }
+  :focus-visible { outline: 3px solid rgb(var(--accent)); outline-offset: 2px; border-radius: 4px; }
+  h1, h2, h3 { @apply font-semibold tracking-tight; }
+}
+@layer components {
+  .card { @apply rounded-2xl border border-border bg-surface p-5 shadow-sm; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-strong bg-surface px-4 py-2 text-sm font-medium text-fg transition hover:bg-surface2 disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply border-accent bg-accent text-accent-fg hover:bg-accent hover:brightness-110; }
+  .input { @apply rounded-xl border border-strong bg-surface px-3 py-2 text-fg placeholder:text-muted; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full border border-border bg-surface2 px-2.5 py-0.5 text-xs font-medium text-fg; }
+  .prose-orbit p { @apply my-3 leading-relaxed; }
+  .prose-orbit ul { @apply my-3 list-disc pl-6; }
+  .prose-orbit ol { @apply my-3 list-decimal pl-6; }
+  .prose-orbit li { @apply my-1; }
+  .prose-orbit code { @apply rounded bg-surface2 px-1 py-0.5 font-mono text-[0.9em]; }
+  .prose-orbit pre { @apply my-3 overflow-x-auto rounded-xl bg-surface2 p-3 font-mono text-sm; }
+  .prose-orbit pre code { @apply bg-transparent p-0; }
+  .prose-orbit strong { @apply font-semibold; }
+  .prose-orbit h3 { @apply mt-4 text-lg; }
+  .prose-orbit table { @apply my-3 border-collapse text-sm; }
+  .prose-orbit th, .prose-orbit td { @apply border border-border px-3 py-1; }
+  .prose-orbit a { @apply text-accent underline; }
+  .prose-orbit .katex-display { @apply my-3 overflow-x-auto overflow-y-hidden py-1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

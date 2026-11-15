@@ -1,0 +1,14 @@
+{
+  "id": "cs.ml-linear-algebra",
+  "track": "cs",
+  "title": "Linear algebra for machine learning",
+  "summary": "Vectors, matrices and dot products as the language of data.",
+  "status": "stub",
+  "prerequisites": [
+    "math.linear-algebra",
+    "cs.functions"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 3,
+  "strand": "AI and machine learning"
+}

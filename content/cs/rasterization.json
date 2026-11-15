@@ -1,0 +1,13 @@
+{
+  "id": "cs.rasterization",
+  "track": "cs",
+  "title": "Rasterization",
+  "summary": "Turning triangles into pixels with edge functions and a depth buffer.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.coordinate-spaces"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Rendering"
+}

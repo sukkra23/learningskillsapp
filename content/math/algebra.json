@@ -1,0 +1,11 @@
+{
+  "id": "math.algebra",
+  "track": "math",
+  "title": "Arithmetic and algebra",
+  "summary": "Expressions, equations, and the rules that let you rearrange them.",
+  "status": "stub",
+  "prerequisites": [],
+  "estimatedMinutes": 35,
+  "difficulty": 1,
+  "strand": "Foundations"
+}

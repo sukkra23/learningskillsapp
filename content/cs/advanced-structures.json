@@ -1,0 +1,14 @@
+{
+  "id": "cs.advanced-structures",
+  "track": "cs",
+  "title": "Tries, segment trees and union-find",
+  "summary": "Specialised structures for strings, ranges and connectivity.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.trees-heaps",
+    "cs.hash-tables"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Data structures and algorithms"
+}

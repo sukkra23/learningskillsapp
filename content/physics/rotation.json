@@ -1,0 +1,13 @@
+{
+  "id": "physics.rotation",
+  "track": "physics",
+  "title": "Rotation",
+  "summary": "Torque, moment of inertia and angular momentum.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.energy-momentum"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Classical mechanics"
+}

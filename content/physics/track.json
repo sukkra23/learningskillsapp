@@ -1,0 +1,13 @@
+{
+  "id": "physics",
+  "title": "Physics",
+  "tagline": "From falling objects to quantum fields",
+  "description": "Start with motion and forces, then follow the subject through waves, heat, fields, relativity and quantum mechanics, with a simulation for every topic.",
+  "strands": [
+    "Classical mechanics",
+    "Waves, fluids and heat",
+    "Electromagnetism",
+    "Analytical mechanics and relativity",
+    "Quantum mechanics"
+  ]
+}

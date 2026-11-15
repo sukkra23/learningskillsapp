@@ -1,0 +1,13 @@
+{
+  "id": "cs.ray-tracing",
+  "track": "cs",
+  "title": "Ray tracing",
+  "summary": "Casting rays, intersections, shadows and reflections.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.coordinate-spaces"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Rendering"
+}

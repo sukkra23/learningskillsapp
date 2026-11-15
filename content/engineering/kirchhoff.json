@@ -1,0 +1,13 @@
+{
+  "id": "engineering.kirchhoff",
+  "track": "engineering",
+  "title": "Kirchhoff's laws",
+  "summary": "Current and voltage laws, and solving any resistive circuit with nodes and loops.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.ohms-law"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Electrical"
+}

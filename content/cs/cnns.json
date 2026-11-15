@@ -1,0 +1,13 @@
+{
+  "id": "cs.cnns",
+  "track": "cs",
+  "title": "Convolutional networks",
+  "summary": "Filters, pooling, and learning from images.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.neural-networks"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "AI and machine learning"
+}

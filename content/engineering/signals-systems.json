@@ -1,0 +1,14 @@
+{
+  "id": "engineering.signals-systems",
+  "track": "engineering",
+  "title": "Signals and systems",
+  "summary": "Linear time-invariant systems, impulse response and convolution.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.ac-circuits",
+    "math.integrals"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Electrical"
+}

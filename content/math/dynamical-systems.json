@@ -1,0 +1,14 @@
+{
+  "id": "math.dynamical-systems",
+  "track": "math",
+  "title": "Dynamical systems and chaos",
+  "summary": "Fixed points, bifurcations and sensitive dependence.",
+  "status": "stub",
+  "prerequisites": [
+    "math.odes",
+    "math.linear-algebra"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Applied"
+}

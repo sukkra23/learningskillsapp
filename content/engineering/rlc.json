@@ -1,0 +1,14 @@
+{
+  "id": "engineering.rlc",
+  "track": "engineering",
+  "title": "RLC circuits and resonance",
+  "summary": "Second-order circuits, damping and resonance.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.ac-circuits",
+    "math.odes"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Electrical"
+}

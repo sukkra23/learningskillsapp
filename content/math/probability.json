@@ -1,0 +1,14 @@
+{
+  "id": "math.probability",
+  "track": "math",
+  "title": "Probability",
+  "summary": "Sample spaces, conditional probability, random variables and expectation.",
+  "status": "stub",
+  "prerequisites": [
+    "math.functions",
+    "math.discrete-math"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Probability and discrete math"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "engineering.machine-design",
+  "track": "engineering",
+  "title": "Machine design",
+  "summary": "Gears, shafts, bearings and fatigue.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.strength-of-materials",
+    "engineering.dynamics"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Mechanical"
+}

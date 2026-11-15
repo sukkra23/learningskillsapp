@@ -1,0 +1,13 @@
+{
+  "id": "math.optimization",
+  "track": "math",
+  "title": "Optimization",
+  "summary": "Convexity, Lagrange multipliers and linear programming.",
+  "status": "stub",
+  "prerequisites": [
+    "math.multivariable-calculus"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Applied"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "math.geometry-trig",
+  "track": "math",
+  "title": "Geometry and trigonometry",
+  "summary": "Angles, triangles, the unit circle, and the trigonometric functions.",
+  "status": "stub",
+  "prerequisites": [
+    "math.algebra"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 2,
+  "strand": "Foundations"
+}

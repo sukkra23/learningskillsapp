@@ -1,0 +1,15 @@
+{
+  "id": "physics.intro-qft",
+  "track": "physics",
+  "title": "Introduction to quantum field theory",
+  "summary": "Fields as the fundamental objects, and particles as their excitations.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.perturbation-theory",
+    "physics.special-relativity",
+    "physics.lagrangian-hamiltonian"
+  ],
+  "estimatedMinutes": 60,
+  "difficulty": 5,
+  "strand": "Quantum mechanics"
+}

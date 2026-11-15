@@ -1,0 +1,13 @@
+{
+  "id": "cs.neural-networks",
+  "track": "cs",
+  "title": "Neural networks and backpropagation",
+  "summary": "Layers, activations, and the chain rule that trains them.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.gradient-descent"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "AI and machine learning"
+}

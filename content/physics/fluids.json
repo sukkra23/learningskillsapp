@@ -1,0 +1,13 @@
+{
+  "id": "physics.fluids",
+  "track": "physics",
+  "title": "Fluids",
+  "summary": "Pressure, buoyancy and flow.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.energy-momentum"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Waves, fluids and heat"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "engineering.eng-thermodynamics",
+  "track": "engineering",
+  "title": "Engineering thermodynamics",
+  "summary": "Cycles, engines and refrigeration.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.thermodynamics"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Mechanical"
+}

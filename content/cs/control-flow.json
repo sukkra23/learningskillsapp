@@ -1,0 +1,13 @@
+{
+  "id": "cs.control-flow",
+  "track": "cs",
+  "title": "Control flow",
+  "summary": "Branches and loops in five languages.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.variables"
+  ],
+  "estimatedMinutes": 30,
+  "difficulty": 1,
+  "strand": "Programming"
+}

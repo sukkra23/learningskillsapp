@@ -1,0 +1,13 @@
+{
+  "id": "cs.os-scheduling",
+  "track": "cs",
+  "title": "Scheduling and concurrency",
+  "summary": "How one CPU runs many programs, and what goes wrong when threads share data.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.os-processes"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 4,
+  "strand": "Hardware tour"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "cs.functions",
+  "track": "cs",
+  "title": "Functions and scope",
+  "summary": "Parameters, return values, the call stack, and scope.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.control-flow"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 2,
+  "strand": "Programming"
+}

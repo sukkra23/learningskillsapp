@@ -1,0 +1,13 @@
+{
+  "id": "cs.hash-tables",
+  "track": "cs",
+  "title": "Hash tables",
+  "summary": "Hash functions, collisions, and constant-time lookup.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.arrays-lists"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 3,
+  "strand": "Data structures and algorithms"
+}

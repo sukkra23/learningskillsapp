@@ -1,0 +1,13 @@
+{
+  "id": "physics.special-relativity",
+  "track": "physics",
+  "title": "Special relativity",
+  "summary": "Time dilation, length contraction and spacetime.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.energy-momentum"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Analytical mechanics and relativity"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "cs.coordinate-spaces",
+  "track": "cs",
+  "title": "Coordinate spaces and transforms",
+  "summary": "Model, world, view and clip space, and the matrices between them.",
+  "status": "stub",
+  "prerequisites": [
+    "math.linear-algebra",
+    "cs.functions"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Rendering"
+}

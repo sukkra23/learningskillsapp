@@ -1,0 +1,13 @@
+{
+  "id": "cs.greedy-backtracking",
+  "track": "cs",
+  "title": "Greedy algorithms and backtracking",
+  "summary": "When the locally best choice works, and how to search when it does not.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.sorting-searching"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Data structures and algorithms"
+}

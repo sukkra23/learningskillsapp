@@ -1,0 +1,13 @@
+{
+  "id": "cs.rag",
+  "track": "cs",
+  "title": "Retrieval-augmented generation",
+  "summary": "Vector search plus a language model, and where it fails.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.transformers"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 5,
+  "strand": "AI and machine learning"
+}

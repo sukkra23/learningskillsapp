@@ -1,0 +1,11 @@
+{
+  "id": "engineering.ohms-law",
+  "track": "engineering",
+  "title": "Ohm's law and simple circuits",
+  "summary": "Voltage, current, resistance and power in series and parallel circuits.",
+  "status": "stub",
+  "prerequisites": [],
+  "estimatedMinutes": 35,
+  "difficulty": 1,
+  "strand": "Electrical"
+}

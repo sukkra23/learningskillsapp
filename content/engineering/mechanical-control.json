@@ -1,0 +1,14 @@
+{
+  "id": "engineering.mechanical-control",
+  "track": "engineering",
+  "title": "Control of mechanical systems",
+  "summary": "Modelling and controlling mass-spring-damper systems.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.dynamics",
+    "engineering.control-systems"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 5,
+  "strand": "Mechanical"
+}

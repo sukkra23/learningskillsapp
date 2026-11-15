@@ -1,0 +1,13 @@
+{
+  "id": "cs.complexity",
+  "track": "cs",
+  "title": "Complexity analysis",
+  "summary": "Big-O, and how to predict how code scales.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.functions"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 2,
+  "strand": "Data structures and algorithms"
+}

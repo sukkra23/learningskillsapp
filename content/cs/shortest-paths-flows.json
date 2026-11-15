@@ -1,0 +1,14 @@
+{
+  "id": "cs.shortest-paths-flows",
+  "track": "cs",
+  "title": "Shortest paths and network flow",
+  "summary": "Dijkstra, Bellman-Ford, and max-flow min-cut.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.graphs",
+    "cs.greedy-backtracking"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Data structures and algorithms"
+}

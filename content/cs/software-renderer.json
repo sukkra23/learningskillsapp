@@ -1,0 +1,15 @@
+{
+  "id": "cs.software-renderer",
+  "track": "cs",
+  "title": "Build a software renderer",
+  "summary": "A capstone: a complete renderer without a GPU.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.shading",
+    "cs.ray-tracing",
+    "cs.gpu"
+  ],
+  "estimatedMinutes": 60,
+  "difficulty": 5,
+  "strand": "Rendering"
+}

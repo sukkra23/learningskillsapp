@@ -1,0 +1,13 @@
+{
+  "id": "cs.pointers-memory",
+  "track": "cs",
+  "title": "Pointers and manual memory",
+  "summary": "Addresses, the stack and heap, malloc and free in C and C++.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.functions"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Programming"
+}

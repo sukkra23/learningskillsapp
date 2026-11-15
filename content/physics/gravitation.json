@@ -1,0 +1,13 @@
+{
+  "id": "physics.gravitation",
+  "track": "physics",
+  "title": "Gravitation",
+  "summary": "Newton's law of gravity, orbits and Kepler's laws.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.rotation"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Classical mechanics"
+}

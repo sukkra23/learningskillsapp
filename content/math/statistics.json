@@ -1,0 +1,13 @@
+{
+  "id": "math.statistics",
+  "track": "math",
+  "title": "Statistics",
+  "summary": "Estimation, confidence intervals and hypothesis tests.",
+  "status": "stub",
+  "prerequisites": [
+    "math.probability"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Probability and discrete math"
+}

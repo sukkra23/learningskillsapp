@@ -1,0 +1,13 @@
+{
+  "id": "engineering.digital-logic",
+  "track": "engineering",
+  "title": "Digital logic design",
+  "summary": "Boolean algebra, Karnaugh maps, and combinational circuits.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.logic-gates"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Computer engineering"
+}

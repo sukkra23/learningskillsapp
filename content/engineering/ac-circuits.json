@@ -1,0 +1,14 @@
+{
+  "id": "engineering.ac-circuits",
+  "track": "engineering",
+  "title": "AC circuits",
+  "summary": "Phasors, impedance and reactance.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.thevenin",
+    "math.geometry-trig"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Electrical"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "cs",
+  "title": "Computer Science",
+  "tagline": "From transistors to transformers",
+  "description": "Tour a computer from the transistor up, learn to program in five languages, then build on that with algorithms, machine learning and rendering.",
+  "strands": [
+    "Hardware tour",
+    "Programming",
+    "Data structures and algorithms",
+    "AI and machine learning",
+    "Rendering"
+  ]
+}

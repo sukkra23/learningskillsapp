@@ -1,0 +1,13 @@
+{
+  "id": "engineering.heat-transfer",
+  "track": "engineering",
+  "title": "Heat transfer",
+  "summary": "Conduction, convection and radiation.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.eng-thermodynamics"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 4,
+  "strand": "Mechanical"
+}

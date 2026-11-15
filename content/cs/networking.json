@@ -1,0 +1,13 @@
+{
+  "id": "cs.networking",
+  "track": "cs",
+  "title": "Networking basics",
+  "summary": "Packets, layers, TCP/IP, DNS and HTTP.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.os-processes"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "Hardware tour"
+}

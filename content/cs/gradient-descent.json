@@ -1,0 +1,14 @@
+{
+  "id": "cs.gradient-descent",
+  "track": "cs",
+  "title": "Gradient descent",
+  "summary": "Following the slope downhill to train a model.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.regression",
+    "math.multivariable-calculus"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "AI and machine learning"
+}

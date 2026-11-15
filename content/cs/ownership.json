@@ -1,0 +1,13 @@
+{
+  "id": "cs.ownership",
+  "track": "cs",
+  "title": "Ownership and borrowing",
+  "summary": "How Rust guarantees memory safety without a garbage collector.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.pointers-memory"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 4,
+  "strand": "Programming"
+}

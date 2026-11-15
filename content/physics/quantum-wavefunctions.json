@@ -1,0 +1,14 @@
+{
+  "id": "physics.quantum-wavefunctions",
+  "track": "physics",
+  "title": "Wavefunctions",
+  "summary": "Probability amplitudes, superposition and measurement.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.oscillations-waves",
+    "math.linear-algebra"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 4,
+  "strand": "Quantum mechanics"
+}

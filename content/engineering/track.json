@@ -1,0 +1,11 @@
+{
+  "id": "engineering",
+  "title": "Engineering",
+  "tagline": "Electrical, computer and mechanical",
+  "description": "Analyse circuits, design digital systems, and work out the forces, heat and flow in machines and structures.",
+  "strands": [
+    "Electrical",
+    "Computer engineering",
+    "Mechanical"
+  ]
+}

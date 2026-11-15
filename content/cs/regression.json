@@ -1,0 +1,13 @@
+{
+  "id": "cs.regression",
+  "track": "cs",
+  "title": "Regression",
+  "summary": "Fitting lines and curves to data by minimising error.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.ml-linear-algebra"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 3,
+  "strand": "AI and machine learning"
+}

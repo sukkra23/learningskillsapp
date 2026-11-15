@@ -1,0 +1,14 @@
+{
+  "id": "engineering.dynamics",
+  "track": "engineering",
+  "title": "Dynamics",
+  "summary": "Rigid-body motion, work-energy and impulse methods.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.statics",
+    "physics.energy-momentum"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Mechanical"
+}

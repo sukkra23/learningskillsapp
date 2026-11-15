@@ -1,0 +1,13 @@
+{
+  "id": "engineering.control-systems",
+  "track": "engineering",
+  "title": "Control systems",
+  "summary": "Feedback, stability, and PID control.",
+  "status": "stub",
+  "prerequisites": [
+    "engineering.fourier-laplace"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 5,
+  "strand": "Electrical"
+}

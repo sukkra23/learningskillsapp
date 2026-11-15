@@ -1,0 +1,13 @@
+{
+  "id": "math.integrals",
+  "track": "math",
+  "title": "Integrals",
+  "summary": "Area, accumulation, and the fundamental theorem of calculus.",
+  "status": "stub",
+  "prerequisites": [
+    "math.limits-derivatives"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Calculus"
+}

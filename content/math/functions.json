@@ -1,0 +1,13 @@
+{
+  "id": "math.functions",
+  "track": "math",
+  "title": "Functions",
+  "summary": "Inputs and outputs, graphs, transformations, composition and inverses.",
+  "status": "stub",
+  "prerequisites": [
+    "math.algebra"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Foundations"
+}

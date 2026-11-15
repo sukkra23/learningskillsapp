@@ -1,0 +1,13 @@
+{
+  "id": "math.limits-derivatives",
+  "track": "math",
+  "title": "Limits and derivatives",
+  "summary": "Instantaneous rate of change, from secant lines to the rules of differentiation.",
+  "status": "stub",
+  "prerequisites": [
+    "math.functions"
+  ],
+  "estimatedMinutes": 45,
+  "difficulty": 3,
+  "strand": "Calculus"
+}

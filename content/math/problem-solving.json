@@ -1,0 +1,13 @@
+{
+  "id": "math.problem-solving",
+  "track": "math",
+  "title": "Puzzles and problem-solving heuristics",
+  "summary": "Work backwards, find invariants, try small cases: a toolkit for unfamiliar problems.",
+  "status": "stub",
+  "prerequisites": [
+    "math.algebra"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Problem solving"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "math.abstract-algebra",
+  "track": "math",
+  "title": "Abstract algebra",
+  "summary": "Groups, rings and fields.",
+  "status": "stub",
+  "prerequisites": [
+    "math.logic-proofs",
+    "math.number-theory"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Proof and structure"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "cs.pipelines",
+  "track": "cs",
+  "title": "Pipelines and branch prediction",
+  "summary": "Overlapping instructions for speed, hazards, and guessing which way a branch goes.",
+  "status": "stub",
+  "prerequisites": [
+    "cs.cpu-cycle"
+  ],
+  "estimatedMinutes": 35,
+  "difficulty": 3,
+  "strand": "Hardware tour"
+}

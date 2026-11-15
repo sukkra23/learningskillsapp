@@ -1,0 +1,13 @@
+{
+  "id": "physics.newtons-laws",
+  "track": "physics",
+  "title": "Newton's laws",
+  "summary": "Forces, free-body diagrams, and why things accelerate.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.kinematics"
+  ],
+  "estimatedMinutes": 40,
+  "difficulty": 2,
+  "strand": "Classical mechanics"
+}

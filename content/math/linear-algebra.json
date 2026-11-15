@@ -1,0 +1,13 @@
+{
+  "id": "math.linear-algebra",
+  "track": "math",
+  "title": "Linear algebra",
+  "summary": "Vectors, matrices, linear maps, determinants and eigenvalues.",
+  "status": "stub",
+  "prerequisites": [
+    "math.functions"
+  ],
+  "estimatedMinutes": 50,
+  "difficulty": 3,
+  "strand": "Linear algebra and differential equations"
+}

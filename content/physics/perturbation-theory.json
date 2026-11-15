@@ -1,0 +1,13 @@
+{
+  "id": "physics.perturbation-theory",
+  "track": "physics",
+  "title": "Perturbation theory",
+  "summary": "Approximating systems that cannot be solved exactly.",
+  "status": "stub",
+  "prerequisites": [
+    "physics.operators-spin"
+  ],
+  "estimatedMinutes": 55,
+  "difficulty": 5,
+  "strand": "Quantum mechanics"
+}
