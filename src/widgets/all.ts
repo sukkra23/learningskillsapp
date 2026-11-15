@@ -1,2 +1,20 @@
-// Widget registrations are added here in Phase 4.
-export {};
+import { register } from './registry';
+
+register('function-plot', 'Function plotter', 'Mathematics', 'Plot a function with live sliders, tangent and secant lines.', () => import('./FunctionPlot'));
+register('logic-gates', 'Logic gates', 'Computer science', 'Toggle inputs and watch gates, switches and adders respond.', () => import('./LogicGates'));
+register('alu', 'ALU', 'Computer science', 'Flip bits and choose an operation; see the result and flags.', () => import('./Alu'));
+register('cpu-sim', 'CPU stepper', 'Computer science', 'Step a tiny CPU through fetch, decode and execute.', () => import('./CpuSim'));
+register('sort-visualizer', 'Sorting and searching', 'Computer science', 'Step through sorting algorithms and binary search.', () => import('./SortVisualizer'));
+register('backprop', 'Backpropagation', 'Computer science', 'Follow gradients through a small neural network.', () => import('./Backprop'));
+register('circuit', 'Circuit builder', 'Engineering', 'Place sources and resistors on a ladder; voltages and currents solve live.', () => import('./Circuit'));
+register('truss', 'Truss solver', 'Engineering', 'Load a truss and see which members are in tension or compression.', () => import('./Truss'));
+register('force-diagram', 'Free-body diagram builder', 'Engineering', 'Add forces to a block and read off the net force and acceleration.', () => import('./ForceDiagram'));
+register('projectile', 'Projectile sandbox', 'Physics', 'Launch a projectile and vary speed, angle, height and gravity.', () => import('./Projectile'));
+register('motion-graphs', 'Motion graphs', 'Physics', 'Linked position, velocity and acceleration graphs.', () => import('./MotionGraphs'));
+register('collision', 'Collision lab', 'Physics', 'Collide two blocks; compare momentum and energy before and after.', () => import('./Collision'));
+register('energy-ramp', 'Energy bowl', 'Physics', 'Watch potential and kinetic energy trade places, with optional friction.', () => import('./EnergyRamp'));
+register('vector-3d', '3D vectors', 'Physics', 'Add vectors tip to tail in three dimensions.', () => import('./Vector3D'));
+register('double-pendulum', 'Double pendulum', 'Physics', 'A simple system that becomes chaotic.', () => import('./LabSims').then((m) => ({ default: m.DoublePendulum })));
+register('orbit-sim', 'Orbit simulator', 'Physics', 'Launch a planet and see circles, ellipses and escapes.', () => import('./LabSims').then((m) => ({ default: m.OrbitSim })));
+register('wave-interference', 'Wave interference', 'Physics', 'Two sources and the pattern their waves make.', () => import('./LabSims').then((m) => ({ default: m.WaveInterference })));
+register('particle-in-box', 'Particle in a box', 'Physics', 'Quantised wavefunctions and energy levels.', () => import('./LabSims').then((m) => ({ default: m.ParticleInBox })));
